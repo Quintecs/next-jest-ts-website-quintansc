@@ -1,4 +1,4 @@
-import { HomeContainer } from "./style";
+import { HomeContainer } from "../../styles/contato";
 
 const Container = ()=>{
     return (

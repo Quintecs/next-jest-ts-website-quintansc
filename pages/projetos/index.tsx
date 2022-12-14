@@ -1,4 +1,4 @@
-import { HomeContainer } from "./style";
+import { HomeContainer } from "../../src/page/projetos"
 
 const Container = ()=>{
     return (
