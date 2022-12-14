@@ -26,7 +26,7 @@ const SkillsContainer = styled.aside`
   padding: 25px;
   display:  flex;
   flex-direction: column;
-  width: 300px;
+  width: 260px;
   justify-content: center;
   align-items: center;
 `
