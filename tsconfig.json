@@ -35,7 +35,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "types.d.ts"
+    "types.d.ts",
+    "pages/style.ts"
   ],
   "exclude": [
     "node_modules"

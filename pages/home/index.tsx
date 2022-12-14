@@ -1,27 +1,53 @@
 import Head from "next/head";
-import { HomeContainer } from "./style";
-
-const Container = ()=>{
+import { HomeContainer, InfosContainer, HeadingAnimado, Panimado, SkillsContainer } from "./style";
+import { RowContainer } from '../style';
+import Link from "next/link";
+import { SiNextdotjs } from "react-icons/si";
+import { FaNodeJs, FaReact } from "react-icons/fa";
+const Container = () => {
     return (
         <>
-        <Head>
-            <title>Home | Quintec</title>
-            <link rel="icon" href="/favicon.ico" />
-        </Head>
+            <Head>
+                <title>Home | Quintec</title>
+                <link rel="icon" href="/desenvolvedor1.ico" />
 
-        <HomeContainer>
-            <p>
-            Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            >
-            Homes Gustavinho
-            </a>
-        </HomeContainer>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name="description" content="Um portifólio vasto com diversas referências para quem é Desenvolvedor Front-End" />
+                <meta name="keywords" content="Desenvolvedor,Programador,frontend,Front-end,JS,Portifólio,desenvolvimento,referencias,design"/>
+                <meta name="robots" content="index, follow"/>
+            </Head>
+
+            <HomeContainer>
+                <HeadingAnimado>Frontend Developer - Design - Typescript Developer.</HeadingAnimado>
+                <InfosContainer>
+                    <h2>Hello World</h2>
+                    <p>You're welcome to my profile. my name is Gustavo Quintans, I'm Javascript and Typescript Developer.</p>
+                    <p>Specialist in ReactJS and NodeJs</p>
+                </InfosContainer>
+                <br></br>
+                <InfosContainer>
+                    <h2>My skills</h2>
+                    <RowContainer>
+                        <SkillsContainer>
+                            <h3>NodeJS</h3>
+                            <FaNodeJs size={65} color={'#3c873a'}/>
+                            <Link href={"https://nodejs.org/en/"}>Node Documentation</Link>
+                        </SkillsContainer>
+
+                        <SkillsContainer>
+                            <h3>ReactJS</h3>
+                            <FaReact size={65} color={'#61DBFB'} />
+                            <Link href={"https://pt-br.reactjs.org/"}>React Documentation</Link>
+                        </SkillsContainer>
+
+                        <SkillsContainer>
+                            <h3>NextJS</h3>
+                            <SiNextdotjs size={65} color={'black'}/>
+                            <Link href={"https://nextjs.org/"}> Documentation</Link>
+                        </SkillsContainer>
+                    </RowContainer>
+                </InfosContainer>
+            </HomeContainer>
         </>
     )
 }
