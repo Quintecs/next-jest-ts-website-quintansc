@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { HomeContainer, InfosContainer, HeadingAnimado, Panimado, SkillsContainer } from "./style";
-import { RowContainer } from '../style';
+import { RowContainer } from '../../styles/style';
 import Link from "next/link";
 import { SiNextdotjs } from "react-icons/si";
 import { FaNodeJs, FaReact } from "react-icons/fa";
