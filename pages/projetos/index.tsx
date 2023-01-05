@@ -6,7 +6,6 @@ const Containers = ()=>{
             <p>
                 Edit <code>src/App.js</code> and save to s.
             </p>            
-            
         </Container>
     )
 }
