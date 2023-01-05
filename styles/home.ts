@@ -1,16 +1,4 @@
 import styled, { keyframes } from "styled-components"
-const HomeContainer = styled.section`
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  width: 100%;
-  height: 100%;
-`
 
 const InfosContainer = styled.section`
   text-align: center;
@@ -26,9 +14,10 @@ const SkillsContainer = styled.aside`
   padding: 25px;
   display:  flex;
   flex-direction: column;
-  width: 260px;
+  width: 100%;
   justify-content: center;
   align-items: center;
+  margin: 10px;
 `
 
 const pisca = keyframes`
@@ -57,6 +46,10 @@ const HeadingAnimado = styled.h1`
   overflow: hidden;
   white-space: nowrap;
   animation: ${pisca} linear infinite 1s, ${escrever} normal 5s steps(55) both;
+
+  @media (max-width: 800px) {
+    font-size: 0.9rem;
+  }
 `
 const Panimado = styled.p`
   display: inline-block; 
@@ -71,6 +64,5 @@ export {
   Panimado,
   SkillsContainer,
   HeadingAnimado,
-  HomeContainer,
   InfosContainer
 }

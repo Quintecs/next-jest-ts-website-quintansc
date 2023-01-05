@@ -44,36 +44,10 @@ const ButtonMenuMobile = styled.button`
     }
 `
 
-const MenuMobile = styled.div`
-    display: flex;
-    width: 140px;
-    flex-direction: column;  
-    background-color: rgba(250, 250, 250, 0.96);
-    position: fixed;
-    top: 0px;
-    right: ${(props)=>props['aria-checked']? 0 :'-150px'};
-    height: 100%;
-    transition: ease right .5s;   
-    a{
-        margin-top: 45px;
-        text-align: center;
-        color: black;
-        text-decoration: none;
-        :focus-within{
-            background-color: transparent;
-        }
-    }
-
-    @media (min-width: 600px){
-        display: none;
-    }
-`
-
 export {
     ProfileImage,
     MyName,
     UserContainer,
     Menu,
-    ButtonMenuMobile,
-    MenuMobile
+    ButtonMenuMobile
 }

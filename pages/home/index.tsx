@@ -4,7 +4,10 @@ import { RowContainer } from '../../styles/style';
 import Link from "next/link";
 import { SiNextdotjs } from "react-icons/si";
 import { FaNodeJs, FaReact } from "react-icons/fa";
-const Container = () => {
+
+import Container from '@mui/material/Container';
+
+const Home = () => {
     return (
         <>
             <Head>
@@ -17,7 +20,7 @@ const Container = () => {
                 <meta name="robots" content="index, follow"/>
             </Head>
 
-            <HomeContainer>
+            <Container style={{ backgroundColor: "#282c34", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", color: "white"}} >
                 <HeadingAnimado>Frontend Developer - Design - Typescript Developer.</HeadingAnimado>
                 <InfosContainer>
                     <h2>Hello World</h2>
@@ -47,9 +50,9 @@ const Container = () => {
                         </SkillsContainer>
                     </RowContainer>
                 </InfosContainer>
-            </HomeContainer>
+            </Container>
         </>
     )
 }
 
-export default Container;
+export default Home;

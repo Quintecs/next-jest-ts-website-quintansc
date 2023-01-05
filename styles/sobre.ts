@@ -1,6 +1,6 @@
 import styled from "styled-components"
-const HomeContainer = styled.section`
 
+const HomeContainer = styled.section`
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -9,7 +9,8 @@ const HomeContainer = styled.section`
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-
+  width: 100%;
+  height: 100%;
 `
 
 export {

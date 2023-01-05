@@ -9,6 +9,8 @@ const HomeContainer = styled.section`
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  width: 100%;
+  background-color: red;
 
 `
 

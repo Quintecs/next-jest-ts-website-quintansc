@@ -1,21 +1,14 @@
-import { HomeContainer } from "../../styles/projetos"
+import Container from '@mui/material/Container';
 
-const Container = ()=>{
+const Containers = ()=>{
     return (
-        <HomeContainer>
+        <Container>
             <p>
                 Edit <code>src/App.js</code> and save to s.
-            </p>
-            <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Projetos Gustavinho
-            </a>
-        </HomeContainer>
+            </p>            
+            
+        </Container>
     )
 }
 
-export default Container;
+export default Containers;

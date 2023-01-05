@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { MdMenu } from '../../utils/icons';
 
 import  Link  from 'next/link'
-import { MyName, ProfileImage, UserContainer, Menu, MenuMobile, ButtonMenuMobile } from './style'
+import { MyName, ProfileImage, UserContainer, Menu, ButtonMenuMobile } from './style'
+import { Box, Divider, Drawer } from '@mui/material';
+import ListLink from '../ListLink';
 
 const headerStyles = {
     display: 'flex', 
@@ -10,6 +12,8 @@ const headerStyles = {
     margin: '10px 20px', 
     alignItems: 'center'
 }
+
+
 
 const Header = ()=>{
     const [menuActive, setMenuActive] = useState(false)
@@ -26,12 +30,21 @@ const Header = ()=>{
             <ButtonMenuMobile onClick={()=>setMenuActive(true)}> 
                 <MdMenu size={30} color={'black'}/>
             </ButtonMenuMobile>
-            <MenuMobile aria-checked={menuActive}>
-                <Link href={'/'} onClick={()=>setMenuActive(false)} data-testid="menuElements">Home</Link>
-                <Link href={'/sobre'} onClick={()=>setMenuActive(false)} data-testid="menuElements">Sobre</Link>
-                <Link href={'/projetos'} onClick={()=>setMenuActive(false)} data-testid="menuElements">Projetos</Link>
-                <Link href={'/contato'} onClick={()=>setMenuActive(false)} data-testid="menuElements">Contato</Link>
-            </MenuMobile>
+
+            <Drawer anchor={"right"} open={menuActive} onClose={()=>setMenuActive(false)}>
+                <Box
+                sx={{ width: 250 }}
+                role="presentation"
+                onClick={()=>setMenuActive(false)}
+                onKeyDown={()=>setMenuActive(false)}
+                >
+                    <ListLink icon={<MdMenu/>} text={"Home"} link={"/home"}></ListLink>
+                    <ListLink icon={<MdMenu/>} text={"Sobre"} link={"/sobre"}></ListLink>
+                    <ListLink icon={<MdMenu/>} text={"Projetos"} link={"/projetos"}></ListLink>
+                    <ListLink icon={<MdMenu/>} text={"Contato"} link={"/contato"}></ListLink>
+                    <Divider />
+                </Box>
+            </Drawer>
 
             <Menu>
                 <Link href={'/'} data-testid="menuElements">Home</Link>
