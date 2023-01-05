@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { HomeContainer, InfosContainer, HeadingAnimado, Panimado, SkillsContainer } from "../../styles/home";
+import { InfosContainer, HeadingAnimado, SkillsContainer } from "../../styles/home";
 import { RowContainer } from '../../styles/style';
 import Link from "next/link";
 import { SiNextdotjs } from "react-icons/si";
