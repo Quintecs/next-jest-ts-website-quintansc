@@ -10,7 +10,11 @@ const headerStyles = {
     display: 'flex', 
     justifyContent: 'space-between', 
     margin: '10px 20px', 
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: '20px',
+    boxShadow: "2px 2px 2px 3px rgba(202, 202, 202, 0.127)",
+    border: "1px solid transparent",
+    borderRadius: "10px"
 }
 
 

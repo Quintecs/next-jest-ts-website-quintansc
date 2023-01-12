@@ -1,3 +1,4 @@
+import Footer from './footer';
 import Header from './header';
 import LateralComponent from './lateral';
 
@@ -7,6 +8,7 @@ export default function Layout ({children}: any){
             <Header />
             <LateralComponent />
             <main>{children}</main>
+            <Footer/>
         </>
     )
 }

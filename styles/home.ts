@@ -2,10 +2,11 @@ import styled, { keyframes } from "styled-components"
 
 const InfosContainer = styled.section`
   text-align: center;
-  width: 70%;
+  width: 85%;
   background-color: rgba(0, 0, 0, .5);
   border-radius: 15px;
   padding: 25px;
+  margin: 10px 0px;
 `
 
 const SkillsContainer = styled.aside`

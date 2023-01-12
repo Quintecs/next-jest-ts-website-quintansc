@@ -8,7 +8,6 @@ const ProfileImage = styled.img`
 
 const MyName = styled.span`
     font-size: 20px;
-    color: #000;
 `
 
 const UserContainer = styled.div`
@@ -23,7 +22,6 @@ const Menu = styled.nav`
     width: 300px;
     justify-content: space-evenly;
     a{
-        color: #000;
         text-decoration: none;
     } 
     @media (max-width: 600px){
