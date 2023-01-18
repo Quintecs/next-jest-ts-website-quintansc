@@ -25,9 +25,7 @@ const Home = () => {
         display: "flex", 
         flexDirection: "column", 
         alignItems: "center", 
-        boxShadow: "2px 2px 2px 3px rgba(5, 10, 15, 0.2)",
-        padding: "50px", 
-        margin: "50px"
+        boxShadow: "2px 2px 2px 3px rgba(5, 10, 15, 0.2)"
       }}>
         <HeadingAnimado>Frontend Developer - Design - Typescript Developer.</HeadingAnimado>
         <InfosContainer>

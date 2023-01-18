@@ -1,12 +1,11 @@
 import { Grid } from "@mui/material"
 import styled from "styled-components"
 
-export const GridColumn = styled(Grid)`
+export const GridNormal = styled(Grid)`
     display: flex;
-    flex-direction: column;
-`
-
-export const GridRow = styled(Grid)`
-    display: flex;
-    flex-direction: row;
+    top: 0;
+    font-size: 18px;
+    text-align: center;
+    width: "100px";
+    justify-content: space-evenly;
 `

@@ -1,18 +1,17 @@
 import { NavElements } from './style'
 
-import { FaGithubSquare, FaGitlab, FaLinkedin } from '../../utils/icons'
-import { FaInstagram, FaInstagramSquare } from 'react-icons/fa';
+import { FiGithub, FiLinkedin, FiGitlab, FaInstagram } from '../../utils/icons'
 
-const LateralComponent = ()=>{
-    const sizeIcons = 40; 
+const SocialIconsComponent = ()=>{
+    const sizeIcons = 25; 
     return (
         <NavElements>
-            <a href='https://github.com/quintansc' target="_blank" rel="noreferrer" data-testid="lateralElements"><FaGithubSquare size={sizeIcons} color={'black'}/></a>
-            <a href='https://gitlab.com/QuintansC' target="_blank" rel="noreferrer" data-testid="lateralElements"><FaGitlab size={sizeIcons} color={'black'}/></a>
-            <a href='https://www.linkedin.com/in/gustavo-quintans-59206242/' target="_blank" rel="noreferrer" data-testid="lateralElements"><FaLinkedin size={sizeIcons} color={'black'}/></a>
-            <a href='https://www.instagram.com/quintansdev/' target="_blank" rel="noreferrer" data-testid="lateralElements"><FaInstagramSquare size={sizeIcons} color={'black'}/></a>
+            <a href='https://github.com/quintansc' target="_blank" rel="noreferrer" data-testid="lateralElements"><FiGithub size={sizeIcons} color={'#999ED7'}/></a>
+            <a href='https://gitlab.com/QuintansC' target="_blank" rel="noreferrer" data-testid="lateralElements"><FiGitlab size={sizeIcons} color={'#999ED7'}/></a>
+            <a href='https://www.instagram.com/quintansdev/' target="_blank" rel="noreferrer" data-testid="lateralElements"><FaInstagram size={sizeIcons} color={'#999ED7'}/></a>
+            <a href='https://www.linkedin.com/in/gustavo-quintans-59206242/' target="_blank" rel="noreferrer" data-testid="lateralElements"><FiLinkedin size={sizeIcons} color={'#999ED7'}/></a>
         </NavElements>
     )
 }
 
-export default LateralComponent
+export default SocialIconsComponent

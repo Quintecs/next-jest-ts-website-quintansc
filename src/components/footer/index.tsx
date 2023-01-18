@@ -1,39 +1,21 @@
 import { Grid } from "@mui/material";
-import { Container, textAlign } from "@mui/system";
 import Link from "next/link";
-import { GridColumn } from "./style";
+import SocialIconsComponent from "../lateral";
+import { GridNormal } from "./style";
 
 const Footer = () => {
   return (
-    <footer style={{ borderColor: "rgba(255, 255, 255, 0.2)", height: "100%" }}>
-      <Container style={{ padding: "20px" }}>
-        <Grid container spacing={2}>
-          <Grid container xs={12} style={{
-            display: "flex",
-            justifyContent: "center",
-            textAlign: "center"
-          }}>
-            <Grid item xs={3}>QuintansTec</Grid>
-            <Grid item xs={3}>Newsletter</Grid>
-            <Grid item xs={3}>Explore</Grid>
-          </Grid>
-          <GridColumn item xs={4}>
-            <Link href={"/"}>Teste</Link>
-            <Link href={"/"}>Teste</Link>
-            <Link href={"/"}>Teste</Link>
-          </GridColumn>
-          <GridColumn item xs={4}>
-            <Link href={"/"}>Teste</Link>
-            <Link href={"/"}>Teste</Link>
-            <Link href={"/"}>Teste</Link>
-          </GridColumn>
-          <GridColumn item xs={4}>
-            <Link href={"/"}>Teste</Link>
-            <Link href={"/"}>Teste</Link>
-            <Link href={"/"}>Teste</Link>
-          </GridColumn>
-        </Grid>
-      </Container>
+    <footer>
+      <Grid container spacing={4} margin={"0 0 0 -30px"} padding={"20px"}>
+        <GridNormal container xs={10}>
+          <Grid item xs={3}><Link href={'/'}>Inicio</Link></Grid>
+          <Grid item xs={3}><Link href={'/'}>Projetos</Link></Grid>
+          <Grid item xs={3}><Link href={'/'} >Contato</Link></Grid>          
+        </GridNormal>
+        <Grid item xs={12}><SocialIconsComponent /></Grid>
+        <Grid item xs={12}><strong style={{ overflowWrap: "break-word", width: "250px", textAlign: "center" }}>All Rights Reserved to Gustavo Quintans - 2023.</strong></Grid>
+        <Grid item xs={12}><p style={{ color: "#49494D" }}>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc</p></Grid>
+      </Grid>
     </footer>
   )
 }

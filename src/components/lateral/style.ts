@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 
 const NavElements = styled.nav`
-    position: fixed;
-    background-color: #FFF;
-    padding: 12px;
     display: flex;
-    flex-direction: column;
-    top: 35%;
-    height: 230px;
     justify-content: space-around;
     @media (max-width: 600px){
-        top: 25%;
+        margin-left: -20px;
         padding: 10px;
-        height: 215px;
+        width: 250px;
+    }
+
+    a{
+        background-color: #18181A;
+        box-shadow: 2px 2px 2px 1px #1D1D1F;
+        padding: 8px;
+        border-radius: 8px;
     }
 `
 
