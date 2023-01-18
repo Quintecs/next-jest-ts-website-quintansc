@@ -8,7 +8,7 @@ const Footer = () => {
     <footer>
       <Grid container spacing={4} margin={"0 0 0 -30px"} padding={"20px"}>
         <GridNormal container xs={10}>
-          <Grid item xs={3}><Link href={'/'}>Inicio</Link></Grid>
+          <Grid item xs={3}><Link href={'/home'}>Inicio</Link></Grid>
           <Grid item xs={3}><Link href={'/'}>Projetos</Link></Grid>
           <Grid item xs={3}><Link href={'/'} >Contato</Link></Grid>          
         </GridNormal>
