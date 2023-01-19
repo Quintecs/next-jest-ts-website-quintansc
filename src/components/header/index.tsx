@@ -1,63 +1,66 @@
 import { useState } from 'react'
 import { MdMenu } from '../../utils/icons';
 
-import  Link  from 'next/link'
-import { MyName, ProfileImage, UserContainer, Menu, ButtonMenuMobile } from './style'
+import Link from 'next/link'
+import { MyName, ProfileImage, UserContainer, Menu, ButtonMenuMobile, ButtonHeader, SelectedLinkMenu } from './style'
 import { Box, Divider, Drawer } from '@mui/material';
 import ListLink from '../ListLink';
+import { Container } from '@mui/system';
 
 const headerStyles = {
-    display: 'flex', 
-    justifyContent: 'space-between', 
-    margin: '10px 20px', 
-    alignItems: 'center',
-    marginTop: '20px',
-    boxShadow: "2px 2px 2px 3px rgba(202, 202, 202, 0.127)",
-    border: "1px solid transparent",
-    borderRadius: "10px"
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  borderBottom: "1px solid #252527",
 }
 
+const Header = ({ path }: any) => {
+  const [menuActive, setMenuActive] = useState(false)
 
+  const links = {
+    "/home": false,
+    "/projetos": false
+  }
+  return (
+    <header style={headerStyles} data-testid="headerContainer">
+      <Container maxWidth={false} style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <UserContainer>
+        <ProfileImage
+          src="https://avatars.githubusercontent.com/u/68349886?s=400&u=4ae864a122f475f09238d05c9ffbe9822bb57954&v=4"
+          alt="My profile on Github"
+          data-testid="profileImg"
+        />
+        <MyName>Gustavo Quintans</MyName>
+      </UserContainer>
+      <ButtonMenuMobile onClick={() => setMenuActive(true)}>
+        <MdMenu size={30} color={'black'} />
+      </ButtonMenuMobile>
 
-const Header = ()=>{
-    const [menuActive, setMenuActive] = useState(false)
-    return (
-        <header style={headerStyles} data-testid="headerContainer">
-            <UserContainer>
-                <ProfileImage 
-                    src="https://avatars.githubusercontent.com/u/68349886?s=400&u=4ae864a122f475f09238d05c9ffbe9822bb57954&v=4" 
-                    alt="My profile on Github" 
-                    data-testid="profileImg"
-                />
-                <MyName>Gustavo Quintans</MyName>
-            </UserContainer>
-            <ButtonMenuMobile onClick={()=>setMenuActive(true)}> 
-                <MdMenu size={30} color={'black'}/>
-            </ButtonMenuMobile>
+      <Drawer anchor={"right"} open={menuActive} onClose={() => setMenuActive(false)}>
+        <Box
+          sx={{ width: 250 }}
+          role="presentation"
+          onClick={() => setMenuActive(false)}
+          onKeyDown={() => setMenuActive(false)}
+        >
+          <ListLink icon={<MdMenu />} text={"Home"} link={"/home"} ></ListLink>
+          <ListLink icon={<MdMenu />} text={"Projetos"} link={"/projetos"}></ListLink>
 
-            <Drawer anchor={"right"} open={menuActive} onClose={()=>setMenuActive(false)}>
-                <Box
-                sx={{ width: 250 }}
-                role="presentation"
-                onClick={()=>setMenuActive(false)}
-                onKeyDown={()=>setMenuActive(false)}
-                >
-                    <ListLink icon={<MdMenu/>} text={"Home"} link={"/home"}></ListLink>
-                    <ListLink icon={<MdMenu/>} text={"Sobre"} link={"/sobre"}></ListLink>
-                    <ListLink icon={<MdMenu/>} text={"Projetos"} link={"/projetos"}></ListLink>
-                    <ListLink icon={<MdMenu/>} text={"Contato"} link={"/contato"}></ListLink>
-                    <Divider />
-                </Box>
-            </Drawer>
+          {/* Button */}
+          <ListLink icon={<MdMenu />} text={"Contato"} link={"/contato"}></ListLink>
+          <Divider />
+        </Box>
+      </Drawer>
 
-            <Menu>
-                <Link href={'/'} data-testid="menuElements">Home</Link>
-                <Link href={'/sobre'} data-testid="menuElements">Sobre</Link>
-                <Link href={'/projetos'} data-testid="menuElements">Projetos</Link>
-                <Link href={'/contato'} data-testid="menuElements">Contato</Link>
-            </Menu>
-        </header>
-    )
+      <Menu>
+        <SelectedLinkMenu color={path == '/home'? "#999ED7": "#18181A"} href={'/'} data-testid="menuElements">Inicio</SelectedLinkMenu>
+        <SelectedLinkMenu color={path == '/projetos'? "#999ED7": "#18181A"} href={'/projetos'} data-testid="menuElements">Projetos</SelectedLinkMenu>
+        <Divider orientation='vertical' style={{ width: '2px', background: '#252527', height: '48px' }}/>
+        <ButtonHeader variant="contained" href={'/contato'}> Solicitar Orçamento</ButtonHeader>
+      </Menu>
+      </Container>
+    </header>
+  )
 }
 
 export default Header
