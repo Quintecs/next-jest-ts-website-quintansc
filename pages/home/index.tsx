@@ -32,7 +32,7 @@ const Home = () => {
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <img src={'/iconCode.png'} height={40} alt={"imagem content"}  /> 
               <Grid style={{ marginLeft: '25px', lineHeight: '9px'}}> 
-                <h3 style={{ fontFamily: 'Public Sans ', color: '#999ED7'}}>Hello World /> </h3>
+                <h3 style={{ fontFamily: 'Public Sans ', color: '#999ED7'}}>Hello World /&gt; </h3>
                 <p> Meu nome é Gustavo Quintans 👋</p>
               </Grid>
             </div>
