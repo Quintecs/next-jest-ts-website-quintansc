@@ -1,13 +1,31 @@
 import Head from "next/head";
+import Link from "next/link";
 import { InfosContainer, HeadingAnimado, SkillsContainer } from "../../styles/home";
 import { RowContainer } from '../../styles/style';
-import Link from "next/link";
-import { SiNextdotjs } from "react-icons/si";
-import { FaNodeJs, FaReact } from "react-icons/fa";
-
 import Container from '@mui/material/Container';
-import { Grid } from "@mui/material";
-const Home = () => {
+import { Button, Grid } from "@mui/material";
+import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs } from "../../src/utils/icons";
+import { useState, useEffect, useCallback } from 'react';
+import axios from 'axios';
+import UserComponent from "src/components/userComponent";
+
+import { remark } from 'remark';
+import html from 'remark-html';
+
+export async function getStaticProps() {
+  const result = await axios.get('https://api.github.com/users/quintansc').then(res => res)
+  const gitUser = await result.data;
+
+  return {
+    props: {
+      gitUser,
+    },
+  }
+}
+
+const Home = ({ gitUser }: any) => {
+  const [user] = useState(gitUser);
+
   return (
     <>
       <Head>
@@ -27,11 +45,11 @@ const Home = () => {
         alignItems: "center", 
         boxShadow: "2px 2px 2px 3px rgba(5, 10, 15, 0.2)"
       }}>
-        <Grid container xs={12} style={{ padding: '0 50px', marginTop: '80px'}}>
-          <Grid xs={6}>
+        <Grid container style={{ padding: '0 50px', marginTop: '80px'}}>
+          <Grid item={true} xs={6} style={{ position: 'relative'}}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <img src={'/iconCode.png'} height={40} alt={"imagem content"}  /> 
-              <Grid style={{ marginLeft: '25px', lineHeight: '9px'}}> 
+              <Grid item={true} style={{ marginLeft: '25px', lineHeight: '9px'}}> 
                 <h3 style={{ fontFamily: 'Public Sans ', color: '#999ED7'}}>Hello World /&gt; </h3>
                 <p> Meu nome é Gustavo Quintans 👋</p>
               </Grid>
@@ -40,9 +58,13 @@ const Home = () => {
             <div>
               <h1 style={{ fontFamily: 'Public Sans ', fontSize: '64px', fontWeight: '300'}}>Front-end DEV</h1>
               <p style={{ fontFamily: 'Inter', fontWeight: '600', fontSize: '14px'}}>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of <a href="#" style={{ color: '#999ED7'}}> classical Latin literature </a> from 45 BC, making it over 2000 years old.</p>
+              <Button variant="text" style={{ borderLeft: '1px solid #10BB83', color: "white", background: 'transparent', position: 'absolute',bottom: '0'}} endIcon={<HiOutlineArrowDown color="#10BB83" />}>
+                Veja mais
+              </Button>
             </div>
           </Grid>
-          <Grid xs={6} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end'}}><img src={'/homeContent.png'} alt={"imagem content"}  /></Grid>
+          <Grid item={true} xs={6} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end'}}><img src={'/homeContent.png'} alt={"imagem content"}  /></Grid>
+          <Grid item={true} xs={12}> <UserComponent user={user}/></Grid>
         </Grid>
         <HeadingAnimado>Frontend Developer - Design - Typescript Developer.</HeadingAnimado>
         <InfosContainer>
