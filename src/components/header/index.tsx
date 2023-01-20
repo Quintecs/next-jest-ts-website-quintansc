@@ -55,7 +55,7 @@ const Header = ({ path }: any) => {
       <Menu>
         <SelectedLinkMenu color={path == '/home'? "#999ED7": "#18181A"} href={'/'} data-testid="menuElements">Inicio</SelectedLinkMenu>
         <SelectedLinkMenu color={path == '/projetos'? "#999ED7": "#18181A"} href={'/projetos'} data-testid="menuElements">Projetos</SelectedLinkMenu>
-        <Divider orientation='vertical' style={{ width: '2px', background: '#252527', height: '48px' }}/>
+        <Divider orientation='vertical' style={{ width: '2px', background: '#252527', height: '48px', margin: '0 50px' }}/>
         <ButtonHeader variant="contained" href={'/contato'}> Solicitar Orçamento</ButtonHeader>
       </Menu>
       </Container>

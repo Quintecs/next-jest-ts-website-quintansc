@@ -6,7 +6,7 @@ import { SiNextdotjs } from "react-icons/si";
 import { FaNodeJs, FaReact } from "react-icons/fa";
 
 import Container from '@mui/material/Container';
-
+import { Grid } from "@mui/material";
 const Home = () => {
   return (
     <>
@@ -19,14 +19,31 @@ const Home = () => {
         <meta name="keywords" content="Desenvolvedor,Programador,frontend,Front-end,JS,Portifólio,desenvolvimento,referencias,design" />
         <meta name="robots" content="index, follow" />
       </Head>
-
-      <Container style={{ 
+    
+      <Container maxWidth={false} style={{ 
         overflow: "hidden", 
         display: "flex", 
         flexDirection: "column", 
         alignItems: "center", 
         boxShadow: "2px 2px 2px 3px rgba(5, 10, 15, 0.2)"
       }}>
+        <Grid container xs={12} style={{ padding: '0 50px', marginTop: '80px'}}>
+          <Grid xs={6}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <img src={'/iconCode.png'} height={40} alt={"imagem content"}  /> 
+              <Grid style={{ marginLeft: '25px', lineHeight: '9px'}}> 
+                <h3 style={{ fontFamily: 'Public Sans ', color: '#999ED7'}}>Hello World /> </h3>
+                <p> Meu nome é Gustavo Quintans 👋</p>
+              </Grid>
+            </div>
+
+            <div>
+              <h1 style={{ fontFamily: 'Public Sans ', fontSize: '64px', fontWeight: '300'}}>Front-end DEV</h1>
+              <p style={{ fontFamily: 'Inter', fontWeight: '600', fontSize: '14px'}}>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of <a href="#" style={{ color: '#999ED7'}}> classical Latin literature </a> from 45 BC, making it over 2000 years old.</p>
+            </div>
+          </Grid>
+          <Grid xs={6} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end'}}><img src={'/homeContent.png'} alt={"imagem content"}  /></Grid>
+        </Grid>
         <HeadingAnimado>Frontend Developer - Design - Typescript Developer.</HeadingAnimado>
         <InfosContainer>
           <h2>Hello World</h2>
