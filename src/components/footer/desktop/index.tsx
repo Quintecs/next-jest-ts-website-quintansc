@@ -13,7 +13,7 @@ const DesktopFooter = () => {
           <Grid item={true} xs={2}><SocialIconsComponent theme={{ backgroundColor: '#1D1D1F', color: '#999ED7'}} /></Grid> <br></br>
           <Grid item={true} xs={12}><br/></Grid>
           <Grid item={true} xs={8} style={{ paddingTop: "0px"}}><strong>All Rights Reserved to Gustavo Quintans - 2023.</strong></Grid>
-          <GridNormal container>
+          <GridNormal item xs={4}>
             <Grid item={true} xs={1}><Link href={'/home'}>Inicio</Link></Grid>
             <Grid item={true} xs={1}><Link href={'/'}>Projetos</Link></Grid>
             <Grid item={true} xs={1}><Link href={'/'} >Contato</Link></Grid>          

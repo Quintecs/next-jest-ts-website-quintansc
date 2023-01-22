@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { InfosContainer, HeadingAnimado, SkillsContainer } from "../../styles/home";
+import { InfosContainer, HeadingAnimado, SkillsContainer, ContainerCustom, GridContainer } from "../../styles/home";
 import { RowContainer } from '../../styles/style';
 import Container from '@mui/material/Container';
 import { Button, Grid } from "@mui/material";
@@ -38,14 +38,8 @@ const Home = ({ gitUser }: any) => {
         <meta name="robots" content="index, follow" />
       </Head>
     
-      <Container maxWidth={false} style={{ 
-        overflow: "hidden", 
-        display: "flex", 
-        flexDirection: "column", 
-        alignItems: "center", 
-        boxShadow: "2px 2px 2px 3px rgba(5, 10, 15, 0.2)"
-      }}>
-        <Grid container style={{ padding: '0 50px', marginTop: '80px'}}>
+      <ContainerCustom maxWidth={false}>
+        <GridContainer container>
           <Grid item={true} xs={6} style={{ position: 'relative'}}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <img src={'/iconCode.png'} height={40} alt={"imagem content"}  /> 
@@ -65,7 +59,7 @@ const Home = ({ gitUser }: any) => {
           </Grid>
           <Grid item={true} xs={6} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end'}}><img src={'/homeContent.png'} alt={"imagem content"}  /></Grid>
           <Grid item={true} xs={12}> <UserComponent user={user}/></Grid>
-        </Grid>
+        </GridContainer>
         <HeadingAnimado>Frontend Developer - Design - Typescript Developer.</HeadingAnimado>
         <InfosContainer>
           <h2>Hello World</h2>
@@ -94,7 +88,7 @@ const Home = ({ gitUser }: any) => {
             </SkillsContainer>
           </RowContainer>
         </InfosContainer>
-      </Container>
+      </ContainerCustom>
     </>
   )
 }
