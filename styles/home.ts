@@ -1,65 +1,19 @@
 import { Button, Grid } from "@mui/material";
 import { Container } from "@mui/system";
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 
 const InfosContainer = styled.section`
   text-align: center;
   width: 85%;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: 'transparent';
+
   border-radius: 15px;
   padding: 25px;
   margin: 10px 0px;
 `
 
-const SkillsContainer = styled.aside`
-  background-color: ${props => props.color ? props.color : "rgba(255, 230, 200, .25)"};
-  border-radius: 15px;
-  padding: 25px;
-  display:  flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-`
-
-const pisca = keyframes`
-  from {
-    border-right: 0px solid transparent
-  }
-
-  to {
-    border-right: 1px solid black
-  }
-`;
-
-
-const escrever = keyframes`
-  from {
-    max-width: 0%;
-  }
-
-  to {
-    max-width: 100%;
-  }
-`;
-
-const HeadingAnimado = styled.h1`
-  display: inline-block; 
-  overflow: hidden;
-  white-space: nowrap;
-  animation: ${pisca} linear infinite 1s, ${escrever} normal 5s steps(55) both;
-
-  @media (max-width: 800px) {
-    font-size: 0.9rem;
-  }
-`
-const Panimado = styled.p`
-  display: inline-block; 
-  overflow: hidden;
-  white-space: nowrap;
-  animation: ${pisca} linear infinite 1s, ${escrever} normal 10s steps(85) both;
-
+const SkillsContainer = styled(Grid)`
+  background-color: 'red'
 `
 
 const GridContainer =  styled(Grid)`
@@ -71,10 +25,10 @@ const GridContainer =  styled(Grid)`
  }
 
  .MuiGrid-item .MuiGrid-grid-xs-6 div {
-  @media (min-width: 800px) {
-    display: flex;
-    align-items: center;
-  }
+    @media (min-width: 800px) {
+      display: flex;
+      align-items: center;
+    }
  }
 `
 
@@ -108,15 +62,31 @@ const ButtonTextImageContainer = styled(Button)`
   background: transparent; 
    
   bottom: 0;
-  @media (min-width: none;) {
+  @media (min-width: none) {
     position: absolute;
   }
 `
 
+const BtnSeeMore = styled(Button)`
+  border-left: 1px solid #10BB83;
+  color: white; 
+  background: transparent; 
+  @media (min-width: 800px) {
+    position: absolute;
+    bottom: 0;
+  }
+`
+
+const TitleH2 = styled.h1`
+  font-family: 'Public Sans ';
+  font-size: 42px;
+  font-weight: 300;
+  @media (min-width: 800px) {
+    font-size: 64px;
+  }
+`
 
 export {
-  Panimado,
-  SkillsContainer,
-  HeadingAnimado,
+  SkillsContainer, BtnSeeMore, TitleH2,
   InfosContainer, GridContainer, ContainerCustom, ImageConteiner, TextImageContainer, ButtonTextImageContainer
 }

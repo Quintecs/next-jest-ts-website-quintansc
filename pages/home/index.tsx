@@ -1,11 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
-import { InfosContainer, HeadingAnimado, SkillsContainer, ContainerCustom, GridContainer } from "../../styles/home";
+import { InfosContainer, SkillsContainer, ContainerCustom, GridContainer, BtnSeeMore, TitleH2 } from "../../styles/home";
 import { RowContainer } from '../../styles/style';
-import Container from '@mui/material/Container';
 import { Button, Grid } from "@mui/material";
 import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs } from "../../src/utils/icons";
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import UserComponent from "src/components/userComponent";
 
@@ -40,9 +39,9 @@ const Home = ({ gitUser }: any) => {
     
       <ContainerCustom maxWidth={false}>
         <GridContainer container>
-          <Grid item={true} xs={6} style={{ position: 'relative'}}>
+          <Grid item={true} xs={6} style={{ position: 'relative', minWidth: '100%'}}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img src={'/iconCode.png'} height={40} alt={"imagem content"}  /> 
+              <img src={'/iconCode.png'} height={40} alt={"imagem content"}  />  
               <Grid item={true} style={{ marginLeft: '25px', lineHeight: '9px'}}> 
                 <h3 style={{ fontFamily: 'Public Sans ', color: '#999ED7'}}>Hello World /&gt; </h3>
                 <p> Meu nome é Gustavo Quintans 👋</p>
@@ -50,43 +49,47 @@ const Home = ({ gitUser }: any) => {
             </div>
 
             <div>
-              <h1 style={{ fontFamily: 'Public Sans ', fontSize: '64px', fontWeight: '300'}}>Front-end DEV</h1>
+              <TitleH2>Front-end DEV</TitleH2>
               <p style={{ fontFamily: 'Inter', fontWeight: '600', fontSize: '14px'}}>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of <a href="#" style={{ color: '#999ED7'}}> classical Latin literature </a> from 45 BC, making it over 2000 years old.</p>
-              <Button variant="text" style={{ borderLeft: '1px solid #10BB83', color: "white", background: 'transparent', position: 'absolute',bottom: '0'}} endIcon={<HiOutlineArrowDown color="#10BB83" />}>
+              <BtnSeeMore variant="text" endIcon={<HiOutlineArrowDown color="#10BB83" />}>
                 Veja mais
-              </Button>
+              </BtnSeeMore>
             </div>
           </Grid>
-          <Grid item={true} xs={6} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end'}}><img src={'/homeContent.png'} alt={"imagem content"}  /></Grid>
+          <Grid item={true} xs={6} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', minWidth: '100%'}}>
+            <img src={'/homeContent.png'} alt={"imagem content"} style={{width: '100%'}}  />
+          </Grid>
           <Grid item={true} xs={12}> <UserComponent user={user}/></Grid>
         </GridContainer>
-        <HeadingAnimado>Frontend Developer - Design - Typescript Developer.</HeadingAnimado>
         <InfosContainer>
           <h2>Hello World</h2>
           <p>You're welcome to my profile. my name is Gustavo Quintans, I'm Javascript and Typescript Developer.</p>
           <p>Specialist in ReactJS and NodeJs</p>
         </InfosContainer>
         <InfosContainer>
-          <h2>My skills</h2>
-          <RowContainer>
-            <SkillsContainer>
-              <h3>NodeJS</h3>
-              <FaNodeJs size={65} color={'#3c873a'} />
+          <img src="/skills.png" alt="My skills"></img>
+          <h2>Minhas Habilidades</h2>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
+          <Grid container>
+            <SkillsContainer item xs={3.5}>
+              <Grid item xs={3}><FaNodeJs size={65} color={'#3c873a'} /></Grid>
+              <Grid item xs={9}>Node JS</Grid>
+              
               <Link href={"https://nodejs.org/en/"}>Node Documentation</Link>
             </SkillsContainer>
 
-            <SkillsContainer>
+            <SkillsContainer item xs={3.5}>
               <h3>ReactJS</h3>
               <FaReact size={65} color={'#61DBFB'} />
               <Link href={"https://pt-br.reactjs.org/"}>React Documentation</Link>
             </SkillsContainer>
 
-            <SkillsContainer>
+            <SkillsContainer item xs={3.5}>
               <h3>NextJS</h3>
               <SiNextdotjs size={65} color={'black'} />
               <Link href={"https://nextjs.org/"}> Documentation</Link>
             </SkillsContainer>
-          </RowContainer>
+          </Grid>
         </InfosContainer>
       </ContainerCustom>
     </>
