@@ -1,15 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
-import { InfosContainer, SkillsContainer, ContainerCustom, GridContainer, BtnSeeMore, TitleH2, GridHeadPageContent, ImageHome, ImageGrid } from "../../styles/home";
-import { RowContainer } from '../../styles/style';
-import { Button, Grid } from "@mui/material";
+import { InfosContainer, SkillsContainer, ContainerCustom, GridContainer, BtnSeeMore, TitleH2, GridHeadPageContent, ImageGrid } from "../../styles/home";
+import { Grid } from "@mui/material";
 import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs } from "../../src/utils/icons";
 import { useState } from 'react';
 import axios from 'axios';
 import UserComponent from "src/components/userComponent";
-
-import { remark } from 'remark';
-import html from 'remark-html';
 
 export async function getStaticProps() {
   const result = await axios.get('https://api.github.com/users/quintansc').then(res => res)
@@ -24,7 +20,6 @@ export async function getStaticProps() {
 
 const Home = ({ gitUser }: any) => {
   const [user] = useState(gitUser);
-
   return (
     <>
       <Head>
