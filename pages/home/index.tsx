@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { InfosContainer, SkillsContainer, ContainerCustom, GridContainer, BtnSeeMore, TitleH2 } from "../../styles/home";
+import { InfosContainer, SkillsContainer, ContainerCustom, GridContainer, BtnSeeMore, TitleH2, GridHeadPageContent, ImageHome, ImageGrid } from "../../styles/home";
 import { RowContainer } from '../../styles/style';
 import { Button, Grid } from "@mui/material";
 import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs } from "../../src/utils/icons";
@@ -39,7 +39,7 @@ const Home = ({ gitUser }: any) => {
     
       <ContainerCustom maxWidth={false}>
         <GridContainer container>
-          <Grid item={true} xs={6} style={{ position: 'relative', minWidth: '100%'}}>
+          <GridHeadPageContent item={true} xs={6}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <img src={'/iconCode.png'} height={40} alt={"imagem content"}  />  
               <Grid item={true} style={{ marginLeft: '25px', lineHeight: '9px'}}> 
@@ -55,10 +55,10 @@ const Home = ({ gitUser }: any) => {
                 Veja mais
               </BtnSeeMore>
             </div>
-          </Grid>
-          <Grid item={true} xs={6} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', minWidth: '100%'}}>
-            <img src={'/homeContent.png'} alt={"imagem content"} style={{width: '100%'}}  />
-          </Grid>
+          </GridHeadPageContent>
+          <ImageGrid item={true} xs={6}>
+            <img src={'/homeContent.png'} alt={"imagem content"} />
+          </ImageGrid>
           <Grid item={true} xs={12}> <UserComponent user={user}/></Grid>
         </GridContainer>
         <InfosContainer>

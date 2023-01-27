@@ -13,7 +13,7 @@ const InfosContainer = styled.section`
 `
 
 const SkillsContainer = styled(Grid)`
-  background-color: 'red'
+  background-color: '#555';
 `
 
 const GridContainer =  styled(Grid)`
@@ -86,7 +86,31 @@ const TitleH2 = styled.h1`
   }
 `
 
+const GridHeadPageContent = styled(Grid)`
+  @media (max-width: 800px) {
+    position: relative; 
+    min-width: 100%;
+  }
+`
+
+const ImageGrid = styled(Grid)`
+  justify-content: center;
+  display: flex;
+  @media (max-width: 800px) {
+    display: flex; 
+    align-items: center;
+    justify-content: flex-end; 
+    min-width: 100%;
+    img{
+      width: 100%;
+    } 
+  }
+`
+
+
+
 export {
-  SkillsContainer, BtnSeeMore, TitleH2,
-  InfosContainer, GridContainer, ContainerCustom, ImageConteiner, TextImageContainer, ButtonTextImageContainer
+  SkillsContainer, BtnSeeMore, TitleH2, GridHeadPageContent,
+  InfosContainer, GridContainer, ContainerCustom, ImageConteiner, 
+  TextImageContainer, ButtonTextImageContainer, ImageGrid
 }
