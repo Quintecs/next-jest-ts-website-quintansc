@@ -1,11 +1,11 @@
 import Head from "next/head";
-import Link from "next/link";
-import { InfosContainer, SkillsContainer, ContainerCustom, GridContainer, BtnSeeMore, TitleH2, GridHeadPageContent, ImageGrid } from "../../styles/home";
+import { InfosContainer, ContainerCustom, GridContainer, BtnSeeMore, TitleH2, GridHeadPageContent, ImageGrid } from "../../styles/home";
 import { Grid } from "@mui/material";
 import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs } from "../../src/utils/icons";
 import { useState } from 'react';
 import axios from 'axios';
 import UserComponent from "src/components/userComponent";
+import CardLanguage from "src/components/CardLanguage";
 
 export async function getStaticProps() {
   const result = await axios.get('https://api.github.com/users/quintansc').then(res => res)
@@ -66,24 +66,22 @@ const Home = ({ gitUser }: any) => {
           <h2>Minhas Habilidades</h2>
           <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
           <Grid container>
-            <SkillsContainer item xs={3.5}>
-              <Grid item xs={3}><FaNodeJs size={65} color={'#3c873a'} /></Grid>
-              <Grid item xs={9}>Node JS</Grid>
-              
-              <Link href={"https://nodejs.org/en/"}>Node Documentation</Link>
-            </SkillsContainer>
+            <CardLanguage 
+              infos={{title: 'NodeJS', subscription: 'Node Documentation', textContent: 'Node Documentatio content size' }}
+              icon={<FaNodeJs size={65} color={'#3c873a'} />} 
+              link={{ link: 'https://nodejs.org/en/' }}
+            />
 
-            <SkillsContainer item xs={3.5}>
-              <h3>ReactJS</h3>
-              <FaReact size={65} color={'#61DBFB'} />
-              <Link href={"https://pt-br.reactjs.org/"}>React Documentation</Link>
-            </SkillsContainer>
-
-            <SkillsContainer item xs={3.5}>
-              <h3>NextJS</h3>
-              <SiNextdotjs size={65} color={'black'} />
-              <Link href={"https://nextjs.org/"}> Documentation</Link>
-            </SkillsContainer>
+            <CardLanguage 
+              title="ReactJS"
+              icon={<FaReact size={65} color={'#61DBFB'} />} 
+              link={{ link: 'https://pt-br.reactjs.org/', text: "React Documentation"}}
+            />
+             <CardLanguage 
+              title="NextJS"
+              icon={<SiNextdotjs size={65} color={'black'} />} 
+              link={{ link: 'https://nextjs.org/', text: "Documentation"}}
+            />
           </Grid>
         </InfosContainer>
       </ContainerCustom>

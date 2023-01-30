@@ -12,10 +12,6 @@ const InfosContainer = styled.section`
   margin: 10px 0px;
 `
 
-const SkillsContainer = styled(Grid)`
-  background-color: '#555';
-`
-
 const GridContainer =  styled(Grid)`
   flex-direction: column;
  @media (min-width: 800px) {
@@ -110,7 +106,7 @@ const ImageGrid = styled(Grid)`
 
 
 export {
-  SkillsContainer, BtnSeeMore, TitleH2, GridHeadPageContent,
+  BtnSeeMore, TitleH2, GridHeadPageContent,
   InfosContainer, GridContainer, ContainerCustom, ImageConteiner, 
   TextImageContainer, ButtonTextImageContainer, ImageGrid
 }
