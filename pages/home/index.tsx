@@ -67,20 +67,20 @@ const Home = ({ gitUser }: any) => {
           <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
           <Grid container>
             <CardLanguage 
-              infos={{title: 'NodeJS', subscription: 'Node Documentation', textContent: 'Node Documentatio content size' }}
+              infos={{title: 'NodeJS', subscription: 'Node Documentation', textContent: 'Node Documentation content size' }}
               icon={<FaNodeJs size={65} color={'#3c873a'} />} 
               link={{ link: 'https://nodejs.org/en/' }}
             />
 
             <CardLanguage 
-              title="ReactJS"
+              infos={{title: 'ReactJs', subscription: 'React Documentation', textContent: 'React Documentation content size' }}
               icon={<FaReact size={65} color={'#61DBFB'} />} 
-              link={{ link: 'https://pt-br.reactjs.org/', text: "React Documentation"}}
+              link={{ link: 'https://pt-br.reactjs.org/'}}
             />
              <CardLanguage 
-              title="NextJS"
+              infos={{title: 'NextJs', subscription: 'Next Documentation', textContent: 'Next Documentation content size' }}
               icon={<SiNextdotjs size={65} color={'black'} />} 
-              link={{ link: 'https://nextjs.org/', text: "Documentation"}}
+              link={{ link: 'https://nextjs.org/'}}
             />
           </Grid>
         </InfosContainer>
