@@ -65,20 +65,38 @@ const Home = ({ gitUser }: any) => {
           <img src="/skills.png" alt="My skills"></img>
           <h2>Minhas Habilidades</h2>
           <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
-          <Grid container>
+          <Grid container style={{ justifyContent: 'space-between'}}>
             <CardLanguage 
-              infos={{title: 'NodeJS', subscription: 'Node Documentation', textContent: 'Node Documentation content size' }}
+              theme={{ colorBackgroundIcon: '#10BB83', cardBackgroundColor: '#162825', cardBackroundTitleColor: '#3E6E66' }}
+              infos={{ 
+                title: 'NodeJS', 
+                subtitle: 'Back-end Framework', 
+                subscription: 'Node Documentation', 
+                textContent: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC45 BC'  
+              }}
               icon={<FaNodeJs size={65} color={'#3c873a'} />} 
               link={{ link: 'https://nodejs.org/en/' }}
             />
 
             <CardLanguage 
-              infos={{title: 'ReactJs', subscription: 'React Documentation', textContent: 'React Documentation content size' }}
+              theme={{ colorBackgroundIcon: '#17A2DE', cardBackgroundColor: '#1A3846', cardBackroundTitleColor: '#285676' }}
+              infos={{
+                title: 'ReactJs',  
+                subtitle: 'Front-end Framework', 
+                subscription: 'React Documentation', 
+                textContent: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC45 BC' 
+              }}
               icon={<FaReact size={65} color={'#61DBFB'} />} 
               link={{ link: 'https://pt-br.reactjs.org/'}}
             />
              <CardLanguage 
-              infos={{title: 'NextJs', subscription: 'Next Documentation', textContent: 'Next Documentation content size' }}
+              theme={{ colorBackgroundIcon: '#F4F4F4', cardBackgroundColor: '#1D1D1F', cardBackroundTitleColor: '#DAD9DE', textTitleColor: '#18181A'  }}
+              infos={{
+                title: 'NextJs',  
+                subtitle: 'Front-end Framework', 
+                subscription: 'Next Documentation', 
+                textContent: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC45 BC' 
+              }}
               icon={<SiNextdotjs size={65} color={'black'} />} 
               link={{ link: 'https://nextjs.org/'}}
             />
