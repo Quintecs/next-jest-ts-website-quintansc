@@ -1,10 +1,9 @@
 import { Grid } from "@mui/material";
 import Link from "next/link";
 import SocialIconsComponent from "../lateral";
-import SocialsComponent from "../lateral";
 import { GridNormal } from "./style";
 
-const Footer = () => {
+const Footer = (): React.ReactComponentElement<any, any> => {
   return (
     <footer>
       <Grid container spacing={4} margin={"0 0 0 -30px"} padding={"20px"}>

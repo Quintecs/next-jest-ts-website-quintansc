@@ -1,7 +1,7 @@
 import { NavElements } from './style'
 import { FiGithub, FiLinkedin, FiGitlab, FaInstagram } from '../../utils/icons'
 
-const SocialIconsComponent = ({ theme }: any)=>{
+const SocialIconsComponent = ({ theme }: SocialIconType)=>{
     const sizeIcons = theme?.icon? theme.icon : 25
     return (
         <NavElements theme={theme}>

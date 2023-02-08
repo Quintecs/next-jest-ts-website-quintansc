@@ -11,5 +11,5 @@ const SkillsContainer = styled(Grid)`
 `
 
 export {
-    SkillsContainer,
+  SkillsContainer,
 }

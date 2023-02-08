@@ -4,7 +4,7 @@ import Link from "next/link";
 import SocialIconsComponent from "src/components/lateral";
 import { GridNormal } from "../style";
 
-const DesktopFooter = () => {
+const DesktopFooter = (): React.ReactElement => {
   return (
     <footer>
       <Container maxWidth={false}>

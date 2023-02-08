@@ -6,21 +6,19 @@ import { MyName, ProfileImage, UserContainer, Menu, ButtonMenuMobile, ButtonHead
 import { Box, Divider, Drawer } from '@mui/material';
 import ListLink from '../ListLink';
 import { Container } from '@mui/system';
+import { WithRouterProps } from 'next/dist/client/with-router';
 
 const headerStyles = {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
   borderBottom: "1px solid #252527",
+
+
 }
 
-const Header = ({ path }: any) => {
+const Header = ({ path }: HeaderType) => {
   const [menuActive, setMenuActive] = useState(false)
-
-  const links = {
-    "/home": false,
-    "/projetos": false
-  }
   return (
     <header style={headerStyles} data-testid="headerContainer">
       <Container maxWidth={false} style={{ display: 'flex', justifyContent: 'space-between' }}>
