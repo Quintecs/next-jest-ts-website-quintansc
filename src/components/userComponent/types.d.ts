@@ -5,5 +5,6 @@ type UserComponent = {
         name: string
         company: string
         bio: string
+        location: any
     }
 }
