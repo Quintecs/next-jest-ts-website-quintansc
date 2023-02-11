@@ -67,9 +67,9 @@ const BtnSeeMore = styled(Button)`
   border-left: 1px solid #10BB83;
   color: white; 
   background: transparent; 
+  top: 325px;
   @media (min-width: 800px) {
-    position: absolute;
-    bottom: 0;
+    top: 80px;
   }
 `
 
