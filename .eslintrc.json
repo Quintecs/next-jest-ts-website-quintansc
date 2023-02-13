@@ -1,9 +1,11 @@
 {
   "root": true,
-  "extends": ["next/core-web-vitals"],
+  "extends": ["eslint:recommended"],
   "plugins": ["testing-library"],
+  "rules": {
+    "@next/next/google-font-preconnect": "on"
+  },
   "overrides": [
-    // Only uses Testing Library lint rules in test files
     {
       "files": [
         "**/__tests__/**/*.[jt]s?(x)",

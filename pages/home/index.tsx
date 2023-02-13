@@ -4,8 +4,8 @@ import { Grid } from "@mui/material";
 import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs } from "../../src/utils/icons";
 import { useState } from 'react';
 import axios from 'axios';
-import UserComponent from "src/components/userComponent";
-import CardLanguage from "src/components/CardLanguage";
+import UserComponent from "../../src/components/userComponent";
+import CardLanguage from "../../src/components/CardLanguage";
 
 export async function getStaticProps() {
   const result = await axios.get('https://api.github.com/users/quintansc').then(res => res)
