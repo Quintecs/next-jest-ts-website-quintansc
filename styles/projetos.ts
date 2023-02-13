@@ -1,6 +1,5 @@
 import styled from "styled-components"
 const HomeContainer = styled.section`
-
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -11,7 +10,6 @@ const HomeContainer = styled.section`
   color: white;
   width: 100%;
   background-color: red;
-
 `
 
 export {
