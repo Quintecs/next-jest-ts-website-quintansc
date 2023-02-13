@@ -11,5 +11,5 @@ const RowContainer = styled.section`
 `
 
 export {
-    RowContainer
+  RowContainer
 }
