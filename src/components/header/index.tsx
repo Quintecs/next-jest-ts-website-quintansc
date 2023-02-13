@@ -1,20 +1,16 @@
 import { useState } from 'react'
 import { MdMenu } from '../../utils/icons';
 
-import Link from 'next/link'
 import { MyName, ProfileImage, UserContainer, Menu, ButtonMenuMobile, ButtonHeader, SelectedLinkMenu } from './style'
 import { Box, Divider, Drawer } from '@mui/material';
 import ListLink from '../ListLink';
 import { Container } from '@mui/system';
-import { WithRouterProps } from 'next/dist/client/with-router';
 
 const headerStyles = {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
   borderBottom: "1px solid #252527",
-
-
 }
 
 const Header = ({ path }: HeaderType) => {

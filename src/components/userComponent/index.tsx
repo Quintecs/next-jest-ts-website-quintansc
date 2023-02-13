@@ -3,17 +3,18 @@ import { Container } from "@mui/system";
 import { useState } from "react";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import SocialIconsComponent from "../lateral";
-import { ContentUserComponent, TextUserComponent, DescriptionUserComponent } from "./styles";
+import { ContentUserComponent, TextUserComponent, DescriptionUserComponent, ImageUserComponent, StyledDiv } from "./styles";
+
 const UserComponent = ({user}: UserComponent)=>{
     const [userData] = useState(user);
     const createdAt = new Date(userData.created_at).getFullYear();
     const anoAtual = new Date().getFullYear();  
     
     return(
-        <div style={{ backgroundColor: '#1D1D1F' }}>
+        <StyledDiv>
             <ContentUserComponent>
-                <Grid item xs={2}><img src={userData.avatar_url} style={{ maxWidth: '275px', maxHeight: '240px'}} alt="profileImage"></img></Grid>
-                <Grid item xs={10}> 
+                <Grid item lg={2} sm={12}><ImageUserComponent src={userData.avatar_url} alt="profileImage" /></Grid>
+                <Grid item lg={10} sm={12}> 
                     <Container >
                             <h2 style={{ fontFamily: 'Inter'}}>{userData.name}</h2>
 
@@ -35,7 +36,7 @@ const UserComponent = ({user}: UserComponent)=>{
                 </Grid>
                  <Grid item={true} xs={3}><SocialIconsComponent theme={{ backgroundColor: "#1D1D1F", color: "#DAD9DE", size: "67px", justify: 'space-between', icon: 29}} /></Grid> <br></br>
             </TextUserComponent>
-        </div>
+        </StyledDiv>
     )
 }
 

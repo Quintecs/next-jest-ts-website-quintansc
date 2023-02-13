@@ -4,12 +4,13 @@ import styled from "styled-components"
 
 const InfosContainer = styled.section`
   text-align: center;
-  width: 85%;
   background-color: 'transparent';
-
   border-radius: 15px;
   padding: 25px;
   margin: 10px 0px;
+  @media (min-width: 800px) {
+    width: 85%;
+  }
 `
 
 const GridContainer =  styled(Grid)`

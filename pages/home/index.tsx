@@ -54,7 +54,7 @@ const Home = ({ gitUser }: any) => {
           <ImageGrid item={true} xs={6}>
             <img src={'/homeContent.png'} alt={"imagem content"} />
           </ImageGrid>
-          <Grid item={true} xs={12}> <UserComponent user={user} /></Grid>
+          <Grid item={true} lg={12}> <UserComponent user={user} /></Grid>
         </GridContainer>
         <InfosContainer>
           <h2>Hello World</h2>
@@ -65,7 +65,7 @@ const Home = ({ gitUser }: any) => {
           <img src="/skills.png" alt="My skills"></img>
           <h2>Minhas Habilidades</h2>
           <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
-          <Grid container style={{ justifyContent: 'space-between' }}>
+          <Grid container style={{ justifyContent: 'space-between' }} >
             <CardLanguage
               theme={{ colorBackgroundIcon: '#10BB83', cardBackgroundColor: '#162825', cardBackroundTitleColor: '#3E6E66' }}
               infos={{
