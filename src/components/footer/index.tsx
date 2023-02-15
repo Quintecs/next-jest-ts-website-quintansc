@@ -5,9 +5,9 @@ import { GridNormal } from "./style";
 
 const Footer = (): React.ReactComponentElement<any, any> => {
   return (
-    <footer>
+    <footer data-testid="footerContainer">
       <Grid container spacing={4} margin={"0 0 0 -30px"} padding={"20px"}>
-        <GridNormal container xs={10}>
+        <GridNormal container xs={10} key={Math.random()}>
           <Grid item={true} xs={3}><Link href={'/home'}>Inicio</Link></Grid>
           <Grid item={true} xs={3}><Link href={'/'}>Projetos</Link></Grid>
           <Grid item={true} xs={3}><Link href={'/'} >Contato</Link></Grid>          

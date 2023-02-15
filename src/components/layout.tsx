@@ -12,12 +12,11 @@ export default function Layout ({children}: any){
         if(window.innerWidth < 800){
             setMobile(true)
         }
-        console.log(asPath)
     }, [])
     return (
         <>
             <Header path={asPath} />
-            <main style={{ overflow: "hidden"}}>{children}</main>
+            <main style={{ overflow: "hidden"}} data-testid={'layout'}>{children}</main>
             {mobile? <Footer/>: <FooterDesktop/>}
         </>
     )

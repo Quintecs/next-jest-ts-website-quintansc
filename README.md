@@ -21,3 +21,5 @@ To run project use this command:
 npm test
 ```
 
+## Tests Coverage
+![Tests Coverage](/public/coverage.png "Cobertura de testes da aplicação atualmente")

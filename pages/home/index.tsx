@@ -10,7 +10,6 @@ import CardLanguage from "../../src/components/CardLanguage";
 export async function getStaticProps() {
   const result = await axios.get('https://api.github.com/users/quintansc').then(res => res)
   const gitUser = await result.data;
-
   return {
     props: {
       gitUser,
@@ -76,7 +75,7 @@ const Home = ({ gitUser }: any) => {
               }}
               icon={<FaNodeJs size={65} color={'#3c873a'} />}
               link={{ link: 'https://nodejs.org/en/' }} 
-              key={null} type={""} props={undefined} 
+              key={Math.random()} type={""} props={undefined} 
             />
             <CardLanguage
               theme={{ colorBackgroundIcon: '#17A2DE', cardBackgroundColor: '#1A3846', cardBackroundTitleColor: '#285676' }}
@@ -88,7 +87,7 @@ const Home = ({ gitUser }: any) => {
               }}
               icon={<FaReact size={65} color={'#61DBFB'} />}
               link={{ link: 'https://pt-br.reactjs.org/' }}
-              key={null} type={""} props={undefined}
+              key={Math.random()} type={""} props={undefined}
             />
             <CardLanguage
               theme={{ colorBackgroundIcon: '#F4F4F4', cardBackgroundColor: '#1D1D1F', cardBackroundTitleColor: '#DAD9DE', textTitleColor: '#18181A' }}
@@ -100,7 +99,7 @@ const Home = ({ gitUser }: any) => {
               }}
               icon={<SiNextdotjs size={65} color={'black'} />}
               link={{ link: 'https://nextjs.org/' }}
-              key={null} type={""} props={undefined} />
+              key={Math.random()} type={""} props={undefined} />
           </Grid>
         </InfosContainer>
       </ContainerCustom>
