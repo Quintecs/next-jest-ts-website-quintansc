@@ -6,6 +6,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import UserComponent from "../../src/components/userComponent";
 import CardLanguage from "../../src/components/CardLanguage";
+import Image from "next/image";
+import Project from "src/components/project";
 
 export async function getStaticProps() {
   const result = await axios.get('https://api.github.com/users/quintansc').then(res => res)
@@ -74,8 +76,8 @@ const Home = ({ gitUser }: any) => {
                 textContent: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC45 BC'
               }}
               icon={<FaNodeJs size={65} color={'#3c873a'} />}
-              link={{ link: 'https://nodejs.org/en/' }} 
-              key={Math.random()} type={""} props={undefined} 
+              link={{ link: 'https://nodejs.org/en/' }}
+              key={Math.random()} type={""} props={undefined}
             />
             <CardLanguage
               theme={{ colorBackgroundIcon: '#17A2DE', cardBackgroundColor: '#1A3846', cardBackroundTitleColor: '#285676' }}
@@ -102,6 +104,13 @@ const Home = ({ gitUser }: any) => {
               key={Math.random()} type={""} props={undefined} />
           </Grid>
         </InfosContainer>
+        <InfosContainer>
+          <Image src="/projects.png" width={625} height={60} alt="My projects"></Image>
+          <h2>Projetos Selecionados</h2>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
+        </InfosContainer>
+
+        <Project />
       </ContainerCustom>
     </>
   )
