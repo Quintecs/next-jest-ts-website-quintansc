@@ -1,7 +1,7 @@
 import Head from "next/head";
-import { InfosContainer, ContainerCustom, GridContainer, BtnSeeMore, TitleH2, GridHeadPageContent, ImageGrid } from "../../styles/home";
-import { Grid } from "@mui/material";
-import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs } from "../../src/utils/icons";
+import { InfosContainer, ContainerCustom, GridContainer, BtnSeeMore, TitleH2, GridHeadPageContent, ImageGrid, ContactContainer } from "../../styles/home";
+import { Button, Grid } from "@mui/material";
+import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs, BsChat } from "../../src/utils/icons";
 import { useState } from 'react';
 import axios from 'axios';
 import UserComponent from "../../src/components/userComponent";
@@ -122,6 +122,13 @@ const Home = ({ gitUser }: any) => {
           urlImage="/project2.png"
           flags={['Backend', 'API', 'Node']}
         />
+
+        <ContactContainer>
+           <Image src="/contactImage.png" width={625} height={95} alt="Contact me"></Image>
+           <h2>Entre em contato</h2>
+           <p>🤟 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
+           <Button variant="outlined" color="inherit" startIcon={<BsChat />} style={{ marginTop: '20px', padding: '15px 90px'} }> Get In Touch</Button>
+        </ContactContainer>
       </ContainerCustom>
     </>
   )

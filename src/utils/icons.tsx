@@ -4,3 +4,4 @@ export { SiNextdotjs } from 'react-icons/si'
 export { MdMenu } from 'react-icons/md';
 export { HiOutlineArrowDown, HiOutlineLocationMarker, HiOutlineArrowSmRight } from 'react-icons/hi'
 export { FaNodeJs, FaReact } from "react-icons/fa";
+export { BsChat } from "react-icons/bs";

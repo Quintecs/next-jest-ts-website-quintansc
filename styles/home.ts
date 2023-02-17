@@ -103,11 +103,20 @@ const ImageGrid = styled(Grid)`
     } 
   }
 `
+const ContactContainer = styled(Grid)`
+  background-image: url('/background.png');
+  background-size: cover;
+  width: 100vw;
+  height: 500px;
 
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
 
 export {
   BtnSeeMore, TitleH2, GridHeadPageContent,
   InfosContainer, GridContainer, ContainerCustom, ImageConteiner, 
-  TextImageContainer, ButtonTextImageContainer, ImageGrid
+  TextImageContainer, ButtonTextImageContainer, ImageGrid, ContactContainer
 }
