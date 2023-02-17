@@ -110,7 +110,18 @@ const Home = ({ gitUser }: any) => {
           <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
         </InfosContainer>
 
-        <Project />
+        <Project 
+          title={'API de finanças'} 
+          description={`There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary`} 
+          urlImage="/project1.png"
+          flags={['Frontend', 'API', 'ReactJS']}
+        />
+        <Project 
+          title={'Aplicativo de Sistemas'} 
+          description={`There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary`} 
+          urlImage="/project2.png"
+          flags={['Backend', 'API', 'Node']}
+        />
       </ContainerCustom>
     </>
   )
