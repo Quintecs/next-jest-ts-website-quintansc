@@ -7,7 +7,7 @@ import axios from 'axios';
 import UserComponent from "../../src/components/userComponent";
 import CardLanguage from "../../src/components/CardLanguage";
 import Image from "next/image";
-import Project from "src/components/project";
+import Project from "../../src/components/project";
 
 export async function getStaticProps() {
   const result = await axios.get('https://api.github.com/users/quintansc').then(res => res)

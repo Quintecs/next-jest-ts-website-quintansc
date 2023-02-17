@@ -1,30 +1,26 @@
 import { Container, Grid } from '@mui/material'
 import Image from 'next/image'
-import { useEffect } from 'react'
 import { HiOutlineArrowSmRight } from '../../utils/icons'
 import { ButtonFlag, ButtonLink, FragContainer, GridContainerLinks, Title } from './style'
 
 const Project = (props: ProjectComponent)=>{
     const { title, description, urlImage, flags } = props;
-    useEffect(()=>{
-        console.log(props)
-    }, [])
     return (
         <FragContainer>
             <Image src={urlImage} width={1600} height={375} alt={'project'}/>
             <Container>
-                <Grid container>
+                <Grid  container>
                     <Grid item lg={6}>
                         <Title>{title}</Title>
                         <p>{description}</p>
                     </Grid>
                     <GridContainerLinks item lg={6}>
-                        <Grid>
+                        <Grid item>
                             {flags.map(flag=>{
                                 return <ButtonFlag variant='outlined'>{flag}</ButtonFlag>
                             })}
                         </Grid>
-                        <Grid>
+                        <Grid item>
                             <ButtonLink endIcon={<HiOutlineArrowSmRight/>}> Acessar projeto completo </ButtonLink>
                         </Grid>
                     </GridContainerLinks>           
