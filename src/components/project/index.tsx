@@ -16,8 +16,8 @@ const Project = (props: ProjectComponent)=>{
                     </Grid>
                     <GridContainerLinks item lg={6}>
                         <Grid item>
-                            {flags.map(flag=>{
-                                return <ButtonFlag variant='outlined'>{flag}</ButtonFlag>
+                            {flags.map((flag, index)=>{
+                                return <ButtonFlag key={index} variant='outlined'>{flag}</ButtonFlag>
                             })}
                         </Grid>
                         <Grid item>
