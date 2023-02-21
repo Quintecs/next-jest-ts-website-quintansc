@@ -9,8 +9,8 @@ const Footer = (): React.ReactComponentElement<any, any> => {
       <Grid container spacing={4} margin={"0 0 0 -30px"} padding={"20px"}>
         <GridNormal container xs={10} key={Math.random()}>
           <Grid item={true} xs={3}><Link href={'/home'}>Inicio</Link></Grid>
-          <Grid item={true} xs={3}><Link href={'/'}>Projetos</Link></Grid>
-          <Grid item={true} xs={3}><Link href={'/'} >Contato</Link></Grid>          
+          <Grid item={true} xs={3}><Link href={'/projetos'}>Projetos</Link></Grid>
+          <Grid item={true} xs={3}><Link href={'/contato'} >Contato</Link></Grid>          
         </GridNormal>
         <Grid item={true} xs={12}><SocialIconsComponent theme={{ backgroundColor: '#1D1D1F', color: '#999ED7'}} /></Grid>
         <Grid item={true} xs={12}><strong style={{ overflowWrap: "break-word", width: "250px", textAlign: "center" }}>All Rights Reserved to Gustavo Quintans - 2023.</strong></Grid>

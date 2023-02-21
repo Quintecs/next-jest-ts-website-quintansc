@@ -1,5 +1,4 @@
 import { Button, Grid } from "@mui/material";
-import { Container } from "@mui/system";
 import styled from "styled-components"
 
 const InfosContainer = styled.section`
@@ -9,33 +8,7 @@ const InfosContainer = styled.section`
   padding: 25px;
   margin: 10px 0px;
   @media (min-width: 800px) {
-    width: 85%;
-  }
-`
-
-const GridContainer =  styled(Grid)`
-  flex-direction: column;
- @media (min-width: 800px) {
-  flex-direction: initial;
-  padding: 0 50px;
-  margin-top: 80px;
- }
-
- .MuiGrid-item .MuiGrid-grid-xs-6 div {
-    @media (min-width: 800px) {
-      display: flex;
-      align-items: center;
-    }
- }
-`
-
-const ContainerCustom = styled(Container)`
-  overflow: hidden;
-  flex-direction: column; 
-  align-items: center;
-  box-shadow: 2px 2px 2px 3px rgba(5, 10, 15, 0.2);
-  @media (min-width: 800px) {
-    display: flex;
+    width: 98%;
   }
 `
 
@@ -75,7 +48,6 @@ const BtnSeeMore = styled(Button)`
 `
 
 const TitleH2 = styled.h1`
-  font-family: 'Public Sans ';
   font-size: 42px;
   font-weight: 300;
   @media (min-width: 800px) {
@@ -117,6 +89,6 @@ const ContactContainer = styled(Grid)`
 
 export {
   BtnSeeMore, TitleH2, GridHeadPageContent,
-  InfosContainer, GridContainer, ContainerCustom, ImageConteiner, 
+  InfosContainer, ImageConteiner, 
   TextImageContainer, ButtonTextImageContainer, ImageGrid, ContactContainer
 }

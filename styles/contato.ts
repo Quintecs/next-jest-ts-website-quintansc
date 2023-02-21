@@ -1,15 +1,40 @@
+import { Grid } from "@mui/material"
 import styled from "styled-components"
-const HomeContainer = styled.section`
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+const GridItemContact = styled(Grid)`
+  background-color: #1D1D1F ;
+  padding: 50px;
+  border-radius: 8px;
+  border: 2px solid #252527;
+  min-width: 475px;
+  .MuiTextField-root, .MuiButton-contained{
+    margin: 16px 0;
+    color: #F4F4F4;
+  }
+  fieldset{
+    border: 1px solid #F4F4F4;
+  }
+  .MuiOutlinedInput-root.MuiInputBase-colorInfo:hover{
+    fieldset{
+      border: 1px solid #F4F4F4;
+    }
+  }
+  label{
+    color: #F4F4F4
+  }
+  p{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #49494D;
+  }
+
+  button {
+    padding: 13px;
+  }
 `
 
 export {
-  HomeContainer
+  GridItemContact
 }

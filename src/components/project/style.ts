@@ -7,6 +7,11 @@ const FragContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    .MuiContainer-root {
+        @media (min-width: 1200px) {
+            max-width: 1450px;
+        }
+    }
 `
 
 const Title = styled.h2`

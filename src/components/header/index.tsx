@@ -5,6 +5,7 @@ import { MyName, ProfileImage, UserContainer, Menu, ButtonMenuMobile, ButtonHead
 import { Box, Divider, Drawer } from '@mui/material';
 import ListLink from '../ListLink';
 import { Container } from '@mui/system';
+import Link from 'next/link';
 
 const headerStyles = {
   display: 'flex',
@@ -50,7 +51,8 @@ const Header = ({ path }: HeaderType) => {
         <SelectedLinkMenu color={path == '/home'? "#999ED7": "#18181A"} href={'/'} data-testid="menuElements">Inicio</SelectedLinkMenu>
         <SelectedLinkMenu color={path == '/projetos'? "#999ED7": "#18181A"} href={'/projetos'} data-testid="menuElements">Projetos</SelectedLinkMenu>
         <Divider orientation='vertical' style={{ width: '2px', background: '#252527', height: '48px', margin: '0 50px' }}/>
-        <ButtonHeader variant="contained" href={'/contato'}> Solicitar Orçamento</ButtonHeader>
+        
+        <Link  href='/contato' passHref><ButtonHeader variant="contained"> Solicitar Orçamento</ButtonHeader></Link>
       </Menu>
       </Container>
     </header>
