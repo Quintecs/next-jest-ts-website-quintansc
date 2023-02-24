@@ -3,10 +3,7 @@ import Footer from './footer';
 import FooterDesktop from './footer/desktop';
 import Header from './header';
 
-
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { green, purple } from '@mui/material/colors';
-
 import { useRouter } from 'next/router'
 
 export default function Layout ({children}: any){
