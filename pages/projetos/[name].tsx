@@ -6,6 +6,7 @@ const Projeto = () => {
     return (
         <Container>
             <p>
+                Meus Projetos
                 Rota é {router.query.name}
             </p>            
         </Container>

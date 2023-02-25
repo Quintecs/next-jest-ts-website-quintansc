@@ -1,16 +1,16 @@
 import { ContainerCustom, GridContainer } from "../../styles/global";
 import { GridItemContact } from "../../styles/contato";
-import { Button, FormGroup, Grid, InputAdornment, TextField } from "@mui/material";
+import { Button, FormGroup, Grid } from "@mui/material";
 import Image from "next/image";
 import Head from "next/head";
 import { AiOutlineUser, BsTelephone, HiOutlineMail, RiSendPlaneFill } from "../../src/utils/icons";
 import { IconTextField } from "src/components/IconTextField";
 
-const Container = () => {
+const Contato = () => {
     return (
         <>
             <Head>
-                <title>Home | Quintec</title>
+                <title>Contato | Quintec</title>
                 <link rel="icon" href="/desenvolvedor1.ico" />
 
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,4 +50,4 @@ const Container = () => {
     )
 }
 
-export default Container;
+export default Contato;

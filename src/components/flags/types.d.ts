@@ -1,0 +1,3 @@
+type FlagProps = {
+    type: string
+}
