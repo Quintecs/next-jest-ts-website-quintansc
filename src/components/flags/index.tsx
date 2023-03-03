@@ -1,6 +1,6 @@
 import { FlagBack, FlagFront } from "./style";
 
-const Flag = ({ type }: FlagProps): JSX.Element => {
+const Flag = ({ type }: FlagProps): React.ReactElement => {
     if (type === 'front'){
         return (
             <FlagFront> Front-End </FlagFront>

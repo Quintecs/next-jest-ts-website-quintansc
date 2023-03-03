@@ -4,21 +4,11 @@ import { ContainerCustom, GridContainer } from "../../styles/global";
 import { Button, Grid } from "@mui/material";
 import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs, BsChat } from "../../src/utils/icons";
 import { useState } from 'react';
-import axios from 'axios';
 import UserComponent from "../../src/components/userComponent";
-import CardLanguage from "../../src/components/CardLanguage";
+import CardLanguage from "../../src/components/cardLanguage";
 import Image from "next/image";
 import Project from "../../src/components/project";
-
-export async function getStaticProps() {
-  const result = await axios.get('https://api.github.com/users/quintansc').then(res => res)
-  const gitUser = await result.data;
-  return {
-    props: {
-      gitUser,
-    },
-  }
-}
+import { userRoute } from "src/api";
 
 const Home = ({ gitUser }: any) => {
   const [user] = useState(gitUser);
@@ -78,7 +68,7 @@ const Home = ({ gitUser }: any) => {
               }}
               icon={<FaNodeJs size={65} color={'#3c873a'} />}
               link={{ link: 'https://nodejs.org/en/' }}
-              key={Math.random()} type={""} props={undefined}
+              key={Math.random()}
             />
             <CardLanguage
               theme={{ colorBackgroundIcon: '#17A2DE', cardBackgroundColor: '#1A3846', cardBackroundTitleColor: '#285676' }}
@@ -90,7 +80,7 @@ const Home = ({ gitUser }: any) => {
               }}
               icon={<FaReact size={65} color={'#61DBFB'} />}
               link={{ link: 'https://pt-br.reactjs.org/' }}
-              key={Math.random()} type={""} props={undefined}
+              key={Math.random()}
             />
             <CardLanguage
               theme={{ colorBackgroundIcon: '#F4F4F4', cardBackgroundColor: '#1D1D1F', cardBackroundTitleColor: '#DAD9DE', textTitleColor: '#18181A' }}
@@ -102,7 +92,7 @@ const Home = ({ gitUser }: any) => {
               }}
               icon={<SiNextdotjs size={65} color={'black'} />}
               link={{ link: 'https://nextjs.org/' }}
-              key={Math.random()} type={""} props={undefined} />
+              key={Math.random()} />
           </Grid>
         </InfosContainer>
         <InfosContainer>
@@ -136,3 +126,12 @@ const Home = ({ gitUser }: any) => {
 }
 
 export default Home;
+
+export async function getStaticProps() {
+  const gitUser = await userRoute()
+  return {
+    props: {
+      gitUser,
+    },
+  }
+}

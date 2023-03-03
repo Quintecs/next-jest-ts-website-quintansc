@@ -9,7 +9,6 @@ const HomeContainer = styled.section`
   font-size: calc(10px + 2vmin);
   color: white;
   width: 100%;
-  background-color: red;
 `
 
 export {

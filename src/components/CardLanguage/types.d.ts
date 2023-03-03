@@ -1,4 +1,4 @@
-interface CardLanguageType extends React.ReactElement {
+interface CardLanguageType extends React.ComponentProps {
     icon: JSX.Element, 
     link: any,
     infos: any, 

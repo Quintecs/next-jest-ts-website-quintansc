@@ -6,6 +6,7 @@ import { Box, Divider, Drawer } from '@mui/material';
 import ListLink from '../ListLink';
 import { Container } from '@mui/system';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const headerStyles = {
   display: 'flex',
@@ -14,8 +15,9 @@ const headerStyles = {
   borderBottom: "1px solid #252527",
 }
 
-const Header = ({ path }: HeaderType) => {
+const Header = () => {
   const [menuActive, setMenuActive] = useState(false)
+  const { pathname } = useRouter()
   return (
     <header style={headerStyles} data-testid="headerContainer">
       <Container maxWidth={false} style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -48,8 +50,8 @@ const Header = ({ path }: HeaderType) => {
       </Drawer>
 
       <Menu>
-        <SelectedLinkMenu color={path == '/home'? "#999ED7": "#18181A"} href={'/'} data-testid="menuElements">Inicio</SelectedLinkMenu>
-        <SelectedLinkMenu color={path == '/projetos'? "#999ED7": "#18181A"} href={'/projetos'} data-testid="menuElements">Projetos</SelectedLinkMenu>
+        <SelectedLinkMenu color={pathname == '/home'? "#999ED7": "#18181A"} href={'/'} data-testid="menuElements">Inicio</SelectedLinkMenu>
+        <SelectedLinkMenu color={pathname == '/projetos'? "#999ED7": "#18181A"} href={'/projetos'} data-testid="menuElements">Projetos</SelectedLinkMenu>
         <Divider orientation='vertical' style={{ width: '2px', background: '#252527', height: '48px', margin: '0 50px' }}/>
         
         <Link  href='/contato' passHref><ButtonHeader variant="contained"> Solicitar Orçamento</ButtonHeader></Link>

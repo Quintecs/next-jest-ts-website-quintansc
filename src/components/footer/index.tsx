@@ -3,7 +3,7 @@ import Link from "next/link";
 import SocialIconsComponent from "../lateral";
 import { GridNormal } from "./style";
 
-const Footer = (): React.ReactComponentElement<any, any> => {
+const Footer = (): React.ReactElement => {
   return (
     <footer data-testid="footerContainer">
       <Grid container spacing={4} margin={"0 0 0 -30px"} padding={"20px"}>

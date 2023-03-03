@@ -3,14 +3,15 @@ import Flag from "../flags"
 import { CardProjectContainer, FlagsContainer } from "./style";
 
 const CardProject = (props: CardProjectProps) => {
+    const data = new Date(props.project.created_at)
     return (
          <CardProjectContainer>
-            <Image src='/projectCard.png' alt="" width={375} height={375}></Image>
-            <h2> {props.name} </h2>
-            <p>{props.description}</p>
+            <Image src={props.src} alt="" width={375} height={375}></Image>
+            <h2> {props.project.name} </h2>
+            <p>{props.project.description}</p>
             <FlagsContainer> 
                 <Flag type={props.flag} /> 
-                <p>09/12/2022</p>
+                <p>{data.toLocaleDateString()}</p>
             </FlagsContainer>
         </CardProjectContainer>
     )

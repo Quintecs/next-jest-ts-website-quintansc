@@ -1,7 +1,16 @@
 import axios, { AxiosResponse } from 'axios';
 
 const userRoute = async (): Promise<AxiosResponse> => {
-   return await axios.get('https://api.github.com/users/quintansc').then(res => res)
+   let data = await axios.get('https://api.github.com/users/quintansc').then(res => res)
+   return data.data
 }
 
-export default userRoute;
+const getRepository = async (project: string): Promise<AxiosResponse> => {
+   let data = await axios.get(`https://api.github.com/repos/quintansc/${project}`).then(res => res)
+   return data.data
+}
+
+export {
+   getRepository,
+   userRoute
+};

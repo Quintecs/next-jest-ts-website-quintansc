@@ -1,3 +1,1 @@
-type HeaderType = {
-    path: string | string[]
-}
+interface HeaderType extends React.ReactComponentElement {}

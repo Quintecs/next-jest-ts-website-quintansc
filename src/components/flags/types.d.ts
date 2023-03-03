@@ -1,3 +1,3 @@
 type FlagProps = {
-    type: string
+    type: "front" | "back"
 }

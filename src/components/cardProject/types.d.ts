@@ -1,5 +1,5 @@
-type CardProjectProps = {
-    name: string
-    description: string
-    flag: string
+interface CardProjectProps extends React.ComponentProps{
+    project: any
+    flag: 'front' | 'back'
+    src: string
 }
