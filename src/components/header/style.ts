@@ -2,6 +2,13 @@ import { Button } from "@mui/material";
 import Link from "next/link";
 import styled from "styled-components";
 
+const Headers = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #252527;
+`
+
 const ProfileImage = styled.img`
   border-radius: 50%;
   width: 60px;
@@ -69,6 +76,7 @@ const ButtonHeader = styled(Button)`
 `;
 
 export {
+  Headers,
   ProfileImage,
   MyName,
   UserContainer,

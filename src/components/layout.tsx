@@ -4,11 +4,9 @@ import FooterDesktop from './footer/desktop';
 import Header from './header';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useRouter } from 'next/router'
 
 export default function Layout ({children}: any){
     const [mobile, setMobile] = useState<boolean>(false)
-    const { asPath } = useRouter();
     useEffect(()=>{
         if(window.innerWidth < 800){
             setMobile(true)
@@ -36,7 +34,7 @@ export default function Layout ({children}: any){
     });
     return (
         <ThemeProvider theme={theme}>
-            <Header path={asPath} />
+            <Header />
             <main style={{ overflow: "hidden"}} data-testid={'layout'}>{children}</main>
             {mobile? <Footer/>: <FooterDesktop/>}
         </ThemeProvider>

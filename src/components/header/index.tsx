@@ -1,25 +1,18 @@
 import { useState } from 'react'
 import { MdMenu } from '../../utils/icons';
 
-import { MyName, ProfileImage, UserContainer, Menu, ButtonMenuMobile, ButtonHeader, SelectedLinkMenu } from './style'
+import { MyName, ProfileImage, UserContainer, Menu, ButtonMenuMobile, ButtonHeader, SelectedLinkMenu, Headers } from './style'
 import { Box, Divider, Drawer } from '@mui/material';
 import ListLink from '../ListLink';
 import { Container } from '@mui/system';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const headerStyles = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  borderBottom: "1px solid #252527",
-}
-
 const Header = () => {
   const [menuActive, setMenuActive] = useState(false)
   const { pathname } = useRouter()
   return (
-    <header style={headerStyles} data-testid="headerContainer">
+    <Headers data-testid="headerContainer">
       <Container maxWidth={false} style={{ display: 'flex', justifyContent: 'space-between' }}>
       <UserContainer>
         <ProfileImage
@@ -57,7 +50,7 @@ const Header = () => {
         <Link  href='/contato' passHref><ButtonHeader variant="contained"> Mentoria Gratuita </ButtonHeader></Link>
       </Menu>
       </Container>
-    </header>
+    </Headers>
   )
 }
 
