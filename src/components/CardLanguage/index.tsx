@@ -1,7 +1,7 @@
 import { Button, Container, Grid } from "@mui/material";
 import { SkillsContainer } from "./styles";
 
-const CardLanguage = ({ icon, link, infos, theme }: CardLanguageType) => {
+const CardLanguage = ({ icon, link, infos, theme }: any) => {
   return (
     <SkillsContainer
       item
