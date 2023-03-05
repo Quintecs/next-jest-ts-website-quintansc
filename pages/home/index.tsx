@@ -5,7 +5,7 @@ import { Button, Grid } from "@mui/material";
 import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs, BsChat } from "../../src/utils/icons";
 import { useState } from 'react';
 import UserComponent from "../../src/components/userComponent";
-import CardLanguage from "../../src/components/cardLanguage";
+import CardLanguage from "@/components/cardLanguage";
 import Image from "next/image";
 import Project from "../../src/components/project";
 import { userRoute } from "src/api";
