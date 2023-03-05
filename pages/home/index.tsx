@@ -1,4 +1,3 @@
-
 import Head from "next/head";
 import { InfosContainer, BtnSeeMore, TitleH2, GridHeadPageContent, ImageGrid, ContactContainer } from "../../styles/home";
 import { ContainerCustom, GridContainer } from "../../styles/global";
@@ -6,7 +5,6 @@ import { Button, Grid } from "@mui/material";
 import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs, BsChat } from "../../src/utils/icons";
 import { useState } from 'react';
 import UserComponent from "../../src/components/userComponent";
-//ts-ignore
 import CardLanguage from "../../src/components/cardLanguage";
 import Image from "next/image";
 import Project from "../../src/components/project";
