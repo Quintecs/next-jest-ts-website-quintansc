@@ -1,5 +1,5 @@
 import { ContainerCustom, GridContainer } from "../../styles/global";
-import { Grid } from "@mui/material";
+import { GridProject } from '@/styles/projetos';
 import Image from "next/image";
 import Head from "next/head";
 import CardProject from "src/components/cardProject";
@@ -36,7 +36,7 @@ const Projetos = ({dragAndDrop, apiDragAndDrop, cleanApi}: any) => {
           <Image src='/contactIcon.png' alt="" width={62} height={62} />
           <h1>Entre em contato</h1>
           <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
-          <Grid container style={{ flexDirection: "row", justifyContent: "space-between", height: "245vh" }}>
+          <GridProject container>
             <CardProject
               src='/trello.webp'
               project={dragAndDrop}
@@ -52,7 +52,7 @@ const Projetos = ({dragAndDrop, apiDragAndDrop, cleanApi}: any) => {
               project={cleanApi}
               flag="back"
             />
-          </Grid>
+          </GridProject>
         </GridContainer>
       </ContainerCustom>
     </>

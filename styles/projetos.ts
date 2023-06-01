@@ -1,4 +1,6 @@
+import { Grid } from "@mui/material"
 import styled from "styled-components"
+
 const HomeContainer = styled.section`
   background-color: #282c34;
   min-height: 100vh;
@@ -11,6 +13,16 @@ const HomeContainer = styled.section`
   width: 100%;
 `
 
+const GridProject = styled(Grid)`
+ flex-direction: row;
+
+ @media (max-width: 800px) {
+    justify-content: space-between; 
+    height: 245vh; 
+ }
+`
+
 export {
+  GridProject,
   HomeContainer
 }
