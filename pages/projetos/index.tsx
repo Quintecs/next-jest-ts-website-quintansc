@@ -36,7 +36,7 @@ const Projetos = ({dragAndDrop, apiDragAndDrop, cleanApi}: any) => {
           <Image src='/contactIcon.png' alt="" width={62} height={62} />
           <h1>Entre em contato</h1>
           <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
-          <Grid container style={{ flexDirection: "row" }}>
+          <Grid container style={{ flexDirection: "row", justifyContent: "space-between", height: "245vh" }}>
             <CardProject
               src='/trello.webp'
               project={dragAndDrop}

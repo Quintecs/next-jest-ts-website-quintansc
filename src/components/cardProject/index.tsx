@@ -5,7 +5,7 @@ import { CardProjectContainer, FlagsContainer } from "./style";
 const CardProject = (props: CardProjectProps) => {
     const data = new Date(props.project.created_at)
     return (
-         <CardProjectContainer>
+         <CardProjectContainer href={`/projetos/${props.project.name}`}>
             <Image src={props.src} alt="" width={375} height={375}></Image>
             <h2> {props.project.name} </h2>
             <p>{props.project.description}</p>

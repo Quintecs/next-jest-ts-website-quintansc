@@ -8,6 +8,10 @@ const ContainerCustom = styled(Container)`
   box-shadow: 2px 2px 2px 3px rgba(5, 10, 15, 0.2);
   @media (min-width: 800px) {
     display: flex;
+    
+  }
+  @media (max-width: 800px) {
+    padding: 0 !important;
   }
 `
 

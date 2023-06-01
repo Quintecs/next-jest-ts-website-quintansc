@@ -27,7 +27,7 @@ const Home = ({ gitUser }: any) => {
       <ContainerCustom maxWidth={false}>
         <GridContainer container>
           <GridHeadPageContent item={true} xs={6}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div>
               <img src={'/iconCode.png'} height={40} alt={"imagem content"} />
               <Grid item={true} style={{ marginLeft: '25px', lineHeight: '9px' }}>
                 <h3 style={{ fontFamily: 'Public Sans ', color: '#999ED7' }}>Hello World /&gt; </h3>
@@ -38,14 +38,17 @@ const Home = ({ gitUser }: any) => {
             <div>
               <TitleH2>Front-end DEV</TitleH2>
               <p style={{ fontFamily: 'Inter', fontWeight: '600', fontSize: '14px' }}>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of <a href="#" style={{ color: '#999ED7' }}> classical Latin literature </a> from 45 BC, making it over 2000 years old.</p>
-              <BtnSeeMore variant="text" endIcon={<HiOutlineArrowDown color="#10BB83" />}>
-                Veja mais
-              </BtnSeeMore>
+             
             </div>
+
           </GridHeadPageContent>
           <ImageGrid item={true} xs={6}>
             <img src={'/homeContent.png'} alt={"imagem content"} />
           </ImageGrid>
+
+           <BtnSeeMore variant="text" endIcon={<HiOutlineArrowDown color="#10BB83" />}>
+                Veja mais
+              </BtnSeeMore>
           <Grid item={true} lg={12}> <UserComponent user={user} /></Grid>
         </GridContainer>
         <InfosContainer>

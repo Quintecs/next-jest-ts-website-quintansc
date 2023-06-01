@@ -33,6 +33,10 @@ const GridItemContact = styled(Grid)`
   button {
     padding: 13px;
   }
+
+  @media (max-width: 800px) {
+    min-width: 0;
+  }
 `
 
 export {

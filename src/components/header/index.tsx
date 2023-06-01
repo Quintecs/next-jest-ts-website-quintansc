@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MdMenu } from '../../utils/icons';
+import { MdMenu, MdHome, MdGridView, MdContactSupport } from '../../utils/icons';
 
 import { MyName, ProfileImage, UserContainer, Menu, ButtonMenuMobile, ButtonHeader, SelectedLinkMenu, Headers } from './style'
 import { Box, Divider, Drawer } from '@mui/material';
@@ -23,7 +23,7 @@ const Header = () => {
         <MyName>Gustavo Quintans</MyName>
       </UserContainer>
       <ButtonMenuMobile onClick={() => setMenuActive(true)}>
-        <MdMenu size={30} color={'black'} />
+        <MdMenu size={30} color={'white'} />
       </ButtonMenuMobile>
 
       <Drawer anchor={"right"} open={menuActive} onClose={() => setMenuActive(false)}>
@@ -33,11 +33,9 @@ const Header = () => {
           onClick={() => setMenuActive(false)}
           onKeyDown={() => setMenuActive(false)}
         >
-          <ListLink icon={<MdMenu />} text={"Home"} link={"/home"} ></ListLink>
-          <ListLink icon={<MdMenu />} text={"Projetos"} link={"/projetos"}></ListLink>
-
-          {/* Button */}
-          <ListLink icon={<MdMenu />} text={"Contato"} link={"/contato"}></ListLink>
+          <ListLink icon={<MdHome />} text={"Home"} link={"/home"} ></ListLink>
+          <ListLink icon={<MdGridView />} text={"Projetos"} link={"/projetos"}></ListLink>
+          <ListLink icon={<MdContactSupport />} text={"Contato"} link={"/contato"}></ListLink>
           <Divider />
         </Box>
       </Drawer>

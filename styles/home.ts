@@ -41,10 +41,6 @@ const BtnSeeMore = styled(Button)`
   border-left: 1px solid #10BB83;
   color: white; 
   background: transparent; 
-  top: 325px;
-  @media (min-width: 800px) {
-    top: 80px;
-  }
 `
 
 const TitleH2 = styled.h1`
@@ -56,6 +52,14 @@ const TitleH2 = styled.h1`
 `
 
 const GridHeadPageContent = styled(Grid)`
+  div:first-child{
+    display: flex;
+    align-items: center;
+  }
+  div:last-child{
+    margin-left: 25px;
+    margin-right: 25px;
+  }
   @media (max-width: 800px) {
     position: relative; 
     min-width: 100%;
@@ -85,6 +89,10 @@ const ContactContainer = styled(Grid)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 800px) {
+    padding: 16px;
+  }
 `
 
 export {

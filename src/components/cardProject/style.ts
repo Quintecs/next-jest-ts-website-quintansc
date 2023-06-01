@@ -9,7 +9,7 @@ const FlagsContainer = styled.div`
   }
 `
 
-const CardProjectContainer = styled.div`
+const CardProjectContainer = styled.a`
   max-width: 375px;
   margin: 0 10px;
 

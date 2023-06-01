@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const StyledDiv = styled.div`
     @media (max-width: 800px) {
         background-color: #1D1D1F;
+        padding-bottom: 16px;
     }
 `
 
