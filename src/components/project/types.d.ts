@@ -3,4 +3,5 @@ interface ProjectComponent {
     description?: string
     urlImage: string
     flags: Array<string>
+    projectUrl: string
 }

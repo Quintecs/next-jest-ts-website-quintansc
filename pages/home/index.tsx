@@ -109,12 +109,14 @@ const Home = ({ gitUser }: any) => {
           description={`There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary`} 
           urlImage="/project1.png"
           flags={['Frontend', 'API', 'ReactJS']}
+          projectUrl='/projetos'
         />
         <Project 
           title={'Aplicativo de Sistemas'} 
           description={`There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary`} 
           urlImage="/project2.png"
           flags={['Backend', 'API', 'Node']}
+          projectUrl='/projetos'
         />
 
         <ContactContainer>
