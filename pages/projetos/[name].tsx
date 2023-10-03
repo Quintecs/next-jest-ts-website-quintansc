@@ -1,7 +1,9 @@
-import Container from '@mui/material/Container';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { getRepository } from 'src/api';
+
+import { Container } from '@mui/material';
+import Image from 'next/image';
+import { Carousels } from '@/styles/projetos';
 
 export async function getStaticProps({ params }: any) {
     const project = await getRepository(`${params.name}`)
@@ -25,16 +27,20 @@ export async function getStaticPaths() {
 
 const Projeto = (props: any) => {
     const router = useRouter();
-
-    console.log(props.project)
     const criado = new Date(props.project.created_at)
+
     return (
         <>
             <Container>
                 <h2> {router.query.name} </h2> 
                 <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC </p>        
             </Container>
-            <Image src={"/project1.png"} width={1600} height={375} alt={'project'}/>
+
+            <Carousels>
+                <Image src={'/project1.png'} alt='' width={1980} height={500}/>
+                <Image src={'/project2.png'} alt='' width={1980} height={500}/>
+            </Carousels>
+            
             <Container>
                 <h2> Processo de Desenvolvimento </h2>
                 <p>

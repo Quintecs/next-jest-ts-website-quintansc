@@ -11,7 +11,14 @@ import Project from "../../src/components/project";
 import { userRoute } from "src/api";
 
 const Home = ({ gitUser }: any) => {
-  const [user] = useState(gitUser);
+  const [user] = useState(gitUser? gitUser : {
+    created_at: '',
+    avatar_url: '',
+    name: 'string',
+    company: 'string',
+    bio: 'string',
+    location: 'any'
+  });
   return (
     <>
       <Head>
@@ -67,7 +74,7 @@ const Home = ({ gitUser }: any) => {
                 title: 'NodeJS',
                 subtitle: 'Back-end Framework',
                 subscription: 'Node Documentation',
-                textContent: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC45 BC'
+                textContent: 'Node.js® is an open-source, cross-platform JavaScript runtime environment.'
               }}
               icon={<FaNodeJs size={65} color={'#3c873a'} />}
               link={{ link: 'https://nodejs.org/en/' }}
@@ -79,10 +86,10 @@ const Home = ({ gitUser }: any) => {
                 title: 'ReactJs',
                 subtitle: 'Front-end Framework',
                 subscription: 'React Documentation',
-                textContent: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC45 BC'
+                textContent: 'A biblioteca para web e interfaces de usuário nativas baseada em Javascript e Typescript'
               }}
               icon={<FaReact size={65} color={'#61DBFB'} />}
-              link={{ link: 'https://pt-br.reactjs.org/' }}
+              link={{ link: 'https://pt-br.react.dev' }}
               key={Math.random()}
             />
             <CardLanguage
@@ -91,7 +98,7 @@ const Home = ({ gitUser }: any) => {
                 title: 'NextJs',
                 subtitle: 'Front-end Framework',
                 subscription: 'Next Documentation',
-                textContent: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC45 BC'
+                textContent: 'Next.js is a React framework for building full-stack web applications. You use React Components to build user interfaces, and Next.js for additional features and optimizations.'
               }}
               icon={<SiNextdotjs size={65} color={'black'} />}
               link={{ link: 'https://nextjs.org/' }}

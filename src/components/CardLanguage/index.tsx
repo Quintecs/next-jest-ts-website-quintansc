@@ -1,5 +1,5 @@
-import { Button, Container, Grid } from "@mui/material";
-import { SkillsContainer } from "./styles";
+import { Button, Grid } from "@mui/material";
+import { ContainerCardLanguage, SkillsContainer } from "./styles";
 
 const CardLanguage = ({ icon, link, infos, theme }: any) => {
   return (
@@ -48,7 +48,7 @@ const CardLanguage = ({ icon, link, infos, theme }: any) => {
           </p>
         </Grid>
       </Grid>
-      <Container maxWidth={false} style={{ margin: "16px 0px" }}>
+      <ContainerCardLanguage maxWidth={false}>
         <p style={{ color: theme.colorBackgroundIcon }}>{infos.textContent}</p>
         <Button
           variant="contained"
@@ -58,7 +58,7 @@ const CardLanguage = ({ icon, link, infos, theme }: any) => {
           {" "}
           Abrir Documentação{" "}
         </Button>
-      </Container>
+      </ContainerCardLanguage>
     </SkillsContainer>
   );
 };

@@ -20,7 +20,7 @@ const Header = () => {
           alt="My profile on Github"
           data-testid="profileImg"
         />
-        <MyName>Gustavo Quintans</MyName>
+        <MyName>Quintec</MyName>
       </UserContainer>
       <ButtonMenuMobile onClick={() => setMenuActive(true)}>
         <MdMenu size={30} color={'white'} />

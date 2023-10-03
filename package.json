@@ -14,14 +14,17 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.3",
+    "@mui/icons-material": "^5.14.11",
+    "@mui/material": "^5.14.11",
     "@mui/styled-engine-sc": "^5.11.0",
+    "@mui/styles": "^5.14.11",
     "axios": "^1.2.3",
     "next": "latest",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.7.1",
     "react-markdown": "^8.0.5",
+    "react-material-ui-carousel": "^3.4.2",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
     "styled-components": "^5.3.6"

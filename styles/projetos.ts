@@ -1,4 +1,5 @@
 import { Grid } from "@mui/material"
+import Carousel from "react-material-ui-carousel"
 import styled from "styled-components"
 
 const HomeContainer = styled.section`
@@ -22,7 +23,12 @@ const GridProject = styled(Grid)`
  }
 `
 
+const Carousels = styled(Carousel)`
+ width: 100%;
+`
+
 export {
   GridProject,
-  HomeContainer
+  HomeContainer,
+  Carousels
 }
