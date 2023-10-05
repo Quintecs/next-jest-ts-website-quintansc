@@ -8,4 +8,7 @@ import PngcontactIcon from "../../public/contactIcon.png";
 import Pngnode from "../../public/node.png";
 import Webptrello from "../../public/trello.webp";
 import Pngtsnode from "../../public/tsnode.png";
-export { HomeContent, IconCode, Pngskills, Pngprojects, PngcontactImage, PngcontactIcon, Webptrello, Pngnode, Pngtsnode }
+
+import Pngproject1 from "../../public/project1.png";
+import Pngproject2 from "../../public/project2.png";
+export { HomeContent, IconCode, Pngskills, Pngprojects, PngcontactImage, PngcontactIcon, Webptrello, Pngnode, Pngtsnode, Pngproject1, Pngproject2}

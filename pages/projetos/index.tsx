@@ -34,7 +34,7 @@ const Projetos = ({dragAndDrop, apiDragAndDrop, cleanApi}: any) => {
 
       <ContainerCustom maxWidth={false}>
         <GridContainer style={{ textAlign: 'center' }}>
-          <ImageCustom src={PngcontactIcon} style={{ width: '375px', height: '375px'}} alt="" width={62} height={62} />
+          <ImageCustom src={PngcontactIcon} alt="" width={62} height={62} />
           <h1>Entre em contato</h1>
           <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
           <GridProject container>

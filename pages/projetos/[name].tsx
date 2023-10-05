@@ -5,6 +5,7 @@ import { Container } from '@mui/material';
 import { Carousels } from '@/styles/projetos';
 import ImageCustom from '@/components/ImageComponent';
 import { obj as newProject } from 'src/mock/git';
+import { Pngproject, Pngproject1, Pngproject2 } from 'src/images';
 
 export async function getStaticProps({ params }: any) {
     const project = await getRepository(`${params.name}`)
@@ -41,8 +42,8 @@ const Projeto = (props: any) => {
             </Container>
 
             <Carousels>
-                <ImageCustom src={'/project1.png'} alt='' width={1980} height={500} priority/>
-                <ImageCustom src={'/project2.png'} alt='' width={1980} height={500} priority/>
+                <ImageCustom src={Pngproject1} alt='' width={1980} heigth={500} priority/>
+                <ImageCustom src={Pngproject2} alt='' width={1980} heigth={500} priority/>
             </Carousels>
             
             <Container>
