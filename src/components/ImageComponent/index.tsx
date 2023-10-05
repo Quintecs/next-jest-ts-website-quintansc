@@ -1,7 +1,6 @@
 import { ImageComponent } from "./style";
 
 const ImageCustom = (props: any) => {
-    console.log(props)
     return( props.widh && props.heigt && props.src !as string ? 
         <ImageComponent {...props} /> : 
         <img 
