@@ -1,9 +1,10 @@
-import { ContainerCustom, GridContainer } from "../../styles/global";
-import { GridProject } from '@/styles/projetos';
 import Head from "next/head";
-import CardProject from "@/components/CardProject";
 import { getRepository } from "src/api";
+import { GridProject } from '@/styles/projetos';
+import CardProject from "@/components/CardProject";
 import ImageCustom from "@/components/ImageComponent";
+import { ContainerCustom, GridContainer } from "../../styles/global";
+import { PngcontactIcon, Webptrello, Pngnode, Pngtsnode } from '../../src/images'
 
 export async function getStaticProps() {
   const dragAndDrop = await getRepository('drag-and-drop')
@@ -33,22 +34,22 @@ const Projetos = ({dragAndDrop, apiDragAndDrop, cleanApi}: any) => {
 
       <ContainerCustom maxWidth={false}>
         <GridContainer style={{ textAlign: 'center' }}>
-          <ImageCustom src='/contactIcon.png' alt="" width={62} height={62} />
+          <ImageCustom src={PngcontactIcon} alt="" width={62} height={62} />
           <h1>Entre em contato</h1>
           <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
           <GridProject container>
             <CardProject
-              src='/trello.webp'
+              src={Webptrello}
               project={dragAndDrop}
               flag="front"
             />
             <CardProject
-              src='/node.png'
+              src={Pngnode}
               project={apiDragAndDrop}
               flag="back"
             />
             <CardProject
-              src={'/tsnode.png'}
+              src={Pngtsnode}
               project={cleanApi}
               flag="back"
             />

@@ -4,24 +4,23 @@ import { getRepository } from 'src/api';
 import { Container } from '@mui/material';
 import { Carousels } from '@/styles/projetos';
 import ImageCustom from '@/components/ImageComponent';
+import { obj as newProject } from 'src/mock/git';
 
 export async function getStaticProps({ params }: any) {
     const project = await getRepository(`${params.name}`)
     return {
         props: {
-            project
-        },
+            project: project ? project : newProject
+        }
     }
 }
 
 export async function getStaticPaths() {
   return {
     paths: [
-        '/projetos/drag-and-drop',
-        '/projetos/Clean-api',
-        '/projetos/Api-Simples'
+        '/projetos/drag-and-drop'
     ],
-    fallback: true,
+    fallback: false,
   }
 }
 
@@ -30,7 +29,7 @@ const Projeto = (props: any) => {
     const criado = new Date(props.project.created_at)
 
     if (router.isFallback) {
-        <h1>Data is loading</h1>;
+        return (<h1>Data is loading</h1>)
     }
 
     return (
