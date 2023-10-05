@@ -41,7 +41,7 @@ const Projeto = (props: any) => {
                 <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC </p>        
             </Container>
 
-            <Carousels>
+            <Carousels swipe autoPlay cycleNavigation>
                 <ImageCustom src={Pngproject1} alt='' width={1980} heigth={500} priority/>
                 <ImageCustom src={Pngproject2} alt='' width={1980} heigth={500} priority/>
             </Carousels>
