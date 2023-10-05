@@ -18,7 +18,9 @@ export async function getStaticProps({ params }: any) {
 export async function getStaticPaths() {
   return {
     paths: [
-        '/projetos/drag-and-drop'
+        '/projetos/drag-and-drop',
+        '/projetos/Api-Simples',
+        '/projetos/Clean-API'
     ],
     fallback: false,
   }
@@ -27,8 +29,7 @@ export async function getStaticPaths() {
 const Projeto = (props: any) => {
     const router = useRouter();
     const criado = new Date(props.project.created_at)
-
-    if (router.isFallback) {
+        if (router.isFallback) {
         return (<h1>Data is loading</h1>)
     }
 
