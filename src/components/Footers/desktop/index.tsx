@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
 import Link from "next/link";
-import SocialIconsComponent from "@/components/Lateral";
+import SocialIconsComponent from "@/components/Laterals";
 import { GridNormal } from "../style";
 
 const DesktopFooter = (): React.ReactElement => {

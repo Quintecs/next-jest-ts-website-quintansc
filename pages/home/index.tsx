@@ -4,10 +4,10 @@ import { ContainerCustom, GridContainer } from "../../styles/global";
 import { Button, Grid } from "@mui/material";
 import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs, BsChat } from "../../src/utils/icons";
 import { useState } from 'react';
-import UserComponent from "@/components/UserComponent";
-import CardLanguage from "@/components/CardLanguage";
+import UserComponent from "@/components/UserComponents";
+import CardLanguage from "@/components/CardLanguages";
 import ImageCustom from "@/components/ImageComponent";
-import Project from "@/components/Project";
+import Project from "@/components/Projects";
 import { userRoute } from "src/api";
 import { HomeContent, IconCode, PngcontactImage, Pngprojects, Pngskills } from "src/images";
 

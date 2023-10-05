@@ -1,4 +1,4 @@
-import LateralComponent from '../../src/components/Lateral';
+import LateralComponent from '../../src/components/Laterals';
 import { makeRender, screen } from '../../src/utils'
 
 describe('Testa o componente flutuante na esquerda da Aplicação', ()=>{

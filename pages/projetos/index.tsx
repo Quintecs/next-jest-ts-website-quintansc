@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { getRepository } from "src/api";
 import { GridProject } from '@/styles/projetos';
-import CardProject from "@/components/CardProject";
+import CardProject from "@/components/CardProjects";
 import ImageCustom from "@/components/ImageComponent";
 import { ContainerCustom, GridContainer } from "../../styles/global";
 import { PngcontactIcon, Webptrello, Pngnode, Pngtsnode } from '../../src/images'

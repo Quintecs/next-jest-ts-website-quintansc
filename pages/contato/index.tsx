@@ -3,7 +3,7 @@ import { GridItemContact } from "../../styles/contato";
 import { Button, FormGroup, Grid } from "@mui/material";
 import Head from "next/head";
 import { AiOutlineUser, BsTelephone, HiOutlineMail, RiSendPlaneFill } from "../../src/utils/icons";
-import { IconTextField } from "@/components/IconTextField";
+import { IconTextField } from "@/components/IconTextFields";
 import ImageCustom from "@/components/ImageComponent";
 
 const Contato = () => {

@@ -1,4 +1,4 @@
-import Flag from "../Flags"
+import Flag from "../Flag"
 import { CardProjectContainer, FlagsContainer } from "./style";
 import ImageCustom from "../ImageComponent";
 

@@ -3,7 +3,7 @@ import { MdMenu, MdHome, MdGridView, MdContactSupport } from '../../utils/icons'
 
 import { MyName, ProfileImage, UserContainer, Menu, ButtonMenuMobile, ButtonHeader, SelectedLinkMenu, Headers } from './style'
 import { Box, Divider, Drawer } from '@mui/material';
-import ListLink from '../ListLink';
+import ListLink from '../ListLinks';
 import { Container } from '@mui/system';
 import Link from 'next/link';
 import { useRouter } from 'next/router';

@@ -1,4 +1,4 @@
-import Header from '../../src/components/Header';
+import Header from '../../src/components/Headers';
 import { makeRender, screen } from '../../src/utils'
 describe('Testando o Header da aplicação', ()=>{
     it('Verificando se o Header está sendo renderizado', ()=>{

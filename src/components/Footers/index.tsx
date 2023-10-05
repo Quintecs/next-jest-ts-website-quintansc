@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import Link from "next/link";
-import SocialIconsComponent from "../Lateral";
+import SocialIconsComponent from "../Laterals";
 import { GridNormal } from "./style";
 
 const Footer = (): React.ReactElement => {
