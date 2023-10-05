@@ -5,7 +5,7 @@ import { Container } from '@mui/material';
 import { Carousels } from '@/styles/projetos';
 import ImageCustom from '@/components/ImageComponent';
 import { obj as newProject } from 'src/mock/git';
-import { Pngproject, Pngproject1, Pngproject2 } from 'src/images';
+import { Pngproject1, Pngproject2 } from 'src/images';
 
 export async function getStaticProps({ params }: any) {
     const project = await getRepository(`${params.name}`)
