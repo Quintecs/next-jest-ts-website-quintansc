@@ -1,10 +1,10 @@
 import { ContainerCustom, GridContainer } from "../../styles/global";
 import { GridItemContact } from "../../styles/contato";
 import { Button, FormGroup, Grid } from "@mui/material";
-import Image from "next/image";
 import Head from "next/head";
 import { AiOutlineUser, BsTelephone, HiOutlineMail, RiSendPlaneFill } from "../../src/utils/icons";
-import { IconTextField } from "src/components/IconTextField";
+import { IconTextField } from "@/components/IconTextField";
+import ImageCustom from "@/components/ImageComponent";
 
 const Contato = () => {
     return (
@@ -21,7 +21,7 @@ const Contato = () => {
 
             <ContainerCustom maxWidth={false}>
                 <GridContainer style={{ textAlign: 'center' }}>
-                    <Image src='/contactIcon.png' alt="" width={62} height={62} />
+                    <ImageCustom src='/contactIcon.png' alt="" width={62} height={62} />
                     <h1>Entre em contato</h1>
                     <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
                     <Grid container style={{ textAlign: "center", justifyContent: 'space-between', marginBottom: '100px', alignItems: 'flex-start' }}>

@@ -12,10 +12,11 @@ const ContainerCustom = styled(Container)`
   }
   @media (max-width: 800px) {
     padding: 0 !important;
-  }
+  } 
 `
 
 const GridContainer = styled(Grid)`
+  margin-bottom: 100px;
   flex-direction: column;
  @media (min-width: 800px) {
   flex-direction: initial;

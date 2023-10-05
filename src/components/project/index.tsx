@@ -1,14 +1,14 @@
 import { Container, Grid } from '@mui/material'
-import Image from 'next/image'
 import { HiOutlineArrowSmRight } from '../../utils/icons'
 import { ButtonFlag, ButtonLink, FragContainer, GridContainerLinks, Title } from './style'
 import Link from 'next/link'
+import ImageCustom from '../ImageComponent'
 
 const Project = (props: ProjectComponent)=>{
     const { title, description, urlImage, flags, projectUrl } = props;
     return (
         <FragContainer>
-            <Image src={urlImage} width={1600} height={375} alt={'project'}/>
+            <ImageCustom src={urlImage} width={1600} height={375} alt={'project'}/>
             <Container>
                 <Grid  container>
                     <Grid item lg={6}>

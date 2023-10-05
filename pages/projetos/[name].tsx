@@ -2,8 +2,8 @@ import { useRouter } from 'next/router';
 import { getRepository } from 'src/api';
 
 import { Container } from '@mui/material';
-import Image from 'next/image';
 import { Carousels } from '@/styles/projetos';
+import ImageCustom from '@/components/ImageComponent';
 
 export async function getStaticProps({ params }: any) {
     const project = await getRepository(`${params.name}`)
@@ -29,6 +29,10 @@ const Projeto = (props: any) => {
     const router = useRouter();
     const criado = new Date(props.project.created_at)
 
+    if (router.isFallback) {
+        <h1>Data is loading</h1>;
+    }
+
     return (
         <>
             <Container>
@@ -37,8 +41,8 @@ const Projeto = (props: any) => {
             </Container>
 
             <Carousels>
-                <Image src={'/project1.png'} alt='' width={1980} height={500}/>
-                <Image src={'/project2.png'} alt='' width={1980} height={500}/>
+                <ImageCustom src={'/project1.png'} alt='' width={1980} height={500} priority/>
+                <ImageCustom src={'/project2.png'} alt='' width={1980} height={500} priority/>
             </Carousels>
             
             <Container>

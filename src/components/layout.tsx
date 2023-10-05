@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Footer from './footer';
 import FooterDesktop from './footer/desktop';
-import Header from './header';
+import Header from './Header';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 

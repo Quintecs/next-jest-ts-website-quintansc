@@ -4,11 +4,12 @@ import { ContainerCustom, GridContainer } from "../../styles/global";
 import { Button, Grid } from "@mui/material";
 import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs, BsChat } from "../../src/utils/icons";
 import { useState } from 'react';
-import UserComponent from "@/components/userComponent";
+import UserComponent from "@/components/UserComponent";
 import CardLanguage from "@/components/CardLanguage";
-import Image from "next/image";
-import Project from "../../src/components/project";
+import ImageCustom from "@/components/ImageComponent";
+import Project from "@/components/Project";
 import { userRoute } from "src/api";
+import { HomeContent, IconCode, PngcontactImage, Pngprojects, Pngskills } from "src/images";
 
 const Home = ({ gitUser }: any) => {
   const [user] = useState(gitUser? gitUser : {
@@ -24,7 +25,6 @@ const Home = ({ gitUser }: any) => {
       <Head>
         <title>Home | Quintec</title>
         <link rel="icon" href="/desenvolvedor1.ico" />
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Um portifólio vasto com diversas referências para quem é Desenvolvedor Front-End" />
         <meta name="keywords" content="Desenvolvedor,Programador,frontend,Front-end,JS,Portifólio,desenvolvimento,referencias,design" />
@@ -35,7 +35,7 @@ const Home = ({ gitUser }: any) => {
         <GridContainer container>
           <GridHeadPageContent item={true} xs={6}>
             <div>
-              <img src={'/iconCode.png'} height={40} alt={"imagem content"} />
+              <ImageCustom src={IconCode} widh={40} heigt={40} alt={"imagem content"} priority />
               <Grid item={true} style={{ marginLeft: '25px', lineHeight: '9px' }}>
                 <h3 style={{ fontFamily: 'Public Sans ', color: '#999ED7' }}>Hello World /&gt; </h3>
                 <p> Meu nome é Gustavo Quintans 👋</p>
@@ -50,7 +50,7 @@ const Home = ({ gitUser }: any) => {
 
           </GridHeadPageContent>
           <ImageGrid item={true} xs={6}>
-            <img src={'/homeContent.png'} alt={"imagem content"} />
+            <ImageCustom src={HomeContent} alt={"imagem content"}/>
           </ImageGrid>
 
            <BtnSeeMore variant="text" endIcon={<HiOutlineArrowDown color="#10BB83" />}>
@@ -64,7 +64,7 @@ const Home = ({ gitUser }: any) => {
           <p>Specialist in ReactJS and NodeJs</p>
         </InfosContainer>
         <InfosContainer>
-          <img src="/skills.png" alt="My skills"></img>
+          <ImageCustom src={Pngskills} alt="My skills"/>
           <h2>Minhas Habilidades</h2>
           <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
           <Grid container style={{ justifyContent: 'space-between' }} >
@@ -106,7 +106,7 @@ const Home = ({ gitUser }: any) => {
           </Grid>
         </InfosContainer>
         <InfosContainer>
-          <Image src="/projects.png" width={625} height={60} alt="My projects"></Image>
+          <ImageCustom src={Pngprojects} width={625} height={60} alt="My projects"/>
           <h2>Projetos Selecionados</h2>
           <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
         </InfosContainer>
@@ -127,7 +127,7 @@ const Home = ({ gitUser }: any) => {
         />
 
         <ContactContainer>
-           <Image src="/contactImage.png" width={625} height={95} alt="Contact me"></Image>
+           <ImageCustom src={PngcontactImage} width={625} height={95} alt="Contact me"/>
            <h2>Entre em contato</h2>
            <p>🤟 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
            <Button variant="outlined" color="inherit" startIcon={<BsChat />} style={{ marginTop: '20px', padding: '15px 90px'} }> Get In Touch</Button>

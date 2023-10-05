@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState } from "react";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import SocialIconsComponent from "../lateral";
+import SocialIconsComponent from "../Lateral";
 import { ContentUserComponent, TextUserComponent, DescriptionUserComponent, ImageUserComponent, StyledDiv } from "./styles";
 
 const UserComponent = ({user}: UserComponent)=>{
