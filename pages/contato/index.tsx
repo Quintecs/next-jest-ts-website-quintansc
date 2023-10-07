@@ -5,6 +5,7 @@ import Head from "next/head";
 import { AiOutlineUser, BsTelephone, HiOutlineMail, RiSendPlaneFill } from "../../src/utils/icons";
 import { IconTextField } from "@/components/IconTextFields";
 import ImageCustom from "@/components/ImageComponent";
+import { ContactIcon } from "src/images";
 
 const Contato = () => {
     return (
@@ -21,7 +22,7 @@ const Contato = () => {
 
             <ContainerCustom maxWidth={false}>
                 <GridContainer style={{ textAlign: 'center' }}>
-                    <ImageCustom src='/contactIcon.png' alt="" width={62} height={62} />
+                    <ImageCustom src={ContactIcon} alt="" width={62} height={62} />
                     <h1>Entre em contato</h1>
                     <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
                     <Grid container style={{ textAlign: "center", justifyContent: 'space-between', marginBottom: '100px', alignItems: 'flex-start' }}>
