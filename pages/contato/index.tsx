@@ -5,7 +5,7 @@ import Head from "next/head";
 import { AiOutlineUser, BsTelephone, HiOutlineMail, RiSendPlaneFill } from "../../src/utils/icons";
 import { IconTextField } from "@/components/IconTextFields";
 import ImageCustom from "@/components/ImageComponent";
-import { ContactIcon } from "src/images";
+import { ContactIcon } from "../../src/images";
 
 const Contato = () => {
     return (
