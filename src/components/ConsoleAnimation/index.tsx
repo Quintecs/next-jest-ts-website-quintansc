@@ -4,3 +4,5 @@ const ConsoleAnimation = ()=>{
         <p>follow me on social media</p>
     </>
 }
+
+export default ConsoleAnimation
