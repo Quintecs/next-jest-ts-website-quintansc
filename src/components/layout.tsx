@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Footer from './Footers';
 import FooterDesktop from './Footers/desktop';
 import Header from './Headers';
+import { Analytics } from '@vercel/analytics/react';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -36,6 +37,7 @@ export default function Layout ({children}: any){
         <ThemeProvider theme={theme}>
             <Header />
             <main style={{ overflow: "hidden"}} data-testid={'layout'}>{children}</main>
+            <Analytics />
             {mobile? <Footer/>: <FooterDesktop/>}
         </ThemeProvider>
     )
