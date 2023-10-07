@@ -30,8 +30,8 @@ const Contato = () => {
                             <p>Iremos entrar em contato assim que possível.</p>
                             <FormGroup>
                                 <IconTextField color="info" variant="outlined" label="Seu nome" iconEnd={<AiOutlineUser color="#F4F4F4"/>} />
-                                <IconTextField color="info" borderColor="info"  label="Digite seu e-mail" iconEnd={<HiOutlineMail color="#F4F4F4"/>} />
-                                <IconTextField color="info" borderColor="info"  label="Número com DDD" iconEnd={<BsTelephone color="#F4F4F4"/>} />
+                                <IconTextField color="info" label="Digite seu e-mail" iconEnd={<HiOutlineMail color="#F4F4F4"/>} />
+                                <IconTextField color="info" label="Número com DDD" iconEnd={<BsTelephone color="#F4F4F4"/>} />
                                 <Button startIcon={<RiSendPlaneFill />} variant="contained"> Enviar solicitação</Button>
                             </FormGroup>
                         </GridItemContact>

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 const makeRender = (children: JSX.Element)=>{
     render(
         <>
@@ -9,5 +9,5 @@ const makeRender = (children: JSX.Element)=>{
 
 export {
     makeRender,
-    screen
+    screen, fireEvent
 }

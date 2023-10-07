@@ -1,7 +1,9 @@
 import { makeRender, screen } from '../../src/utils'
 import Home from '../../pages/home';
 
-jest.mock('../../src/components/project')
+jest.mock('../../src/components/Projects')
+jest.mock('../../src/components/Static')
+
 
 describe('Testa a Home da Aplicação', ()=>{
     it('testando a Home tem esse Texto', () => {

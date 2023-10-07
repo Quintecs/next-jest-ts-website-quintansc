@@ -1,16 +1,15 @@
 import { useState } from 'react'
-import { MdMenu, MdHome, MdGridView, MdContactSupport } from '../../utils/icons';
-
-import { MyName, ProfileImage, UserContainer, Menu, ButtonMenuMobile, ButtonHeader, SelectedLinkMenu, Headers } from './style'
 import { Box, Divider, Drawer } from '@mui/material';
-import ListLink from '../ListLinks';
 import { Container } from '@mui/system';
+import ListLink from '../ListLinks';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
+import { MdMenu, MdHome, MdGridView, MdContactSupport } from '../../utils/icons';
+import { MyName, ProfileImage, UserContainer, Menu, ButtonMenuMobile, ButtonHeader, SelectedLinkMenu, Headers } from './style'
 
 const Header = () => {
   const [menuActive, setMenuActive] = useState(false)
-  const { pathname } = useRouter()
+  const pathname = usePathname()
   return (
     <Headers data-testid="headerContainer">
       <Container maxWidth={false} style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -22,12 +21,12 @@ const Header = () => {
         />
         <MyName>Quintec</MyName>
       </UserContainer>
-      <ButtonMenuMobile onClick={() => setMenuActive(true)}>
+      <ButtonMenuMobile data-testid="btnMobileMenu" onClick={() => setMenuActive(true)}>
         <MdMenu size={30} color={'white'} />
       </ButtonMenuMobile>
 
-      <Drawer anchor={"right"} open={menuActive} onClose={() => setMenuActive(false)}>
-        <Box
+      <Drawer data-testid='drawer' anchor={"right"} open={menuActive} onClose={() => setMenuActive(false)}>
+        <Box data-testid="box"
           sx={{ width: 250 }}
           role="presentation"
           onClick={() => setMenuActive(false)}

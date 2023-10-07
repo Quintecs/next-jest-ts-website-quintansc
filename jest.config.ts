@@ -10,6 +10,12 @@ const customJestConfig = {
     '^@/components/(.*)$': '<rootDir>/components/$1',
     '^@/pages/(.*)$': '<rootDir>/pages/$1',
   },
+  coveragePathIgnorePatterns: [
+    "node_modules",
+    "<rootDir>/src/images",
+    "<rootDir>/src/mock",
+    "<rootDir>/src/api"
+  ],
   testEnvironment: 'jest-environment-jsdom',
 }
 

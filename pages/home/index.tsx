@@ -8,8 +8,8 @@ import UserComponent from "@/components/UserComponents";
 import CardLanguage from "@/components/CardLanguages";
 import ImageCustom from "@/components/ImageComponent";
 import Project from "@/components/Projects";
-import { userRoute } from "src/api";
-import { HomeContent, IconCode, PngcontactImage, Pngprojects, Pngskills } from "src/images";
+import { userRoute } from "../../src/api";
+import { HomeContent, IconCode, PngcontactImage, Pngprojects, Pngskills } from "../../src/images";
 
 const Home = ({ gitUser }: any) => {
   const [user] = useState(gitUser? gitUser : {
@@ -138,12 +138,3 @@ const Home = ({ gitUser }: any) => {
 }
 
 export default Home;
-
-export async function getStaticProps() {
-  const gitUser = await userRoute()
-  return {
-    props: {
-      gitUser,
-    },
-  }
-}

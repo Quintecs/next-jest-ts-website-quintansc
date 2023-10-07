@@ -5,7 +5,7 @@ import { GridNormal } from "./style";
 
 const Footer = (): React.ReactElement => {
   return (
-    <footer data-testid="footerContainer">
+    <footer data-testid="footerContainerMobile">
       <Grid container spacing={4} margin={"0 0 0 -30px"} padding={"20px"}>
         <GridNormal container xs={10} key={Math.random()}>
           <Grid item={true} xs={3}><Link href={'/home'}>Inicio</Link></Grid>

@@ -6,7 +6,7 @@ import { GridNormal } from "../style";
 
 const DesktopFooter = (): React.ReactElement => {
   return (
-    <footer>
+    <footer data-testid='footerContainerDesktop'>
       <Container maxWidth={false}>
         <Grid container spacing={4} margin={"0 0 0 -30px"} style={{ justifyContent: "center"}} padding={"20px"}>
           <Grid item={true} xs={9.5} style={{ alignItems: 'center', display: 'flex'}}><strong>Quintec</strong></Grid>
