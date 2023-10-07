@@ -12,5 +12,5 @@ import Pngtsnode from "../../public/tsnode.png";
 import Pngproject1 from "../../public/project1.png";
 import Pngproject2 from "../../public/project2.png";
 
-import ContactIcon from '../contactIcon.png';
+import ContactIcon from '../../public/contactIcon.png';
 export { HomeContent, IconCode, Pngskills, Pngprojects, PngcontactImage, PngcontactIcon, Webptrello, Pngnode, Pngtsnode, Pngproject1, Pngproject2, ContactIcon }
