@@ -31,7 +31,7 @@ const UserComponent = ({user}: UserComponent)=>{
             </ContentUserComponent>
 
             <TextUserComponent>
-                <Grid item xs={9} style={{ marginTop: '10px', zIndex: '0'}}>
+                <Grid item xs={9} md={12} style={{ marginTop: '10px', zIndex: '0'}}>
                     <img src="/code1.png" alt="" height='70px'></img>
                 </Grid>
                  <Grid item={true} xs={3}><SocialIconsComponent theme={{ backgroundColor: "#1D1D1F", color: "#DAD9DE", size: "67px", justify: 'space-between', icon: 29}} /></Grid> <br></br>

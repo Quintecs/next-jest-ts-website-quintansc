@@ -54,8 +54,8 @@ const Home = ({ gitUser }: any) => {
           </ImageGrid>
 
            <BtnSeeMore variant="text" endIcon={<HiOutlineArrowDown color="#10BB83" />}>
-                Veja mais
-              </BtnSeeMore>
+              Veja mais
+            </BtnSeeMore>
           <Grid item={true} lg={12}> <UserComponent user={user} /></Grid>
         </GridContainer>
         <InfosContainer>
@@ -138,3 +138,12 @@ const Home = ({ gitUser }: any) => {
 }
 
 export default Home;
+
+export async function getStaticProps() {
+  const gitUser = await userRoute()
+  return {
+    props: {
+      gitUser,
+    },
+  }
+}
