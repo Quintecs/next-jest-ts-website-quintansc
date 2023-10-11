@@ -6,6 +6,7 @@ import { AiOutlineUser, BsTelephone, HiOutlineMail, RiSendPlaneFill } from "../.
 import { IconTextField } from "@/components/IconTextFields";
 import ImageCustom from "@/components/ImageComponent";
 import { ContactIcon } from "../../src/images";
+import Link from 'next/link';
 
 const Contato = () => {
     return (
@@ -39,7 +40,7 @@ const Contato = () => {
                         <GridItemContact item lg={5}>
                             <h2>Contato via Whatsapp</h2>
                             <p>Entre em contato diretamente comigo via Whatsapp</p>
-                            <Button fullWidth startIcon={<RiSendPlaneFill/>} color="secondary" variant="contained"> Enviar Mensagem </Button>
+                            <Button fullWidth startIcon={<RiSendPlaneFill/>} color="secondary" variant="contained"> <Link href="https://wa.me/5511996394440" target="_blank"> Enviar Mensagem </Link></Button>
                             <p>Horário de Atendimento:</p>
                             <p>Segunda a sexta das 8:00 às 19:00</p>
                             <p>Sábado e domigo das 10:00 às 16:00</p>

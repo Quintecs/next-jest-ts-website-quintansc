@@ -10,6 +10,7 @@ import ImageCustom from "@/components/ImageComponent";
 import Project from "@/components/Projects";
 import { userRoute } from "../../src/api";
 import { HomeContent, IconCode, PngcontactImage, Pngprojects, Pngskills } from "../../src/images";
+import Link from "next/link";
 
 const Home = ({ gitUser }: any) => {
   const [user] = useState(gitUser? gitUser : {
@@ -130,7 +131,7 @@ const Home = ({ gitUser }: any) => {
            <ImageCustom src={PngcontactImage} width={625} height={95} alt="Contact me"/>
            <h2>Entre em contato</h2>
            <p>🤟 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
-           <Button variant="outlined" color="inherit" startIcon={<BsChat />} style={{ marginTop: '20px', padding: '15px 90px'} }> Get In Touch</Button>
+           <Button variant="outlined" color="inherit" startIcon={<BsChat />} style={{ marginTop: '20px', padding: '15px 90px'} }> <Link href={'/contato'}>Entre em Contato</Link> </Button>
         </ContactContainer>
       </ContainerCustom>
     </>
