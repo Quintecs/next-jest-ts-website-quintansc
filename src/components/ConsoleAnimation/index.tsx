@@ -1,4 +1,4 @@
-;import { AnimationDiv, CircleGreen, CircleRed, CircleYellow, ConsoleContainer } from "./style";
+import { AnimationDiv, CircleGreen, CircleRed, CircleYellow, ConsoleContainer } from "./style";
 
 const ConsoleAnimation = ()=>{
     return <ConsoleContainer>
