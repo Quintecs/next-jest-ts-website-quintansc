@@ -4,6 +4,7 @@ import { useState } from "react";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import SocialIconsComponent from "../Laterals";
 import { ContentUserComponent, TextUserComponent, DescriptionUserComponent, ImageUserComponent, StyledDiv } from "./styles";
+import ConsoleAnimation from "../ConsoleAnimation";
 
 const UserComponent = ({user}: UserComponent)=>{
     const [userData] = useState(user);
@@ -32,7 +33,7 @@ const UserComponent = ({user}: UserComponent)=>{
 
             <TextUserComponent>
                 <Grid item xs={9} md={12} style={{ marginTop: '10px', zIndex: '0'}}>
-                    <img src="/code1.png" alt="" height='70px'></img>
+                    <ConsoleAnimation />
                 </Grid>
                  <Grid item={true} xs={3}><SocialIconsComponent theme={{ backgroundColor: "#1D1D1F", color: "#DAD9DE", size: "67px", justify: 'space-between', icon: 29}} /></Grid> <br></br>
             </TextUserComponent>
