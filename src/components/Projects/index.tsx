@@ -1,6 +1,6 @@
 import { Container, Grid } from '@mui/material'
 import { HiOutlineArrowSmRight } from '../../utils/icons'
-import { ButtonFlag, ButtonLink, FragContainer, GridContainerLinks, Title } from './style'
+import { ButtonFlag, ButtonLink, FragContainer, GridContainerLinks, Title, PStyled } from './style'
 import Link from 'next/link'
 import { ImageComponent } from '../ImageComponent/style'
 
@@ -13,7 +13,7 @@ const Project = (props: ProjectComponent)=>{
                 <Grid  container>
                     <Grid item lg={6}>
                         <Title>{title}</Title>
-                        <p>{description}</p>
+                        <PStyled>{description}</PStyled>
                     </Grid>
                     <GridContainerLinks item lg={6}>
                         <Grid item>

@@ -8,7 +8,7 @@ const FragContainer = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     .MuiContainer-root {
-        @media (min-width: 1200px) {
+        @media (min-width: 1300px) {
             max-width: 1450px;
         }
     }
@@ -17,6 +17,15 @@ const FragContainer = styled.div`
 const Title = styled.h2`
     font-family: 'Inter';
 `
+
+const PStyled = styled.p`
+    line-break: anywhere;
+    @media (min-width: 1300px) {
+        min-width: 1128px;
+    }
+`;
+
+
 const ButtonFlag = styled(Button)`
     border-color: #DAD9DE;
     color: #DAD9DE;
@@ -42,5 +51,6 @@ export {
     Title,
     ButtonLink,
     FragContainer,
-    GridContainerLinks
+    GridContainerLinks,
+    PStyled
 }

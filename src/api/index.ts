@@ -10,7 +10,13 @@ const getRepository = async (project: string): Promise<AxiosResponse> => {
    return data.data
 }
 
+
+const getRepositories = async (): Promise<AxiosResponse> => {
+   let data = await axios.get(`https://api.github.com/users/quintansc/repos`).then(res => res)
+   return data.data
+}
 export {
    getRepository,
-   userRoute
+   userRoute,
+   getRepositories
 };

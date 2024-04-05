@@ -2,17 +2,21 @@ import Head from "next/head";
 import { InfosContainer, BtnSeeMore, TitleH2, GridHeadPageContent, ImageGrid, ContactContainer } from "../../styles/home";
 import { ContainerCustom, GridContainer } from "../../styles/global";
 import { Button, Grid } from "@mui/material";
-import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs, BsChat } from "../../src/utils/icons";
-import { useState } from 'react';
+import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs, BsChat, SiAngularjs} from "../../src/utils/icons";
+import { useEffect, useState } from 'react';
 import UserComponent from "@/components/UserComponents";
 import CardLanguage from "@/components/CardLanguages";
 import ImageCustom from "@/components/ImageComponent";
 import Project from "@/components/Projects";
-import { userRoute } from "../../src/api";
+import { getRepositories, userRoute } from "../../src/api";
 import { HomeContent, IconCode, PngcontactImage, Pngprojects, Pngskills } from "../../src/images";
 import Link from "next/link";
 
-const Home = ({ gitUser }: any) => {
+const Home = ({ gitUser, repositories }: any) => {
+  function isRepoCorrect(other: any) {
+    return repos.find((e: any)=> e.id == other)
+  }
+
   const [user] = useState(gitUser? gitUser : {
     created_at: '',
     avatar_url: '',
@@ -21,6 +25,20 @@ const Home = ({ gitUser }: any) => {
     bio: 'string',
     location: 'any'
   });
+
+  const [repos] = useState(repositories)
+
+  const repositorys = {
+    repo1: isRepoCorrect(338077631),
+    repo2: isRepoCorrect(747573573),
+    repo3: isRepoCorrect(742617230),
+  }
+
+  useEffect(()=>{
+    console.log(isRepoCorrect(338077631))
+    console.log(repositories)
+  }, [])
+
   return (
     <>
       <Head>
@@ -42,10 +60,9 @@ const Home = ({ gitUser }: any) => {
                 <p> Meu nome é Gustavo Quintans 👋</p>
               </Grid>
             </div>
-
             <div>
               <TitleH2>Front-end DEV</TitleH2>
-              <p style={{ fontFamily: 'Inter', fontWeight: '600', fontSize: '14px' }}>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of <a href="#" style={{ color: '#999ED7' }}> classical Latin literature </a> from 45 BC, making it over 2000 years old.</p>
+              <p style={{ fontFamily: 'Inter', fontWeight: '600', fontSize: '16px' }}>Desenvolvimento de Front-end ágil e <a href="#" style={{ color: '#999ED7' }}> inovador</a> para cativar seus usuários e <a href="#" style={{ color: '#999ED7' }}> impulsionar </a> sua presença online.</p>
              
             </div>
 
@@ -61,13 +78,13 @@ const Home = ({ gitUser }: any) => {
         </GridContainer>
         <InfosContainer>
           <h2>Hello World</h2>
-          <p>You're welcome to my profile. my name is Gustavo Quintans, I'm Javascript and Typescript Developer.</p>
-          <p>Specialist in ReactJS and NodeJs</p>
+          <p>O primeiro passo para explorar o universo da programação web. Deixe-nos guiá-lo em sua jornada de desenvolvimento com base no Meu conhecimento.</p>
+          <p>Sou Especialista em Javascript e Typescript</p>
         </InfosContainer>
         <InfosContainer>
           <ImageCustom src={Pngskills} alt="My skills"/>
           <h2>Minhas Habilidades</h2>
-          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
+          <p>Conheça minhas habilidades técnicas e minha experiência em desenvolvimento de front-end e outras áreas da tecnologia da informação.</p>
           <Grid container style={{ justifyContent: 'space-between' }} >
             <CardLanguage
               theme={{ colorBackgroundIcon: '#10BB83', cardBackgroundColor: '#162825', cardBackroundTitleColor: '#3E6E66' }}
@@ -75,7 +92,7 @@ const Home = ({ gitUser }: any) => {
                 title: 'NodeJS',
                 subtitle: 'Back-end Framework',
                 subscription: 'Node Documentation',
-                textContent: 'Node.js® is an open-source, cross-platform JavaScript runtime environment.'
+                textContent: 'Node.js® é um ambiente de execução de JavaScript de código aberto e multiplataforma.'
               }}
               icon={<FaNodeJs size={65} color={'#3c873a'} />}
               link={{ link: 'https://nodejs.org/en/' }}
@@ -99,9 +116,21 @@ const Home = ({ gitUser }: any) => {
                 title: 'NextJs',
                 subtitle: 'Front-end Framework',
                 subscription: 'Next Documentation',
-                textContent: 'Next.js is a React framework for building full-stack web applications. You use React Components to build user interfaces, and Next.js for additional features and optimizations.'
+                textContent: 'Next.js é um framework React para criar aplicativos web full-stack, fornecendo recursos e otimizações extras.'
               }}
               icon={<SiNextdotjs size={65} color={'black'} />}
+              link={{ link: 'https://nextjs.org/' }}
+              key={Math.random()} />
+
+            <CardLanguage
+              theme={{ colorBackgroundIcon: '#ff2929', cardBackgroundColor: '#641c1c', cardBackroundTitleColor: '#721818', textTitleColor: '#18181A' }}
+              infos={{
+                title: 'AngularJS',
+                subtitle: 'Front-end Framework',
+                subscription: 'Angular Documentation',
+                textContent: 'AngularJS é um framework JavaScript da Google(OpenSource) para criação de aplicativos web dinâmicos e interativos.'
+              }}
+              icon={<SiAngularjs size={65} color={'black'} />}
               link={{ link: 'https://nextjs.org/' }}
               key={Math.random()} />
           </Grid>
@@ -109,19 +138,19 @@ const Home = ({ gitUser }: any) => {
         <InfosContainer>
           <ImageCustom src={Pngprojects} width={625} height={60} alt="My projects"/>
           <h2>Projetos Selecionados</h2>
-          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
+          <p>Explore alguns dos projetos que desenvolvi, demonstrando minha criatividade, habilidades técnicas e experiência em desenvolvimento front-end.</p>
         </InfosContainer>
 
         <Project 
-          title={'API de finanças'} 
-          description={`There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary`} 
+          title={repositorys.repo1.name} 
+          description={repositorys.repo1.description} 
           urlImage="/project1.png"
           flags={['Frontend', 'API', 'ReactJS']}
           projectUrl='/projetos'
         />
         <Project 
-          title={'Aplicativo de Sistemas'} 
-          description={`There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary`} 
+          title={repositorys.repo2.name} 
+          description={repositorys.repo2.description} 
           urlImage="/project2.png"
           flags={['Backend', 'API', 'Node']}
           projectUrl='/projetos'
@@ -130,7 +159,7 @@ const Home = ({ gitUser }: any) => {
         <ContactContainer>
            <ImageCustom src={PngcontactImage} width={625} height={95} alt="Contact me"/>
            <h2>Entre em contato</h2>
-           <p>🤟 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
+           <p>Estou pronto para transformar suas ideias em realidade! Não hesite em me contatar para discutir seu projeto ou apenas para dizer olá. Estou ansioso para ouvir de você!</p>
            <Button variant="outlined" color="inherit" startIcon={<BsChat />} style={{ marginTop: '20px', padding: '15px 90px'} }> <Link href={'/contato'}>Entre em Contato</Link> </Button>
         </ContactContainer>
       </ContainerCustom>
@@ -142,9 +171,11 @@ export default Home;
 
 export async function getStaticProps() {
   const gitUser = await userRoute()
+  const repositories = await getRepositories()
   return {
     props: {
       gitUser,
+      repositories
     },
   }
 }

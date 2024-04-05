@@ -7,7 +7,7 @@ const CardLanguage = ({ icon, link, infos, theme }: any) => {
       item
       sm={12}
       md={12}
-      lg={3.5}
+      lg={2.9}
       style={{ backgroundColor: theme.cardBackgroundColor }}
     >
       <Grid item xs={12}>
