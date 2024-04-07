@@ -36,7 +36,7 @@ const Projetos = ({dragAndDrop, apiDragAndDrop, cleanApi}: any) => {
         <GridContainer style={{ textAlign: 'center' }}>
           <ImageCustom src={PngcontactIcon} alt="" width={62} height={62} />
           <h1>Nossos Projetos</h1>
-          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
+          <p>Explore nossa galeria de projetos e mergulhe em uma variedade de trabalhos que abrangem desde residências particulares até projetos comerciais de grande escala. Cada empreendimento é cuidadosamente concebido para atender às necessidades específicas de nossos clientes, combinando criatividade, funcionalidade e inovação. De espaços contemporâneos a designs tradicionais, nossa equipe de profissionais talentosos se dedica a transformar visões em realidade. Deslize através das imagens e descubra como nossa paixão pelo design se manifesta em cada detalhe.</p>
           <GridProject container>
             <CardProject
               src={Webptrello}
@@ -46,6 +46,11 @@ const Projetos = ({dragAndDrop, apiDragAndDrop, cleanApi}: any) => {
             <CardProject
               src={Pngnode}
               project={apiDragAndDrop}
+              flag="back"
+            />
+            <CardProject
+              src={Pngtsnode}
+              project={cleanApi}
               flag="back"
             />
             <CardProject

@@ -159,7 +159,7 @@ const Home = ({ gitUser, repositories }: any) => {
         <ContactContainer>
            <ImageCustom src={PngcontactImage} width={625} height={95} alt="Contact me"/>
            <h2>Entre em contato</h2>
-           <p>Estou pronto para transformar suas ideias em realidade! Não hesite em me contatar para discutir seu projeto ou apenas para dizer olá. Estou ansioso para ouvir de você!</p>
+           <p>Vamos transformar suas ideias em realidade! Entre em contato para discutir seu projeto ou apenas para dizer olá. Aguardo ansiosamente para ouvir de você!</p>
            <Button variant="outlined" color="inherit" startIcon={<BsChat />} style={{ marginTop: '20px', padding: '15px 90px'} }> <Link href={'/contato'}>Entre em Contato</Link> </Button>
         </ContactContainer>
       </ContainerCustom>

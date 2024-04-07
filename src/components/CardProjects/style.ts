@@ -1,3 +1,4 @@
+import Link from "next/link"
 import styled from "styled-components"
 
 const FlagsContainer = styled.div`
@@ -9,8 +10,8 @@ const FlagsContainer = styled.div`
   }
 `
 
-const CardProjectContainer = styled.a`
-  max-width: 375px;
+const CardProjectContainer = styled(Link)`
+  max-width: 435px;
   margin: 0 10px;
 
   p{ color: #49494D; }
