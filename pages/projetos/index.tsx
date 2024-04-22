@@ -3,7 +3,7 @@ import { getRepository } from "src/api";
 import { GridProject } from '@/styles/projetos';
 import CardProject from "@/components/CardProjects";
 import ImageCustom from "@/components/ImageComponent";
-import { ContainerCustom, GridContainer } from "../../styles/global";
+import { GridContainer } from "../../styles/global";
 import { PngcontactIcon, Webptrello, Pngnode, Pngtsnode } from '../../src/images'
 
 export async function getStaticProps() {
@@ -32,35 +32,33 @@ const Projetos = ({dragAndDrop, apiDragAndDrop, cleanApi}: any) => {
         <meta name="robots" content="index, follow" />
       </Head>
 
-      <ContainerCustom maxWidth={false}>
-        <GridContainer style={{ textAlign: 'center' }}>
-          <ImageCustom src={PngcontactIcon} alt="" width={62} height={62} />
-          <h1>Nossos Projetos</h1>
-          <p>Explore nossa galeria de projetos e mergulhe em uma variedade de trabalhos que abrangem desde residências particulares até projetos comerciais de grande escala. Cada empreendimento é cuidadosamente concebido para atender às necessidades específicas de nossos clientes, combinando criatividade, funcionalidade e inovação. De espaços contemporâneos a designs tradicionais, nossa equipe de profissionais talentosos se dedica a transformar visões em realidade. Deslize através das imagens e descubra como nossa paixão pelo design se manifesta em cada detalhe.</p>
-          <GridProject container>
-            <CardProject
-              src={Webptrello}
-              project={dragAndDrop}
-              flag="front"
-            />
-            <CardProject
-              src={Pngnode}
-              project={apiDragAndDrop}
-              flag="back"
-            />
-            <CardProject
-              src={Pngtsnode}
-              project={cleanApi}
-              flag="back"
-            />
-            <CardProject
-              src={Pngtsnode}
-              project={cleanApi}
-              flag="back"
-            />
-          </GridProject>
-        </GridContainer>
-      </ContainerCustom>
+      <GridContainer style={{ textAlign: 'center' }}>
+        <ImageCustom src={PngcontactIcon} alt="" width={62} height={62} />
+        <h1>Nossos Projetos</h1>
+        <p>Explore nossa galeria de projetos e mergulhe em uma variedade de trabalhos que abrangem desde residências particulares até projetos comerciais de grande escala. Cada empreendimento é cuidadosamente concebido para atender às necessidades específicas de nossos clientes, combinando criatividade, funcionalidade e inovação. De espaços contemporâneos a designs tradicionais, nossa equipe de profissionais talentosos se dedica a transformar visões em realidade. Deslize através das imagens e descubra como nossa paixão pelo design se manifesta em cada detalhe.</p>
+        <GridProject container>
+          <CardProject
+            src={Webptrello}
+            project={dragAndDrop}
+            flag="front"
+          />
+          <CardProject
+            src={Pngnode}
+            project={apiDragAndDrop}
+            flag="back"
+          />
+          <CardProject
+            src={Pngtsnode}
+            project={cleanApi}
+            flag="back"
+          />
+          <CardProject
+            src={Pngtsnode}
+            project={cleanApi}
+            flag="back"
+          />
+        </GridProject>
+      </GridContainer>
     </>
   )
 }
