@@ -2,13 +2,21 @@ import ListLink from '../../src/components/ListLinks';
 import Header from '../../src/components/Headers';
 import { makeRender, screen, fireEvent } from '../../src/utils'
 import { MdHome } from 'react-icons/md';
-import { ButtonMenuMobile } from '@/components/Headers/style';
-
-import { Box, Divider, Drawer } from '@mui/material';
 
 jest.mock('next/router', () => ({
   usePathname: jest.fn()
 }))
+
+
+// Mock console.warn para não exibir warnings durante os testes
+beforeAll(() => {
+  jest.spyOn(console, 'warn').mockImplementation(() => {});
+  jest.spyOn(console, 'error').mockImplementation(() => {});
+});
+
+afterAll(() => {
+  jest.restoreAllMocks();
+});
 
 describe('Testando o Header da aplicação', ()=>{
     it('Verificando se o Header está sendo renderizado', ()=>{

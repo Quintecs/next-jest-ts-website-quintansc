@@ -1,6 +1,17 @@
 import Layout from '../../src/components/layout';
 import { makeRender, screen } from '../../src/utils'
 
+
+// Mock console.warn para não exibir warnings durante os testes
+beforeAll(() => {
+  jest.spyOn(console, 'warn').mockImplementation(() => {});
+  jest.spyOn(console, 'error').mockImplementation(() => {});
+});
+
+afterAll(() => {
+  jest.restoreAllMocks();
+});
+
 describe('Testa o layout da aplicacao', ()=> {
     it('testando se tem componente de layout', async () => {
         makeRender(<Layout children={<></>}/>);

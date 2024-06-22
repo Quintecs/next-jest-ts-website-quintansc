@@ -1,4 +1,5 @@
 import { Button, Grid } from "@mui/material";
+import Image from "next/image";
 import styled from "styled-components"
 
 const InfosContainer = styled.section`
@@ -79,9 +80,19 @@ const ImageGrid = styled(Grid)`
     } 
   }
 `
+
+const ContactContainerImage = styled(Image)`
+  width: 100vw;
+  height: 500px;
+  position: absolute;
+  order: 0;
+`
 const ContactContainer = styled(Grid)`
-  background-image: url('/background.png');
-  background-size: cover;
+  h2, p, img:nth-child(2){
+    position: relative;
+  }
+  display: flex;
+  gap: 20px;
   width: 100vw;
   height: 500px;
 
@@ -98,5 +109,5 @@ const ContactContainer = styled(Grid)`
 export {
   BtnSeeMore, TitleH2, GridHeadPageContent,
   InfosContainer, ImageConteiner, 
-  TextImageContainer, ButtonTextImageContainer, ImageGrid, ContactContainer
+  TextImageContainer, ButtonTextImageContainer, ImageGrid, ContactContainer, ContactContainerImage
 }

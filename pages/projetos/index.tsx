@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { getRepository } from "src/api";
+import { getRepository } from "../../src/api";
 import { GridProject } from '@/styles/projetos';
 import CardProject from "@/components/CardProjects";
 import ImageCustom from "@/components/ImageComponent";

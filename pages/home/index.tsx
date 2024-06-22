@@ -1,22 +1,24 @@
 import Head from "next/head";
-import { InfosContainer, BtnSeeMore, TitleH2, GridHeadPageContent, ImageGrid, ContactContainer } from "../../styles/home";
+import { InfosContainer, BtnSeeMore, TitleH2, GridHeadPageContent, ImageGrid, ContactContainer, ContactContainerImage } from "../../styles/home";
 import { GridContainer } from "../../styles/global";
 import { Button, Grid } from "@mui/material";
 import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs, BsChat, SiAngularjs} from "../../src/utils/icons";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import UserComponent from "@/components/UserComponents";
 import CardLanguage from "@/components/CardLanguages";
-import ImageCustom from "@/components/ImageComponent";
 import Project from "@/components/Projects";
 import { getRepositories, userRoute } from "../../src/api";
 import { HomeContent, IconCode, PngcontactImage, Pngprojects, Pngskills } from "../../src/images";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+import { ImageComponent } from "@/components/ImageComponent/style";
+
+
+  const ImageCustom = dynamic(() => import('@/components/ImageComponent'),  {
+    loading: () => <p>Loading...</p>,
+  })
 
 const Home = ({ gitUser, repositories }: any) => {
-  function isRepoCorrect(other: any) {
-    return repos.find((e: any)=> e.id == other)
-  }
-
   const [user] = useState(gitUser? gitUser : {
     created_at: '',
     avatar_url: '',
@@ -34,11 +36,16 @@ const Home = ({ gitUser, repositories }: any) => {
     repo3: isRepoCorrect(742617230),
   }
 
-  useEffect(()=>{
-    console.log(isRepoCorrect(338077631))
-    console.log(repositories)
-  }, [])
+  function isRepoCorrect(other: any) {
+    // Verifica se repos é undefined ou null e retorna false ou realiza alguma outra ação adequada
+    if (!repos) {
+      return false; // ou qualquer outra ação apropriada
+    }
 
+    // Continua com a lógica original, agora que sabemos que repos não é undefined ou null
+    return repos.find((e: any) => e.id == other);
+  }
+  
   return (
     <>
       <Head>
@@ -67,7 +74,10 @@ const Home = ({ gitUser, repositories }: any) => {
 
         </GridHeadPageContent>
         <ImageGrid item={true} xs={6}>
-          <ImageCustom src={HomeContent} alt={"imagem content"}/>
+          <picture>
+            <source srcSet={'/homeContent.png'} media="(min-width: 1024px)" ></source>
+            <ImageCustom loading="eager" src={HomeContent} alt={"imagem content"} width={489} height={404}/>
+          </picture>
         </ImageGrid>
 
           <BtnSeeMore variant="text" endIcon={<HiOutlineArrowDown color="#10BB83" />}>
@@ -156,6 +166,7 @@ const Home = ({ gitUser, repositories }: any) => {
       />
 
       <ContactContainer>
+          <ContactContainerImage src={'/background.png'} width={625} height={95} alt="Contact me"/>
           <ImageCustom src={PngcontactImage} width={625} height={95} alt="Contact me"/>
           <h2>Entre em contato</h2>
           <p>Vamos transformar suas ideias em realidade! Entre em contato para discutir seu projeto ou apenas para dizer olá. Aguardo ansiosamente para ouvir de você!</p>
