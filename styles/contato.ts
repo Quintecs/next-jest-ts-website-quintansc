@@ -23,7 +23,6 @@ const GridItemContact = styled(Grid)`
     color: #F4F4F4
   }
   p{
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;

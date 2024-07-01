@@ -6,7 +6,7 @@ import { Analytics } from '@vercel/analytics/react';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-export default function Layout ({children}: any){
+export default function Layout ({children, className}: any){
     const [mobile, setMobile] = useState<boolean>(false)
     useEffect(()=>{
         if(window.innerWidth < 800){
@@ -35,10 +35,10 @@ export default function Layout ({children}: any){
     });
     return (
         <ThemeProvider theme={theme}>
-            <Header />
-            <main style={{ overflow: "hidden"}} data-testid={'layout'}>{children}</main>
+            <Header className={className}/>
+            <main className={className} style={{ overflow: "hidden"}} data-testid={'layout'}>{children}</main>
             <Analytics />
-            {mobile? <Footer/>: <FooterDesktop/>}
+            {mobile? <Footer className={className}/>: <FooterDesktop className={className}/>}
         </ThemeProvider>
     )
 }

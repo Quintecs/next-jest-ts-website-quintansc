@@ -2,7 +2,6 @@ import { Button, Grid } from '@mui/material';
 import styled from 'styled-components';
 
 const FragContainer = styled.div`
-    font-family: 'Inter';
     min-height: calc(375px*2);
     display: flex;
     flex-direction: column;
@@ -15,7 +14,6 @@ const FragContainer = styled.div`
 `
 
 const Title = styled.h2`
-    font-family: 'Inter';
 `
 
 const PStyled = styled.p`

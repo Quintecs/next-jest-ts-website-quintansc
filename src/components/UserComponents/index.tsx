@@ -17,15 +17,15 @@ const UserComponent = ({user}: UserComponent)=>{
                 <Grid item lg={2} sm={12}><ImageUserComponent src={userData.avatar_url} alt="profileImage" /></Grid>
                 <Grid item lg={10} sm={12}> 
                     <Container>
-                        <h2 style={{ fontFamily: 'Inter'}}>{userData.name}</h2>
+                        <h2>{userData.name}</h2>
 
                         <Grid item xs={12}>
-                            <p style={{ fontFamily: 'Inter'}}>{userData.company}</p> 
-                            <p style={{ fontFamily: 'Inter'}}>{userData.bio}</p>
+                            <p>{userData.company}</p> 
+                            <p>{userData.bio}</p>
                         </Grid>
                         <DescriptionUserComponent item xs={12}>
-                            <pre style={{ fontFamily: 'Inter', display: 'flex', alignItems: 'center'}}> <HiOutlineLocationMarker size={24}/>{userData.location}  <img src="/brasil.png" alt="brasil icon" width={18} /></pre>
-                            <p style={{ color:'#999ED7', fontFamily: 'Inter' }}>{`+${anoAtual - createdAt} Years of Experience`}</p>
+                            <pre style={{ display: 'flex', alignItems: 'center'}}> <HiOutlineLocationMarker size={24}/>{userData.location}  <img src="/brasil.png" alt="brasil icon" width={18} /></pre>
+                            <p style={{ color:'#999ED7' }}>{`+${anoAtual - createdAt} Years of Experience`}</p>
                         </DescriptionUserComponent>
                     </Container>
                 </Grid>

@@ -1,5 +1,5 @@
 import { Grid, Container } from "@mui/material";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 const ContainerCustom = styled(Container)`
   overflow: hidden;

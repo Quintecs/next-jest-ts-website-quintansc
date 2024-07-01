@@ -7,11 +7,11 @@ import { usePathname } from 'next/navigation';
 import { MdMenu, MdHome, MdGridView, MdContactSupport } from '../../utils/icons';
 import { MyName, ProfileImage, UserContainer, Menu, ButtonMenuMobile, ButtonHeader, SelectedLinkMenu, Headers } from './style'
 
-const Header = () => {
+const Header = ({ className }: any) => {
   const [menuActive, setMenuActive] = useState(false)
   const pathname = usePathname()
   return (
-    <Headers data-testid="headerContainer">
+    <Headers data-testid="headerContainer" className={className}>
       <Container maxWidth={false} style={{ display: 'flex', justifyContent: 'space-between' }}>
       <UserContainer>
         <ProfileImage
@@ -40,7 +40,7 @@ const Header = () => {
       </Drawer>
 
       <Menu>
-        <SelectedLinkMenu color={pathname == '/home'? "#999ED7": "#18181A"} href={'/'} data-testid="menuElements">Inicio</SelectedLinkMenu>
+        <SelectedLinkMenu color={pathname == '/home'? "#999ED7": "#18181A"} href={'/home'} data-testid="menuElements">Inicio</SelectedLinkMenu>
         <SelectedLinkMenu color={pathname == '/projetos'? "#999ED7": "#18181A"} href={'/projetos'} data-testid="menuElements">Projetos</SelectedLinkMenu>
         <Divider orientation='vertical' style={{ width: '2px', background: '#252527', height: '48px', margin: '0 50px' }}/>
         

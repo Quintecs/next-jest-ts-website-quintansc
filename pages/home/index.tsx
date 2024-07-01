@@ -1,22 +1,21 @@
 import Head from "next/head";
-import { InfosContainer, BtnSeeMore, TitleH2, GridHeadPageContent, ImageGrid, ContactContainer, ContactContainerImage } from "../../styles/home";
+import { InfosContainer, BtnSeeMore, TitleH2, GridHeadPageContent, ImageGrid, ContactContainer, ContactContainerImage, TitleH3, GridInfos, TitleP } from "../../styles/home";
 import { GridContainer } from "../../styles/global";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Skeleton } from "@mui/material";
 import { HiOutlineArrowDown, FaReact, FaNodeJs, SiNextdotjs, BsChat, SiAngularjs} from "../../src/utils/icons";
 import { useState } from 'react';
 import UserComponent from "@/components/UserComponents";
 import CardLanguage from "@/components/CardLanguages";
-import Project from "@/components/Projects";
 import { getRepositories, userRoute } from "../../src/api";
 import { HomeContent, IconCode, PngcontactImage, Pngprojects, Pngskills } from "../../src/images";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
-import { ImageComponent } from "@/components/ImageComponent/style";
 
-
-  const ImageCustom = dynamic(() => import('@/components/ImageComponent'),  {
-    loading: () => <p>Loading...</p>,
-  })
+const Project = dynamic(() => import('@/components/Projects'), {
+  ssr: false,
+  loading: () => <Skeleton variant="rectangular" color="grey" style={{ height: "calc(375px*2)", width: "1600px" }}></Skeleton>
+});
 
 const Home = ({ gitUser, repositories }: any) => {
   const [user] = useState(gitUser? gitUser : {
@@ -32,7 +31,7 @@ const Home = ({ gitUser, repositories }: any) => {
 
   const repositorys = {
     repo1: isRepoCorrect(338077631),
-    repo2: isRepoCorrect(747573573),
+    repo2: isRepoCorrect(359374320),
     repo3: isRepoCorrect(742617230),
   }
 
@@ -41,7 +40,6 @@ const Home = ({ gitUser, repositories }: any) => {
     if (!repos) {
       return false; // ou qualquer outra ação apropriada
     }
-
     // Continua com a lógica original, agora que sabemos que repos não é undefined ou null
     return repos.find((e: any) => e.id == other);
   }
@@ -60,25 +58,32 @@ const Home = ({ gitUser, repositories }: any) => {
       <GridContainer container>
         <GridHeadPageContent item={true} xs={6}>
           <div>
-            <ImageCustom src={IconCode} widh={40} heigt={40} alt={"imagem content"} priority />
-            <Grid item={true} style={{ marginLeft: '25px', lineHeight: '9px' }}>
-              <h3 style={{ fontFamily: 'Public Sans ', color: '#999ED7' }}>Hello World /&gt; </h3>
+            {IconCode? 
+              <Image src={IconCode} width={40} height={40} alt={"imagem content"} priority />: 
+              <Skeleton variant="circular" animation="wave" width={40} height={40} />
+            }
+            <GridInfos item={true}>
+              <TitleH3>Hello World /&gt; </TitleH3>
               <p> Meu nome é Gustavo Quintans 👋</p>
-            </Grid>
+            </GridInfos>
           </div>
           <div>
             <TitleH2>Front-end DEV</TitleH2>
-            <p style={{ fontFamily: 'Inter', fontWeight: '600', fontSize: '16px' }}>Desenvolvimento de Front-end ágil e <a href="#" style={{ color: '#999ED7' }}> inovador</a> para cativar seus usuários e <a href="#" style={{ color: '#999ED7' }}> impulsionar </a> sua presença online.</p>
+            <p style={{ fontWeight: '600', fontSize: '16px' }}>Desenvolvimento de Front-end ágil e <TitleP> inovador</TitleP> para cativar seus usuários e <TitleP> impulsionar </TitleP> sua presença online.</p>
             
           </div>
 
         </GridHeadPageContent>
-        <ImageGrid item={true} xs={6}>
+         <ImageGrid item={true} xs={6}>
           <picture>
-            <source srcSet={'/homeContent.png'} media="(min-width: 1024px)" ></source>
-            <ImageCustom loading="eager" src={HomeContent} alt={"imagem content"} width={489} height={404}/>
+            {HomeContent ? 
+              <Image src={HomeContent} loading="eager" fetchPriority="high" alt={"imagem content"} width={489} height={404}/> :
+              <Skeleton color="red" variant="rectangular" width={489} height={404}></Skeleton>
+            }
           </picture>
+          
         </ImageGrid>
+      
 
           <BtnSeeMore variant="text" endIcon={<HiOutlineArrowDown color="#10BB83" />}>
             Veja mais
@@ -91,7 +96,7 @@ const Home = ({ gitUser, repositories }: any) => {
         <p>Sou Especialista em Javascript e Typescript</p>
       </InfosContainer>
       <InfosContainer>
-        <ImageCustom src={Pngskills} alt="My skills"/>
+        <Image src={Pngskills} alt="My skills"/>
         <h2>Minhas Habilidades</h2>
         <p>Conheça minhas habilidades técnicas e minha experiência em desenvolvimento de front-end e outras áreas da tecnologia da informação.</p>
         <Grid container style={{ justifyContent: 'space-between' }} >
@@ -145,7 +150,7 @@ const Home = ({ gitUser, repositories }: any) => {
         </Grid>
       </InfosContainer>
       <InfosContainer>
-        <ImageCustom src={Pngprojects} width={625} height={60} alt="My projects"/>
+        <Image src={Pngprojects} width={625} height={60} alt="My projects"/>
         <h2>Projetos Selecionados</h2>
         <p>Explore alguns dos projetos que desenvolvi, demonstrando minha criatividade, habilidades técnicas e experiência em desenvolvimento front-end.</p>
       </InfosContainer>
@@ -155,19 +160,19 @@ const Home = ({ gitUser, repositories }: any) => {
         description={repositorys.repo1.description} 
         urlImage="/1project.png"
         flags={['Frontend', 'API', 'ReactJS']}
-        projectUrl='/projetos'
+        projectUrl={`/projetos/${repositorys.repo1.name}`}
       />
       <Project 
         title={repositorys.repo2.name} 
         description={repositorys.repo2.description} 
         urlImage="/project2.png"
         flags={['Backend', 'API', 'Node']}
-        projectUrl='/projetos'
+        projectUrl={`/projetos/${repositorys.repo2.name}`}
       />
 
       <ContactContainer>
           <ContactContainerImage src={'/background.png'} width={625} height={95} alt="Contact me"/>
-          <ImageCustom src={PngcontactImage} width={625} height={95} alt="Contact me"/>
+          <Image src={PngcontactImage} width={625} height={95} alt="Contact me"/>
           <h2>Entre em contato</h2>
           <p>Vamos transformar suas ideias em realidade! Entre em contato para discutir seu projeto ou apenas para dizer olá. Aguardo ansiosamente para ouvir de você!</p>
           <Button variant="outlined" color="inherit" startIcon={<BsChat />} style={{ marginTop: '20px', padding: '15px 90px'} }> <Link href={'/contato'}>Entre em Contato</Link> </Button>
@@ -186,5 +191,6 @@ export async function getStaticProps() {
       gitUser,
       repositories
     },
+    revalidate: 100000,
   }
 }

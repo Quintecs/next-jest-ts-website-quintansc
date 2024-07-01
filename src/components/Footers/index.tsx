@@ -3,9 +3,9 @@ import Link from "next/link";
 import SocialIconsComponent from "../Laterals";
 import { GridNormal } from "./style";
 
-const Footer = (): React.ReactElement => {
+const Footer = ({ className }: any): React.ReactElement => {
   return (
-    <footer data-testid="footerContainerMobile">
+    <footer className={className} data-testid="footerContainerMobile">
       <Grid container spacing={4} margin={"0 0 0 -30px"} padding={"20px"}>
         <GridNormal container xs={10} key={Math.random()}>
           <Grid item={true} xs={3}><Link href={'/home'}>Inicio</Link></Grid>

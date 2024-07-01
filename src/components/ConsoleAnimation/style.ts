@@ -61,7 +61,6 @@ const AnimationDiv  = styled.div`
     font-size: 14px;
     white-space: nowrap;
     overflow: hidden;
-    font-family: monospace;
     animation: ${typing} 5s steps(40), ${blinking} 0.5s infinite step-end alternate;
     width: 40ch;
     border-right: 3px solid;

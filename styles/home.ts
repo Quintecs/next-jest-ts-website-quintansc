@@ -52,6 +52,19 @@ const TitleH2 = styled.h1`
   }
 `
 
+const TitleH3 = styled.h3`
+  color: '#999ED7';
+`
+
+const TitleP = styled.a`
+  color: '#999ED7';
+`
+
+const GridInfos = styled(Grid)`
+  margin-left: '25px';
+  line-height: '9px' ;
+`
+
 const GridHeadPageContent = styled(Grid)`
   div:first-child{
     display: flex;
@@ -109,5 +122,6 @@ const ContactContainer = styled(Grid)`
 export {
   BtnSeeMore, TitleH2, GridHeadPageContent,
   InfosContainer, ImageConteiner, 
-  TextImageContainer, ButtonTextImageContainer, ImageGrid, ContactContainer, ContactContainerImage
+  TextImageContainer, ButtonTextImageContainer, ImageGrid, ContactContainer, ContactContainerImage,
+  GridInfos, TitleH3, TitleP
 }
