@@ -11,7 +11,7 @@ const FlagsContainer = styled.div`
 `
 
 const CardProjectContainer = styled(Link)`
-  max-width: 435px;
+  max-width: 430px;
   margin: 0 10px;
 
   p{ color: #49494D; }
