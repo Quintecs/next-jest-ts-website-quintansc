@@ -10,7 +10,7 @@ const FlagsContainer = styled.div`
   }
 `
 
-const CardProjectContainer = styled(Link)`
+const CardProjectContainer = styled(Link as any)`
   max-width: 430px;
   margin: 0 10px;
 

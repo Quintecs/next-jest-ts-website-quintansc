@@ -343,7 +343,7 @@ const TitleP = styled.a``
 const GridInfos = styled(Grid)``
 const GridHeadPageContent = styled(Grid)``
 const ImageGrid = styled(Grid)``
-const ContactContainerImage = styled(Image)``
+const ContactContainerImage = styled(Image as any)``
 const ContactContainer = styled(Grid)``
 
 export {
