@@ -41,7 +41,7 @@ const Menu = styled.nav`
   }
 `;
 
-const SelectedLinkMenu = styled(Link)`
+const SelectedLinkMenu = styled(Link as any)<{ color: string }>`
   display: flex;
   height: 100px;
   width: 100%;
