@@ -20,15 +20,9 @@ const GridContainer = styled(Grid)`
   flex-direction: column;
  @media (min-width: 800px) {
   flex-direction: initial;
+  align-items: center;
   padding: 0 50px;
   margin-top: 80px;
- }
-
- .MuiGrid-item .MuiGrid-grid-xs-6 div {
-    @media (min-width: 800px) {
-      display: flex;
-      align-items: center;
-    }
  }
 `
 

@@ -10,10 +10,12 @@ const StyledDiv = styled.div`
 
 const ContentUserComponent = styled.div`
     display: flex;
-    flex-direction: row; 
-    max-height: 250px;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
     background-color: #1D1D1F;
-    margin-top: 60px;
+    margin-top: 20px;
+    padding: 16px;
     @media (max-width: 800px) {
         display: inline-block;
     }

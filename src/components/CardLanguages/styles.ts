@@ -3,7 +3,9 @@ import styled from "styled-components"
 
 const SkillsContainer = styled(Grid)`
   background-color: #555;
-  height: 270px;
+  min-height: 270px;
+  display: flex;
+  flex-direction: column;
 
   .MuiGrid-root.MuiGrid-item{
     display: flex;

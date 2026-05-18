@@ -2,10 +2,10 @@ import { Button, Grid } from '@mui/material';
 import styled from 'styled-components';
 
 const FragContainer = styled.div`
-    min-height: calc(375px*2);
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    gap: 24px;
+    padding-bottom: 32px;
     .MuiContainer-root {
         @media (min-width: 1300px) {
             max-width: 1450px;
@@ -18,9 +18,7 @@ const Title = styled.h2`
 
 const PStyled = styled.p`
     line-break: anywhere;
-    @media (min-width: 1300px) {
-        min-width: 1128px;
-    }
+    max-width: 100%;
 `;
 
 
@@ -37,11 +35,13 @@ const ButtonLink = styled(Button)`
     }
 `
 
-const GridContainerLinks = styled(Grid)`	
+const GridContainerLinks = styled(Grid)`
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 16px 0;
+    gap: 16px;
 `
 
 export {

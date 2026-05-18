@@ -12,9 +12,9 @@ export async function getStaticProps() {
   const cleanApi = await getRepository('Clean-API')
   return {
     props: {
-      dragAndDrop,
-      apiDragAndDrop,
-      cleanApi
+      dragAndDrop: dragAndDrop ?? null,
+      apiDragAndDrop: apiDragAndDrop ?? null,
+      cleanApi: cleanApi ?? null
     },
   }
 }

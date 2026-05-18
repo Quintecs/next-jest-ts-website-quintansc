@@ -7,25 +7,37 @@ const headers = {
 }
 
 const userRoute = async (): Promise<AxiosResponse> => {
-   let data = await axios.get('https://api.github.com/users/quintansc', {
-      headers
-   }).then(res => res)
-   return data.data
+   try {
+      let data = await axios.get('https://api.github.com/users/quintansc', {
+         headers
+      }).then(res => res)
+      return data.data
+   } catch {
+      return null as any
+   }
 }
 
 const getRepository = async (project: string): Promise<AxiosResponse> => {
-   let data = await axios.get(`https://api.github.com/repos/quintansc/${project}`, {
-      headers
-   }).then(res => res)
-   return data.data
+   try {
+      let data = await axios.get(`https://api.github.com/repos/quintansc/${project}`, {
+         headers
+      }).then(res => res)
+      return data.data
+   } catch {
+      return null as any
+   }
 }
 
 
 const getRepositories = async (): Promise<AxiosResponse> => {
-   let data = await axios.get(`https://api.github.com/users/quintansc/repos`, {
-      headers
-   } ).then(res => res)
-   return data.data
+   try {
+      let data = await axios.get(`https://api.github.com/users/quintansc/repos`, {
+         headers
+      }).then(res => res)
+      return data.data
+   } catch {
+      return null as any
+   }
 }
 export {
    getRepository,

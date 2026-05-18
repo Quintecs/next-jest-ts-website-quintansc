@@ -5,9 +5,9 @@ const CardLanguage = ({ icon, link, infos, theme }: any) => {
   return (
     <SkillsContainer
       item
-      sm={12}
-      md={12}
-      lg={2.9}
+      xs={12}
+      sm={6}
+      md={3}
       style={{ backgroundColor: theme.cardBackgroundColor }}
     >
       <Grid item xs={12}>
