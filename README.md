@@ -3,6 +3,10 @@
 ## Next.js + Jest
 Esse é o projeto do meu portifólio pessoal desenvolvido em NextJS
 
+## Requisitos/Requirements
+- Node.js 22.x (veja .nvmrc/.node-version)
+- Yarn 1.x
+
 ## How to Use/Como Usar 
 Initialize the dependecies of project with this command: /Inicializar as dependencias do Projeto com esse comando: 
 
