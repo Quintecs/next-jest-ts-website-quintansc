@@ -1,27 +1,44 @@
-# [Figma Project](https://www.figma.com/proto/VhlokdoPzH7aEescAGmHNV/GustavoQuintans-(Copy)?node-id=8%3A848&scaling=min-zoom&page-id=0%3A1)
+# Quintec — Website
 
-## Next.js + Jest
-Esse é o projeto do meu portfólio pessoal desenvolvido em NextJS
+Site institucional da **Quintec** — Tecnologia & Soluções Digitais.
 
-## Requisitos/Requirements
-- Node.js 22.x (veja .nvmrc/.node-version)
+## Stack
+
+- [Next.js 16](https://nextjs.org/) (App Router + React Server Components)
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS v4](https://tailwindcss.com/) + componentes no padrão [shadcn/ui](https://ui.shadcn.com/) (Radix UI)
+- [Vitest](https://vitest.dev/) + Testing Library
+
+## Requisitos
+
+- Node.js 22.x (veja `.nvmrc`)
 - Yarn 1.x
 
-## How to Use/Como Usar 
-Initialize the dependencies of project with this command: /Inicializar as dependências do Projeto com esse comando: 
+## Como usar
+
+Instalar as dependências:
 
 ```bash
-    yarn
+yarn
 ```
-To run project use this command: /Para rodar o projeto use esse comando: 
+
+Rodar em desenvolvimento:
 
 ```bash
-    yarn dev
-```    
-## Run Jest Tests/Rodar Testes Jest ()
-
-```bash
-    yarn test
+yarn dev
 ```
-## Cobertura de Testes (Test Coverage)
-![Tests Coverage](/public/coverage.png "Cobertura de testes da aplicação atualmente")
+
+Build de produção:
+
+```bash
+yarn build && yarn start
+```
+
+## Testes
+
+```bash
+yarn test        # modo watch
+yarn test:ci     # execução única
+yarn test:coverage
+```

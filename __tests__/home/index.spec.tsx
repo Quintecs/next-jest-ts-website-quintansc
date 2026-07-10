@@ -1,19 +1,40 @@
-import { makeRender, screen } from '../../src/utils'
-import Home from '../../pages/home';
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 
-jest.mock('../../src/components/Projects')
+import HomeContent from "@/components/site/home-content";
 
-describe('Testa a Home da Aplicação', ()=>{
-    it('testando a Home tem esse Texto', () => {
-        const mockRepositories = [
-            { id: 338077631, name: 'Repo 1' },
-            { id: 338077631, name: 'Repo 2' },
-            { id: 338077631, name: 'Repo 3' },
-        ];
-        // Renderiza o componente Home com as props necessárias, incluindo o mock de repositories
-        makeRender(<Home gitUser={{}} repositories={mockRepositories} />);
+const user = {
+  name: "Gustavo Quintans",
+  company: "Quintec",
+  bio: "Front-end Developer",
+  location: "São Paulo",
+  avatar_url: "https://avatars.githubusercontent.com/u/68349886?v=4",
+  created_at: "2019-01-01T00:00:00Z",
+};
 
-        const linkElement = screen.getByText(/Meu nome é Gustavo Quintans/i);
-        expect(linkElement).toBeInTheDocument;
-    });
-})
+describe("Conteúdo da Home", () => {
+  it("exibe o hero com o nome", () => {
+    render(<HomeContent user={user} />);
+    expect(
+      screen.getByRole("heading", { name: /Gustavo Quintans/i, level: 1 })
+    ).toBeInTheDocument();
+  });
+
+  it("exibe a seção de habilidades", () => {
+    render(<HomeContent user={user} />);
+    expect(screen.getByText(/Minhas Habilidades/i)).toBeInTheDocument();
+    expect(screen.getByText("NodeJS")).toBeInTheDocument();
+    expect(screen.getByText("ReactJs")).toBeInTheDocument();
+  });
+
+  it("exibe os projetos em destaque do catálogo", () => {
+    render(<HomeContent user={user} />);
+    expect(screen.getByText("MoveIT-NextJS")).toBeInTheDocument();
+    expect(screen.getByText("Clean-API")).toBeInTheDocument();
+  });
+
+  it("renderiza mesmo sem dados do GitHub", () => {
+    render(<HomeContent user={null} />);
+    expect(screen.getByText(/Vamos trabalhar juntos/i)).toBeInTheDocument();
+  });
+});

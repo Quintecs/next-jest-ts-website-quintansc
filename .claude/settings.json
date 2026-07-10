@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://api.github.com/repos/quintansc/drag-and-drop)",
+      "Bash(curl -s https://api.github.com/rate_limit)",
+      "Bash(curl -s \"https://api.github.com/users/quintansc/repos?per_page=100\")",
+      "Bash(sed -i 's/text-4xl font-bold leading-none text-accent/text-4xl font-bold leading-none text-primary-light/g; s/tracking-\\\\[0.12em\\\\] text-accent/tracking-[0.12em] text-primary-light/g; s/via-accent to-transparent/via-primary to-transparent/g; s/from-transparent to-accent\\\\/5/from-transparent to-primary\\\\/10/g' src/components/site/home-content.tsx)",
+      "Bash(sed -i 's/mb-3 text-\\\\[clamp\\(26px,3vw,40px\\)\\\\] font-bold/mb-3 font-display text-[clamp\\(26px,3vw,40px\\)] font-bold/g; s/mb-4 text-\\\\[clamp\\(28px,3.5vw,44px\\)\\\\] font-bold/mb-4 font-display text-[clamp\\(28px,3.5vw,44px\\)] font-bold/g' src/components/site/home-content.tsx)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} em %{time_total}s\\\\n\" -m 10 https://va.vercel-scripts.com/v1/script.debug.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} em %{time_total}s\\\\n\" -m 10 https://avatars.githubusercontent.com/u/68349886?v=4)",
+      "Bash(curl -s -m 15 http://localhost:3000/ -o /tmp/home.html -w \"html: %{http_code} em %{time_total}s\\\\n\")",
+      "Bash(read -r url)",
+      "Bash(curl -s -o /dev/null -w '%{http_code} em %{time_total}s' -m 25 http://localhost:3000__TRACKED_VAR__)"
+    ]
+  }
+}

@@ -1,13 +1,24 @@
-import { makeRender, screen } from '../../src/utils';
-import Contato from '../../pages/contato';
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 
-describe('Testa a pagina Contato da Aplicação', () => {
-    it('testando a pagina contato tem esses Textos', () => {
-        makeRender(<Contato />);
-        const linkElement = screen.getAllByText(/Entre em contato/i);
-        const linkElement1 = screen.getAllByText(/Preencha o formulário/i);
-        const linkElement2 = screen.getAllByText(/Contato via Whatsapp/i);
-        const linkElement3 = screen.getAllByText(/Enviar solicitação/i);
-        expect({ linkElement, linkElement1, linkElement2, linkElement3}).toBeInTheDocument;
-    });
-})
+import ContatoPage from "../../app/contato/page";
+
+describe("Página de Contato", () => {
+  it("exibe os textos principais", () => {
+    render(<ContatoPage />);
+    expect(
+      screen.getByRole("heading", { name: /Entre em contato/i, level: 1 })
+    ).toBeInTheDocument();
+    expect(screen.getByText(/Preencha o formulário/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /Contato via WhatsApp/i })
+    ).toBeInTheDocument();
+    expect(screen.getByText(/Enviar solicitação/i)).toBeInTheDocument();
+  });
+
+  it("possui o link de WhatsApp", () => {
+    render(<ContatoPage />);
+    const wa = screen.getByRole("link", { name: /Enviar Mensagem/i });
+    expect(wa).toHaveAttribute("href", "https://wa.me/5511996394440");
+  });
+});
