@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0b0e11;
-  --color-panel: #12171b;
-  --color-edge: #283137;
-  --color-primary: #3973f0;
-  --color-primary-dark: #285ed1;
-  --color-primary-light: #9dbbff;
+  --color-background: #0d0b11;
+  --color-panel: #16121d;
+  --color-edge: #30283d;
+  --color-primary: #5410dd;
+  --color-primary-dark: #4711b1;
+  --color-primary-light: #bca0ff;
   --color-accent: #b4f272;
-  --color-muted: #a5afb8;
-  --color-muted-dark: #929ea8;
-  --color-foreground: #f1f4f6;
+  --color-muted: #b0a8ba;
+  --color-muted-dark: #9c92a8;
+  --color-foreground: #f4f1f8;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --animate-fade-up: fade-up 0.65s ease both;
@@ -23,7 +23,7 @@
 @layer base {
   html { scroll-behavior: smooth; scroll-padding-top: 7rem; }
   body { @apply bg-background text-foreground antialiased; }
-  ::selection { background: #b4f272; color: #0b0e11; }
+  ::selection { background: #b4f272; color: #0d0b11; }
   a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
   a, button { touch-action: manipulation; }
   button, select { cursor: pointer; }
@@ -39,7 +39,7 @@
   .eyebrow::before { content: ''; @apply h-px w-6 bg-accent; }
   .section-title { @apply text-3xl font-semibold leading-[1.15] tracking-[-0.045em] md:text-5xl; }
   .page-title { @apply max-w-4xl text-4xl font-semibold leading-[1.08] tracking-[-0.05em] sm:text-5xl lg:text-6xl; }
-  .primary-cta { @apply min-h-12 rounded-lg border border-accent bg-accent px-6 text-sm font-semibold text-background shadow-none transition-all hover:border-[#c6ff8e] hover:bg-[#c6ff8e] hover:text-background hover:shadow-none; }
+  .primary-cta { @apply min-h-12 rounded-lg border border-primary bg-primary px-6 text-sm font-semibold text-white shadow-none transition-all hover:border-primary-dark hover:bg-primary-dark hover:text-white hover:shadow-none; }
   .secondary-cta { @apply min-h-12 rounded-lg border border-edge bg-transparent px-6 text-sm font-medium text-foreground transition-colors hover:border-muted hover:bg-white/5; }
   .text-link { @apply inline-flex min-h-11 items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-accent; }
   .tag { @apply inline-flex rounded-md border border-edge bg-background/40 px-2.5 py-1 font-mono text-xs text-muted; }

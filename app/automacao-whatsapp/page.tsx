@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { FaWhatsapp } from "react-icons/fa";
-import { ArrowDown, ArrowRight, ArrowUpRight, Check, CalendarDays, CheckCheck, Clock3, GitBranch, MessageCircle, MessagesSquare, Plus, Repeat2, ShoppingBag, UserRoundCheck } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Clock3, MessageCircle, MessagesSquare, Plus, Repeat2 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
+import WhatsAppFlowCarousel from "@/components/site/whatsapp-flow-carousel";
 import WhatsAppFlowDemo from "@/components/site/whatsapp-flow-demo";
 import { AUTOMATION_WHATSAPP_URL } from "@/lib/contact";
 import { cn } from "@/lib/utils";
@@ -41,32 +42,7 @@ export default function WhatsAppAutomationPage() {
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted">Você cuida de vender, entregar e fazer acontecer. A automação recebe seus clientes, organiza as conversas e ajuda o atendimento a seguir — com você ou com sua equipe.</p>
         </div>
 
-        <div className="mt-10 rounded-3xl border border-edge bg-panel p-5 sm:p-8 lg:p-10">
-          <div className="mb-7 flex flex-wrap items-center justify-between gap-3"><p className="text-sm font-semibold">Do primeiro “oi” ao próximo passo.</p><span className="rounded-full border border-edge bg-white px-3 py-1 text-xs text-muted">Exemplo de um fluxo para o seu negócio</span></div>
-          <div className="grid items-stretch gap-4 lg:grid-cols-[1fr_auto_1.05fr_auto_1fr] lg:gap-3">
-            <div className="rounded-2xl border border-edge bg-white p-5 sm:p-6">
-              <span className="mb-5 inline-flex size-10 items-center justify-center rounded-xl bg-panel text-accent"><MessageCircle size={22} aria-hidden="true" /></span>
-              <p className="mb-4 text-sm font-semibold text-muted">01 / Seu cliente chega</p>
-              <div className="rounded-xl rounded-tl-sm bg-panel p-4"><p className="text-base leading-relaxed">Olá! Quero saber mais sobre o que vocês oferecem.</p><CheckCheck size={16} className="ml-auto mt-2 text-accent" aria-hidden="true" /></div>
-              <p className="mt-4 text-sm leading-relaxed text-muted">Uma nova conversa. Uma oportunidade de atender bem.</p>
-            </div>
-            <ArrowDown className="mx-auto self-center text-accent lg:-rotate-90" size={22} aria-hidden="true" />
-            <div className="rounded-2xl bg-accent p-5 text-white shadow-[0_10px_30px_#2456d922] sm:p-6">
-              <span className="mb-5 inline-flex size-10 items-center justify-center rounded-xl bg-white/15"><GitBranch size={22} aria-hidden="true" /></span>
-              <p className="mb-4 text-sm font-semibold text-white/85">02 / A automação organiza</p>
-              <p className="mb-5 text-lg font-medium leading-snug">“Boas-vindas! Como podemos ajudar?”</p>
-              <div className="space-y-2">{[{ Icon: ShoppingBag, label: "Produtos e pedidos" }, { Icon: CalendarDays, label: "Agendamentos" }, { Icon: MessagesSquare, label: "Dúvidas e orçamentos" }].map(({ Icon, label }) => <div key={label} className="flex items-center gap-3 rounded-lg border border-white/20 bg-white/10 px-3 py-3 text-sm"><Icon size={17} aria-hidden="true" />{label}</div>)}</div>
-            </div>
-            <ArrowDown className="mx-auto self-center text-accent lg:-rotate-90" size={22} aria-hidden="true" />
-            <div className="rounded-2xl border border-[#f0d466] bg-[#fff5c9] p-5 sm:p-6">
-              <span className="mb-5 inline-flex size-10 items-center justify-center rounded-xl bg-[#ffda47]"><UserRoundCheck size={22} aria-hidden="true" /></span>
-              <p className="mb-4 text-sm font-semibold">03 / Você segue com clareza</p>
-              <p className="text-xl font-semibold leading-snug tracking-tight">A conversa chega com o que você precisa saber.</p>
-              <ul className="mt-5 space-y-3">{["O que o cliente procura", "As informações iniciais", "O próximo passo do atendimento"].map(item => <li key={item} className="flex items-start gap-2 text-sm leading-relaxed"><Check size={17} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />{item}</li>)}</ul>
-              <p className="mt-5 text-sm leading-relaxed">Você ou sua equipe assumem quando é hora de uma conversa pessoal.</p>
-            </div>
-          </div>
-        </div>
+        <WhatsAppFlowCarousel />
 
         <div className="mt-8 flex flex-col items-center gap-4 text-center">
           <WhatsAppCta className="w-full sm:w-auto">Quero organizar meu WhatsApp</WhatsAppCta>
