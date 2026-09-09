@@ -43,6 +43,159 @@ yarn test:ci     # execução única
 yarn test:coverage
 ```
 
+## Métricas de acesso e interesse comercial
+
+O `@vercel/analytics` já faz parte das dependências. O componente
+`src/components/site/site-analytics.tsx` usa a integração de Next.js para medir
+visitas e navegação entre páginas. Os eventos de negócio passam por
+`trackEvent` em `src/lib/analytics.ts`, que distribui o envio à Vercel e ao
+Pixel da Meta conforme a configuração independente de cada um.
+
+### Ativação e controle de uso
+
+1. No projeto da Vercel, abra **Analytics** e habilite **Web Analytics**.
+2. Configure as variáveis abaixo no ambiente de publicação (veja `.env.example`).
+3. Faça um novo build/deploy. Variáveis `NEXT_PUBLIC_*` são incorporadas no build.
+4. Acesse o site publicado, navegue e interaja com os botões. Confira as visitas
+   e a lista de eventos no painel **Analytics** do projeto.
+
+```dotenv
+NEXT_PUBLIC_ANALYTICS_PROVIDER=vercel
+NEXT_PUBLIC_ANALYTICS_CUSTOM_EVENTS=true
+```
+
+Esses são os padrões quando as variáveis não estão definidas. Para manter apenas
+visitas, configure `NEXT_PUBLIC_ANALYTICS_CUSTOM_EVENTS=false`. Para desligar
+Web Analytics e seus eventos, use `NEXT_PUBLIC_ANALYTICS_PROVIDER=none`.
+Valores de provedor desconhecidos também desativam a integração da Vercel.
+Desenvolvimento e testes não enviam dados. Builds de produção, incluindo previews,
+enviam dados quando habilitados; configure `none` no ambiente Preview para excluí-los.
+
+A Vercel tem franquias de Web Analytics por plano; **eventos personalizados exigem
+Pro ou Enterprise**. Confira os
+[planos e limites](https://vercel.com/docs/analytics/limits-and-pricing) e a
+[disponibilidade dos eventos](https://vercel.com/docs/analytics/custom-events).
+O Speed Insights existente mede desempenho separadamente e não é controlado
+por essas variáveis.
+
+### Pixel da Meta para anúncios
+
+O Pixel funciona em paralelo com a Vercel, usando os mesmos pontos de medição.
+Não exige uma biblioteca adicional nem token de acesso. Em `.env.local` para
+builds locais ou nas variáveis de ambiente de produção da hospedagem, configure:
+
+```dotenv
+NEXT_PUBLIC_META_PIXEL_ID=SEU_ID_NUMERICO
+NEXT_PUBLIC_META_PIXEL_ENABLED=true
+```
+
+Copie o **ID do Pixel** da fonte de dados no Gerenciador de Eventos da Meta.
+Substitua `SEU_ID_NUMERICO` pelo número real; um valor vazio ou não numérico
+desativa a integração. O ID é público e será incluído no JavaScript do site.
+Faça um novo build/deploy após configurá-lo.
+
+`NEXT_PUBLIC_META_PIXEL_ENABLED=false` desliga somente o Pixel. Use essa
+configuração no ambiente **Preview** para não misturar testes com anúncios.
+A Meta continua funcionando com `NEXT_PUBLIC_ANALYTICS_PROVIDER=none` ou
+`NEXT_PUBLIC_ANALYTICS_CUSTOM_EVENTS=false`; essas variáveis controlam a Vercel.
+Desenvolvimento e testes automatizados não enviam eventos reais.
+
+| Ação no site | Evento recebido pela Meta |
+| --- | --- |
+| Acesso inicial e mudança de rota | `PageView` com `page_path` |
+| Clique para abrir o WhatsApp | `Contact` com `location` e `channel` |
+| Clique para abrir a página de contato | Personalizado `contact_click` |
+| Briefing válido preparado | Personalizado `contact_brief_prepared` |
+| Outras interações da tabela abaixo | Personalizado com o mesmo nome e propriedades |
+
+Cada interação gera um evento por provedor. `Contact` mede intenção de contato;
+não confirma que a mensagem foi enviada. Não enviamos `Lead` ou `Purchase`
+porque o site não confirma recebimento de lead ou venda. Você pode configurar
+uma conversão personalizada a partir de `contact_brief_prepared`, identificando-a
+como **briefing preparado**, ou usar `Contact` para acompanhar cliques no WhatsApp.
+
+O carregamento do SDK é assíncrono e as ações ficam na fila até ele carregar.
+O componente acompanha as rotas do Next.js, incluindo voltar/avançar, e evita
+duplicações por remontagem. Mudanças somente de parâmetros ou fragmentos na
+mesma rota não geram outro `PageView`. A detecção automática de histórico do
+Pixel fica desligada para que apenas essa camada registre as visitas.
+Use esta integração como a única instalação desse Pixel: retire uma eventual
+instalação duplicada via GTM ou código colado e revise eventos configurados
+pela ferramenta visual da Meta.
+
+Os parâmetros enviados por esta camada não incluem dados do formulário,
+telefone ou URL de destino do WhatsApp. A configuração automática do Pixel
+fica desligada e o código não envia dados de correspondência avançada.
+O SDK da Meta, porém, usa cookies e informações do navegador, incluindo URL
+da página e referência de origem; a remoção de parâmetros feita para a Vercel
+**não se aplica ao SDK da Meta**. Não coloque dados pessoais em URLs de campanha.
+Revise a correspondência avançada automática no Gerenciador de Eventos e
+alinhe a ativação com a política de cookies/consentimento do site. Esta mudança
+não adiciona um gerenciador de consentimento.
+
+Para verificar a recepção, publique e abra **Gerenciador de Eventos → sua fonte
+de dados → Testar eventos**. Visite o site, mude de página, clique no WhatsApp e
+prepare um briefing. Confira `PageView`, `Contact` e `contact_brief_prepared`,
+incluindo as propriedades. O Meta Pixel Helper também ajuda a conferir o ID
+e detectar instalações duplicadas. Bloqueadores podem impedir o envio;
+não há Conversions API nesta implementação.
+
+Referência de implementação: [template oficial da Meta para o Pixel](https://github.com/facebook/GoogleTagManager-WebTemplate-For-FacebookPixel/blob/main/template.tpl).
+
+### Eventos disponíveis
+
+| Evento | O que contabiliza | Propriedades |
+| --- | --- | --- |
+| `contact_click` | Clique para contato, por posição do botão | `location`, `channel` (`form` ou `whatsapp`) |
+| `solution_click` | Interesse em uma solução da página inicial | `solution`, `location` |
+| `contact_form_start` | Primeira alteração do formulário por montagem | `form` |
+| `contact_brief_prepared` | Briefing válido preparado para continuar no WhatsApp | `solution` |
+| `project_click` | Clique no projeto ou em seu repositório | `project`, `destination` (`details` ou `repository`) |
+| `project_filter` | Mudança do filtro de projetos | `filter` |
+| `social_click` | Clique em uma rede social | `network` |
+| `whatsapp_example_select` | Mudança do segmento na demonstração | `segment` |
+| `whatsapp_flow_step` | Mudança de etapa por botão, teclado ou gesto | `step`, `label` |
+
+Use `location` para comparar `home_hero`, `header`, `mobile_menu`, `footer`,
+`bottom_cta`, `contact_direct`, `contact_form_fallback`, `automation_hero`,
+`automation_bottom`, `automation_floating` e `automation_example`.
+
+Comece acompanhando páginas mais visitadas, cliques de contato por posição,
+soluções mais procuradas e inícios versus briefings preparados. São contagens
+de interações: a mesma pessoa pode clicar ou preparar um briefing mais de uma vez.
+O link alternativo do formulário registra um clique separado, sem repetir
+`contact_brief_prepared`. Preparar o briefing ou abrir o WhatsApp **não confirma
+mensagem enviada, lead recebido ou venda**. Isso exigiria confirmação pelo canal
+de atendimento. Ir direto à última etapa do carrossel também não comprova leitura
+das etapas anteriores.
+
+Os eventos enviam apenas identificadores da interface e valores do catálogo,
+com no máximo duas propriedades. Não incluem nome, e-mail, empresa, mensagem
+ou o endereço do WhatsApp com o briefing. O `beforeSend` remove parâmetros e
+fragmentos da URL da página nos eventos de Web Analytics; parâmetros UTM também
+são removidos, portanto esta configuração não oferece atribuição por UTM.
+Falhas do SDK não interrompem os fluxos do site.
+
+### Migração futura para Google Analytics
+
+A integração com GA4 ainda não está habilitada. Para adicioná-la, mantenha o
+contrato `AnalyticsEvent` e os pontos de medição existentes, implemente o envio
+ao Google em `src/lib/analytics.ts` e substitua a inicialização da Vercel em
+`site-analytics.tsx`, mantendo a Meta como integração independente. Assim,
+não é necessário alterar cada botão ou formulário.
+Configure o ID de medição, a política de consentimento do site e um único
+mecanismo de pageviews para evitar contagem duplicada na navegação do Next.js.
+O histórico da Vercel continuará separado dos novos dados do Google.
+
+### Validação
+
+`yarn test:ci` cobre ativação/desativação, ausência de dados pessoais no briefing,
+cliques, teclado/gestos, formulário inválido e falhas dos SDKs. Também cobre
+fila do Pixel, `PageView` por rota, ausência de duplicações por remontagem,
+configuração independente e mapeamento dos eventos para a Meta. Para validar a
+recepção real, publique com Web Analytics habilitado e confira o painel depois
+de executar os fluxos. Os testes locais não confirmam entrega ao serviço remoto.
+
 ## Rastreamento e indexação
 
 O domínio canônico é **https://www.quintansc.com.br**, correspondente ao destino

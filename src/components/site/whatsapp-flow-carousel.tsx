@@ -1,5 +1,6 @@
 "use client";
 
+import { trackEvent } from "@/lib/analytics";
 import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, CheckCheck, ClipboardList, GitBranch, MessageCircle, MessagesSquare, UserRoundCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -89,8 +90,15 @@ export default function WhatsAppFlowCarousel() {
   const slide = slides[current];
   const Icon = slide.icon;
 
+  function selectStep(index: number) {
+    const next = Math.max(0, Math.min(slides.length - 1, index));
+    if (next === current) return;
+    setCurrent(next);
+    trackEvent({ name: "whatsapp_flow_step", properties: { step: next + 1, label: slides[next].label } });
+  }
+
   function move(direction: number) {
-    setCurrent(index => Math.max(0, Math.min(slides.length - 1, index + direction)));
+    selectStep(current + direction);
   }
 
   return (
@@ -102,8 +110,8 @@ export default function WhatsAppFlowCarousel() {
         if (event.altKey || event.ctrlKey || event.metaKey) return;
         if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
         event.preventDefault();
-        if (event.key === "Home") setCurrent(0);
-        else if (event.key === "End") setCurrent(slides.length - 1);
+        if (event.key === "Home") selectStep(0);
+        else if (event.key === "End") selectStep(slides.length - 1);
         else move(event.key === "ArrowRight" ? 1 : -1);
       }}
       className="mt-10 rounded-3xl border border-edge bg-panel p-4 sm:p-7 lg:p-8"
@@ -148,7 +156,7 @@ export default function WhatsAppFlowCarousel() {
       </div>
 
       <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
-        <div className="flex items-center" role="group" aria-label="Escolher etapa do fluxo">{slides.map(({ label }, index) => <Button key={label} variant="ghost" size="icon" aria-label={`Ir para etapa ${index + 1}: ${label}`} aria-current={current === index ? "step" : undefined} aria-controls="fluxo-carrossel-slide" onClick={() => setCurrent(index)} className="size-11 text-foreground hover:bg-white"><span className={cn("flex size-8 items-center justify-center rounded-full text-sm font-semibold", current === index ? "bg-accent text-white" : "border border-edge bg-white text-muted")}>{index + 1}</span></Button>)}</div>
+        <div className="flex items-center" role="group" aria-label="Escolher etapa do fluxo">{slides.map(({ label }, index) => <Button key={label} variant="ghost" size="icon" aria-label={`Ir para etapa ${index + 1}: ${label}`} aria-current={current === index ? "step" : undefined} aria-controls="fluxo-carrossel-slide" onClick={() => selectStep(index)} className="size-11 text-foreground hover:bg-white"><span className={cn("flex size-8 items-center justify-center rounded-full text-sm font-semibold", current === index ? "bg-accent text-white" : "border border-edge bg-white text-muted")}>{index + 1}</span></Button>)}</div>
         <div className="flex items-center gap-3">
           <Button variant="outline" size="icon" aria-label="Etapa anterior" aria-controls="fluxo-carrossel-slide" disabled={current === 0} onClick={() => move(-1)} className="border-edge bg-white text-accent hover:border-accent hover:bg-white disabled:opacity-35"><ArrowLeft size={19} aria-hidden="true" /></Button>
           <span className="min-w-14 text-center text-sm text-muted">{current + 1} de {slides.length}</span>

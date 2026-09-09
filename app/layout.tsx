@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
+import SiteAnalytics from "@/components/site/site-analytics";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Header from "@/components/site/header";
@@ -49,7 +49,7 @@ export default function RootLayout({
         <Footer />
         {process.env.NODE_ENV === "production" ? (
           <>
-            <Analytics />
+            <SiteAnalytics />
             <SpeedInsights />
           </>
         ) : null}

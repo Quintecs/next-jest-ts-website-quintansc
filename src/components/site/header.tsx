@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/site/tracked-link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -54,7 +54,7 @@ export default function Header() {
             <Link key={href} href={href} data-testid="menuElements" aria-current={isActive(href) ? "page" : undefined} className={cn("text-link", isActive(href) ? "text-accent" : "text-muted")}>{label}</Link>
           ))}
         </nav>
-        <Link href="/contato" className={cn(buttonVariants(), "primary-cta hidden md:inline-flex")}>
+        <Link href="/contato" analyticsEvent={{ name: "contact_click", properties: { location: "header", channel: "form" } }} className={cn(buttonVariants(), "primary-cta hidden md:inline-flex")}>
           Vamos conversar <ArrowUpRight size={17} />
         </Link>
         <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
@@ -62,7 +62,7 @@ export default function Header() {
           <SheetContent data-testid="drawer" aria-describedby={undefined} className="w-[min(90vw,360px)] gap-3 pt-14 [&>button]:flex [&>button]:size-11 [&>button]:items-center [&>button]:justify-center">
             <SheetTitle className="mb-6 text-2xl font-semibold tracking-tight">Explore a Quintec<span className="text-accent">.</span></SheetTitle>
             {[...links, { href: "/contato", label: "Vamos conversar" }].map(({ href, label }) => (
-              <SheetClose key={href} asChild><Link href={href} data-testid="linkElements" aria-current={isActive(href) ? "page" : undefined} className={cn("flex min-h-12 items-center justify-between rounded-lg px-4 text-base hover:bg-white/5", isActive(href) ? "bg-white/5 text-accent" : "text-foreground")}>{label}<ArrowUpRight size={18} /></Link></SheetClose>
+              <SheetClose key={href} asChild><Link href={href} analyticsEvent={href === "/contato" ? { name: "contact_click", properties: { location: "mobile_menu", channel: "form" } } : undefined} data-testid="linkElements" aria-current={isActive(href) ? "page" : undefined} className={cn("flex min-h-12 items-center justify-between rounded-lg px-4 text-base hover:bg-white/5", isActive(href) ? "bg-white/5 text-accent" : "text-foreground")}>{label}<ArrowUpRight size={18} /></Link></SheetClose>
             ))}
             <p className="mt-auto text-sm leading-relaxed text-muted">Tecnologia com propósito.<br />Desenvolvimento por Gustavo Quintans.</p>
           </SheetContent>

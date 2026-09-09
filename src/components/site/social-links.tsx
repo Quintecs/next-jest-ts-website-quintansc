@@ -1,3 +1,4 @@
+import { TrackedAnchor } from "./tracked-link";
 import { FaInstagram } from "react-icons/fa";
 import { FiGithub, FiGitlab, FiLinkedin } from "react-icons/fi";
 
@@ -20,8 +21,9 @@ export default function SocialLinks({ size = 20 }: { size?: number }) {
   return (
     <nav aria-label="Redes sociais" className="flex items-center gap-3">
       {socials.map(({ href, label, Icon }) => (
-        <a
+        <TrackedAnchor
           key={href}
+          analyticsEvent={{ name: "social_click", properties: { network: label } }}
           href={href}
           target="_blank"
           rel="noreferrer"
@@ -30,7 +32,7 @@ export default function SocialLinks({ size = 20 }: { size?: number }) {
           className="flex size-11 items-center justify-center rounded-lg border border-edge bg-transparent text-muted transition-colors hover:border-accent/40 hover:bg-panel hover:text-accent"
         >
           <Icon size={size} />
-        </a>
+        </TrackedAnchor>
       ))}
     </nav>
   );
