@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Header from "@/components/site/header";
 import Footer from "@/components/site/footer";
+import { SITE_DESCRIPTION, SITE_ORIGIN, SITE_TITLE } from "@/lib/seo";
 
 import "./globals.css";
 
@@ -12,12 +13,13 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_ORIGIN),
+  applicationName: "Quintec",
   title: {
-    default: "Quintec — Tecnologia & Soluções Digitais",
+    default: SITE_TITLE,
     template: "%s | Quintec",
   },
-  description:
-    "Sites, sistemas web e integrações sob medida para o seu negócio. Conheça os projetos de Gustavo Quintans e converse sobre sua próxima solução digital.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "Quintec",
     "Desenvolvimento",

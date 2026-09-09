@@ -7,13 +7,15 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import ProjectVisual from "@/components/site/project-visual";
 import ContactCta from "@/components/site/contact-cta";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() { return getProjectCatalog().map(({ name }) => ({ name })); }
 type Params = { params: Promise<{ name: string }> };
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { name } = await params;
   const project = findProject(name);
-  return { title: project?.name ?? "Projeto não encontrado", description: project?.description };
+  if (!project) notFound();
+  return pageMetadata(`/projetos/${encodeURIComponent(project.name)}`, project.name, project.description);
 }
 
 const details: Record<string, { purpose: string; features: string[] }> = {

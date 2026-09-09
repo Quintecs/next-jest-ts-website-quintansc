@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { FaWhatsapp } from "react-icons/fa";
 import { ArrowRight, ArrowUpRight, Check, Clock3, MessageCircle, MessagesSquare, Plus, Repeat2 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
@@ -7,9 +7,12 @@ import WhatsAppFlowDemo from "@/components/site/whatsapp-flow-demo";
 import { AUTOMATION_WHATSAPP_URL } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Automação de WhatsApp para o seu negócio",
-  description: "Organize o WhatsApp do seu negócio com fluxos de atendimento sob medida. Automatize perguntas frequentes, encaminhe pedidos e conecte o cliente à sua equipe. Converse com a Quintec.",
+export const metadata = {
+  ...pageMetadata(
+    "/automacao-whatsapp",
+    "Automação de WhatsApp para o seu negócio",
+    "Organize o WhatsApp do seu negócio com fluxos de atendimento sob medida. Automatize perguntas frequentes, encaminhe pedidos e conecte o cliente à sua equipe. Converse com a Quintec.",
+  ),
   keywords: ["automação de WhatsApp", "WhatsApp Business", "atendimento para empreendedores", "fluxos de atendimento", "Quintec"],
 };
 

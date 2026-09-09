@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "seo:check": "node scripts/check-seo.mjs",
     "test": "vitest",
     "test:ci": "vitest run",
     "test:coverage": "vitest run --coverage"

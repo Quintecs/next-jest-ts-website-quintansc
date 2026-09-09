@@ -1,11 +1,15 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ArrowUpRight, Clock3, MessageCircle } from "lucide-react";
 import ContactForm from "@/components/site/contact-form";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { solutionOptions, WHATSAPP_URL } from "@/lib/contact";
 
-export const metadata: Metadata = { title: "Vamos conversar", description: "Conte seu desafio para Gustavo Quintans. Converse sobre sites, sistemas web e integrações sob medida para seu negócio." };
+export const metadata = pageMetadata(
+  "/contato",
+  "Vamos conversar",
+  "Conte seu desafio para Gustavo Quintans. Converse sobre sites, sistemas web e integrações sob medida para seu negócio.",
+);
 
 type Props = { searchParams: Promise<{ solucao?: string | string[] }> };
 

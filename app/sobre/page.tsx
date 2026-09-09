@@ -1,10 +1,14 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowUpRight, Braces, Fingerprint, MessagesSquare } from "lucide-react";
 import ContactCta from "@/components/site/contact-cta";
 import SocialLinks from "@/components/site/social-links";
 
-export const metadata: Metadata = { title: "Gustavo Quintans", description: "Conheça Gustavo Quintans, desenvolvedor por trás da Quintec. Soluções digitais com atenção à experiência, à qualidade e ao seu negócio." };
+export const metadata = pageMetadata(
+  "/sobre",
+  "Gustavo Quintans",
+  "Conheça Gustavo Quintans, desenvolvedor por trás da Quintec. Soluções digitais com atenção à experiência, à qualidade e ao seu negócio.",
+);
 
 export default function SobrePage() {
   return (

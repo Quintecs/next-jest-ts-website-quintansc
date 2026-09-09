@@ -1,9 +1,13 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { getProjectCatalog } from "@/lib/projects";
 import ProjectGallery from "@/components/site/project-gallery";
 import ContactCta from "@/components/site/contact-cta";
 
-export const metadata: Metadata = { title: "Projetos", description: "Conheça os projetos de Gustavo Quintans: interfaces, aplicações web e APIs com React, Next.js, Node.js e TypeScript." };
+export const metadata = pageMetadata(
+  "/projetos",
+  "Projetos",
+  "Conheça os projetos de Gustavo Quintans: interfaces, aplicações web e APIs com React, Next.js, Node.js e TypeScript.",
+);
 
 export default function ProjetosPage() {
   return (
