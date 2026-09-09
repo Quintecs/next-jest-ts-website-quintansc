@@ -1,4 +1,4 @@
-export const WHATSAPP_URL = "https://wa.me/5511996394440";
+export const WHATSAPP_URL = "https://wa.me/5511933712324";
 export const solutionOptions = ["Site ou landing page", "Sistema web", "API ou integração", "Ainda preciso de orientação"] as const;
 
 export interface ProjectBrief {
