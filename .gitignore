@@ -23,8 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# local env files
-.env*.local
+# Environment files can contain credentials; only publish a safe example.
+.env
+.env.*
+!.env.example
 
 # vercel
 .vercel
