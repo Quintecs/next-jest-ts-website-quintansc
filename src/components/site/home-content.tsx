@@ -1,238 +1,42 @@
-import Image from "next/image";
 import Link from "next/link";
-import { BsChat } from "react-icons/bs";
+import { ArrowDown, ArrowRight, ArrowUpRight, Braces, Check, Globe2, Layers3 } from "lucide-react";
 import { FaNodeJs, FaReact } from "react-icons/fa";
-import { SiAngular, SiNextdotjs } from "react-icons/si";
-
+import { SiNextdotjs, SiTypescript } from "react-icons/si";
 import type { GithubUser } from "@/lib/github";
 import { getProjectCatalog } from "@/lib/projects";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import ProjectShowcase from "./project-showcase";
-import SkillCard, { type SkillCardProps } from "./skill-card";
-import UserCard from "./user-card";
+import ContactCta from "./contact-cta";
+import ProjectCard from "./project-card";
+import SolutionDiagram from "./solution-diagram";
 
-const skills: SkillCardProps[] = [
-  {
-    title: "NodeJS",
-    subtitle: "Back-end Framework",
-    textContent:
-      "Node.js® é um ambiente de execução de JavaScript de código aberto e multiplataforma.",
-    icon: <FaNodeJs size={65} color="#3c873a" />,
-    link: "https://nodejs.org/en/",
-    theme: {
-      colorBackgroundIcon: "#10BB83",
-      cardBackgroundColor: "#162825",
-      cardBackroundTitleColor: "#3E6E66",
-    },
-  },
-  {
-    title: "ReactJs",
-    subtitle: "Front-end Framework",
-    textContent:
-      "A biblioteca para web e interfaces de usuário nativas baseada em JavaScript e TypeScript.",
-    icon: <FaReact size={65} color="#61DBFB" />,
-    link: "https://pt-br.react.dev",
-    theme: {
-      colorBackgroundIcon: "#17A2DE",
-      cardBackgroundColor: "#1A3846",
-      cardBackroundTitleColor: "#285676",
-    },
-  },
-  {
-    title: "NextJs",
-    subtitle: "Front-end Framework",
-    textContent:
-      "Next.js é um framework React para criar aplicativos web full-stack com recursos e otimizações extras.",
-    icon: <SiNextdotjs size={65} color="black" />,
-    link: "https://nextjs.org/",
-    theme: {
-      colorBackgroundIcon: "#F4F4F4",
-      cardBackgroundColor: "#1D1D1F",
-      cardBackroundTitleColor: "#DAD9DE",
-      textTitleColor: "#18181A",
-    },
-  },
-  {
-    title: "AngularJS",
-    subtitle: "Front-end Framework",
-    textContent:
-      "Framework JavaScript da Google para criação de aplicativos web dinâmicos e interativos.",
-    icon: <SiAngular size={65} color="#DD0031" />,
-    link: "https://angular.io/",
-    theme: {
-      colorBackgroundIcon: "#DD0031",
-      cardBackgroundColor: "#2A1010",
-      cardBackroundTitleColor: "#5C1A1A",
-      textTitleColor: "#ffffff",
-    },
-  },
+const solutions = [
+  { number: "01", icon: Globe2, title: "Sites que abrem portas", text: "Apresente sua empresa com clareza e facilite o caminho entre o primeiro acesso e o contato comercial.", items: ["Sites institucionais e landing pages", "Experiência mobile e acessibilidade"], need: "Site ou landing page" },
+  { number: "02", icon: Layers3, title: "Sistemas que simplificam", text: "Transforme uma operação complexa em uma experiência intuitiva para sua equipe e seus clientes.", items: ["Aplicações e plataformas web", "Interfaces sob medida para sua operação"], need: "Sistema web" },
+  { number: "03", icon: Braces, title: "Tecnologia que conecta", text: "Conecte ferramentas e organize o fluxo de informações para reduzir tarefas manuais no dia a dia.", items: ["APIs e integrações entre sistemas", "Back-end estruturado para evoluir"], need: "API ou integração" },
 ];
 
-interface HomeContentProps {
-  user: GithubUser | null;
-}
-
-export default function HomeContent({ user }: HomeContentProps) {
-  const featured = getProjectCatalog().filter((project) => project.banner);
-
-  const createdAt = user?.created_at
-    ? new Date(user.created_at).getFullYear()
-    : 2019;
-  const yearsExp = new Date().getFullYear() - createdAt;
-
+export default function HomeContent({ user }: { user: GithubUser | null }) {
   return (
     <>
-      {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="flex min-h-[88vh] animate-fade-up flex-col-reverse items-center gap-10 px-6 py-12 md:flex-row md:px-15 md:py-0">
-        <div className="flex flex-1 flex-col justify-center max-md:items-center max-md:text-center">
-          <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-[13px] font-medium text-accent">
-            <span className="size-2 animate-pulse-dot rounded-full bg-accent" />
-            Disponível para novas oportunidades
-          </div>
-
-          <span className="text-lg text-muted">Olá, eu sou</span>
-          <h1 className="mb-3 bg-gradient-to-br from-white via-[#d6c9f8] to-primary-light bg-clip-text font-display text-[clamp(40px,5vw,72px)] font-bold leading-[1.15] text-transparent">
-            Gustavo Quintans
-          </h1>
-          <h2 className="mb-5 text-[clamp(20px,2.5vw,30px)] font-normal tracking-wide text-primary-light">
-            Front-end Developer
-          </h2>
-
-          <p className="mb-9 max-w-md leading-relaxed text-muted">
-            Especialista em{" "}
-            <strong className="text-white">JavaScript e TypeScript</strong>,
-            construindo interfaces modernas, performáticas e acessíveis com
-            React, Next.js e Node.js.
-          </p>
-
-          <div className="flex flex-wrap gap-4 max-md:justify-center">
-            <Link href="/contato" className={cn(buttonVariants())}>
-              <BsChat size={16} /> Entre em Contato
-            </Link>
-            <Link
-              href="/projetos"
-              className={cn(buttonVariants({ variant: "outline" }))}
-            >
-              Ver Projetos
-            </Link>
-          </div>
+      <section className="site-container grid items-center gap-12 py-16 md:py-20 lg:grid-cols-[1.15fr_1fr] lg:gap-16 lg:py-24">
+        <div className="animate-fade-up">
+          <span className="eyebrow">Quintec / Desenvolvimento de soluções digitais</span>
+          <h1 className="text-[clamp(2.65rem,5.3vw,4.7rem)] font-semibold leading-[1.06] tracking-[-0.055em]">Seu negócio tem<br className="hidden sm:block" /> um próximo nível.<br /><span className="text-accent">Vamos construir.</span></h1>
+          <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted">Sites, sistemas e integrações que aproximam clientes, simplificam processos e dão espaço para seu negócio crescer.</p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link href="/contato" className={cn(buttonVariants(), "primary-cta")}>Conversar sobre meu projeto <ArrowUpRight size={18} /></Link><Link href="/projetos" className={cn(buttonVariants({ variant: "outline" }), "secondary-cta")}>Explorar projetos <ArrowRight size={17} /></Link></div>
+          <div className="mt-8 flex items-center gap-3 text-sm text-muted"><span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-edge bg-panel font-mono text-xs text-foreground">GQ</span><p>Desenvolvimento por <span className="font-medium text-foreground">{user?.name || "Gustavo Quintans"}</span><br /><span className="text-xs">Conversa direta. Soluções sob medida.</span></p></div>
         </div>
-
-        <div className="flex flex-1 items-center justify-center md:justify-end">
-          <Image
-            src="/homeContent.png"
-            priority
-            alt="Ilustração hero"
-            width={489}
-            height={404}
-            className="h-auto w-full max-w-[340px] rounded-2xl drop-shadow-[0_0_60px_rgba(91,33,230,0.25)] md:max-w-[489px]"
-          />
-        </div>
+        <SolutionDiagram />
       </section>
-
-      {/* ── STATS ─────────────────────────────────────────────────────── */}
-      <section className="flex w-full flex-col items-center justify-center gap-6 border-y border-white/5 bg-panel px-6 py-7 sm:flex-row sm:px-15">
-        <div className="flex flex-1 flex-col items-center">
-          <span className="text-4xl font-bold leading-none text-primary-light">
-            +{yearsExp}
-          </span>
-          <span className="mt-1.5 text-center text-[13px] text-muted">
-            Anos de Experiência
-          </span>
-        </div>
-        <div className="h-px w-12 bg-white/10 sm:h-12 sm:w-px" />
-        <div className="flex flex-1 flex-col items-center">
-          <span className="text-4xl font-bold leading-none text-primary-light">
-            4+
-          </span>
-          <span className="mt-1.5 text-center text-[13px] text-muted">
-            Tecnologias Dominadas
-          </span>
-        </div>
-        <div className="h-px w-12 bg-white/10 sm:h-12 sm:w-px" />
-        <div className="flex flex-1 flex-col items-center">
-          <span className="text-4xl font-bold leading-none text-primary-light">
-            20+
-          </span>
-          <span className="mt-1.5 text-center text-[13px] text-muted">
-            Projetos Realizados
-          </span>
-        </div>
+      <div className="w-full border-y border-edge bg-panel/40"><div className="site-container flex flex-col justify-between gap-5 py-6 md:flex-row md:items-center"><p className="font-mono text-xs uppercase tracking-widest text-muted">Uma base sólida para suas ideias</p><div className="flex flex-wrap items-center gap-x-7 gap-y-4 text-sm text-muted">{[{ Icon: FaReact, name: "React" }, { Icon: SiNextdotjs, name: "Next.js" }, { Icon: SiTypescript, name: "TypeScript" }, { Icon: FaNodeJs, name: "Node.js" }].map(({ Icon, name }) => <span key={name} className="flex items-center gap-2"><Icon size={21} />{name}</span>)}</div></div></div>
+      <section id="solucoes" className="site-container section-space">
+        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><span className="eyebrow">01 / O que posso fazer por você</span><h2 className="section-title">Menos obstáculos.<br />Mais possibilidades.</h2></div><p className="max-w-sm leading-relaxed text-muted">A tecnologia certa começa com o entendimento do seu desafio, não com uma lista de ferramentas.</p></div>
+        <div className="grid gap-4 lg:grid-cols-3">{solutions.map(({ number, icon: Icon, title, text, items, need }) => <article key={number} className="flex flex-col rounded-xl border border-edge bg-panel p-7 transition-colors hover:border-accent/40"><div className="mb-10 flex items-center justify-between"><Icon size={26} strokeWidth={1.5} className="text-accent" /><span className="font-mono text-xs text-muted-dark">/{number}</span></div><h3 className="text-xl font-semibold tracking-tight">{title}</h3><p className="mb-7 mt-4 leading-relaxed text-muted">{text}</p><ul className="mb-8 space-y-3">{items.map(item => <li key={item} className="flex gap-2 text-sm text-muted"><Check size={16} className="mt-0.5 shrink-0 text-accent" />{item}</li>)}</ul><Link href={`/contato?solucao=${encodeURIComponent(need)}`} className="text-link mt-auto justify-between border-t border-edge pt-5">Quero essa solução <ArrowUpRight size={18} /></Link></article>)}</div>
       </section>
-
-      {/* ── SOBRE / GITHUB ────────────────────────────────────────────── */}
-      {user ? (
-        <div className="w-full px-6 pt-12 md:px-15">
-          <UserCard user={user} />
-        </div>
-      ) : null}
-
-      {/* ── HABILIDADES ───────────────────────────────────────────────── */}
-      <section className="w-full px-6 py-14 md:px-15 md:py-18">
-        <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.12em] text-primary-light">
-          Tecnologias
-        </span>
-        <h2 className="mb-3 font-display text-[clamp(26px,3vw,40px)] font-bold">
-          Minhas Habilidades
-        </h2>
-        <p className="mb-12 max-w-xl leading-relaxed text-muted">
-          Conheça as principais tecnologias que utilizo para criar soluções de
-          front-end e back-end escaláveis e de alta qualidade.
-        </p>
-
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {skills.map((skill) => (
-            <SkillCard key={skill.title} {...skill} />
-          ))}
-        </div>
-      </section>
-
-      {/* ── PROJETOS ──────────────────────────────────────────────────── */}
-      <section className="w-full px-6 pb-12 md:px-15">
-        <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.12em] text-primary-light">
-          Portfólio
-        </span>
-        <h2 className="mb-3 font-display text-[clamp(26px,3vw,40px)] font-bold">
-          Projetos Selecionados
-        </h2>
-        <p className="max-w-xl leading-relaxed text-muted">
-          Alguns dos projetos que desenvolvi, demonstrando criatividade,
-          habilidades técnicas e experiência em desenvolvimento front-end.
-        </p>
-      </section>
-
-      {featured.map((project) => (
-        <ProjectShowcase
-          key={project.name}
-          title={project.name}
-          description={project.description}
-          urlImage={project.banner!}
-          flags={project.tags}
-          projectUrl={`/projetos/${project.name}`}
-        />
-      ))}
-
-      {/* ── CONTATO ───────────────────────────────────────────────────── */}
-      <section className="relative flex w-full flex-col items-center border-t border-white/5 bg-gradient-to-b from-transparent to-primary/10 px-6 py-18 text-center md:px-15 md:py-24">
-        <div className="absolute left-1/2 top-0 h-0.5 w-[600px] max-w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-primary to-transparent" />
-        <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.12em] text-primary-light">
-          Contato
-        </span>
-        <h2 className="mb-4 font-display text-[clamp(28px,3.5vw,44px)] font-bold">
-          Vamos trabalhar juntos?
-        </h2>
-        <p className="mb-9 max-w-lg leading-relaxed text-muted">
-          Estou disponível para projetos freelance, oportunidades de emprego e
-          colaborações. Vamos transformar suas ideias em realidade!
-        </p>
-        <Link
-          href="/contato"
-          className={cn(buttonVariants({ size: "lg" }))}
-        >
-          <BsChat size={18} /> Entre em Contato
-        </Link>
-      </section>
+      <section className="w-full border-y border-edge bg-panel/30"><div className="site-container section-space"><div className="mb-12 flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><span className="eyebrow">02 / Portfólio selecionado</span><h2 className="section-title">Ideias que viraram código.</h2></div><Link href="/projetos" className="text-link">Todos os projetos <ArrowUpRight size={18} /></Link></div><div className="grid gap-6 md:grid-cols-2">{getProjectCatalog().slice(0, 2).map(project => <ProjectCard key={project.name} project={project} />)}</div><p className="mt-6 text-sm text-muted">Projetos de portfólio com código aberto para você conhecer minha abordagem técnica.</p></div></section>
+      <section className="site-container section-space"><span className="eyebrow">03 / Como vamos trabalhar</span><div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><h2 className="section-title">Clareza do primeiro contato<br />à última entrega.</h2><Link href="/sobre" className="text-link">Conheça quem vai desenvolver <ArrowUpRight size={18} /></Link></div><ol className="grid gap-8 md:grid-cols-3">{[{ title: "Entender", text: "Conversamos sobre seu negócio, o problema e o que você espera alcançar." }, { title: "Planejar e construir", text: "Definimos escopo e prioridades. Você acompanha o desenvolvimento com alinhamentos ao longo do projeto." }, { title: "Entregar e evoluir", text: "Validamos os fluxos e os detalhes para colocar a solução em uso e planejar os próximos passos." }].map(({ title, text }, index) => <li key={title} className="border-t border-edge pt-6"><div className="mb-5 flex items-center justify-between"><span className="font-mono text-sm text-accent">0{index + 1}</span><ArrowDown size={16} className="text-muted-dark md:-rotate-90" /></div><h3 className="mb-3 text-xl font-medium tracking-tight">{title}</h3><p className="leading-relaxed text-muted">{text}</p></li>)}</ol></section>
+      <ContactCta />
     </>
   );
 }

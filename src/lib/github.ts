@@ -31,6 +31,7 @@ async function github<T>(path: string): Promise<T | null> {
   try {
     const res = await fetch(`${GITHUB_API}${path}`, {
       headers,
+      signal: AbortSignal.timeout(5000),
       next: { revalidate: 86400 },
     });
     if (!res.ok) return null;

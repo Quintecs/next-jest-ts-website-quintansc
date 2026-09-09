@@ -25,9 +25,9 @@ describe("Header da aplicação", () => {
     expect(links.length).toBeGreaterThanOrEqual(3);
   });
 
-  it("possui o CTA Fale Conosco apontando para /contato", () => {
+  it("possui o CTA Vamos conversar apontando para /contato", () => {
     render(<Header />);
-    const cta = screen.getByRole("link", { name: /fale conosco/i });
+    const cta = screen.getByRole("link", { name: /vamos conversar/i });
     expect(cta).toHaveAttribute("href", "/contato");
   });
 
@@ -38,5 +38,9 @@ describe("Header da aplicação", () => {
     expect(await screen.findByTestId("drawer")).toBeInTheDocument();
     const links = await screen.findAllByTestId("linkElements");
     expect(links.length).toBeGreaterThanOrEqual(4);
+    // Impede a navegação do JSDOM depois que o React processa o fechamento.
+    document.addEventListener("click", (event) => event.preventDefault(), { once: true });
+    fireEvent.click(links[2]);
+    expect(screen.queryByTestId("drawer")).not.toBeInTheDocument();
   });
 });

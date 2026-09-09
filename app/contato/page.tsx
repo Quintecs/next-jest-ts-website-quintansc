@@ -1,66 +1,26 @@
 import type { Metadata } from "next";
-import { RiSendPlaneFill } from "react-icons/ri";
-
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { ArrowUpRight, Clock3, MessageCircle } from "lucide-react";
+import ContactForm from "@/components/site/contact-form";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { solutionOptions, WHATSAPP_URL } from "@/lib/contact";
 
-export const metadata: Metadata = {
-  title: "Contato",
-  description:
-    "Entre em contato com a Quintec: formulário ou WhatsApp para projetos, orçamentos e parcerias.",
-};
+export const metadata: Metadata = { title: "Vamos conversar", description: "Conte seu desafio para Gustavo Quintans. Converse sobre sites, sistemas web e integrações sob medida para seu negócio." };
 
-export default function ContatoPage() {
+type Props = { searchParams: Promise<{ solucao?: string | string[] }> };
+
+export default async function ContatoPage({ searchParams }: Props) {
+  const params = await searchParams;
+  const initialSolution = solutionOptions.find(option => option === params.solucao) ?? "";
   return (
-    <div className="w-full max-w-6xl px-6 py-16 text-center">
-      <h1 className="mb-12 font-display text-4xl font-bold">Entre em contato</h1>
-
-      <div className="grid grid-cols-1 items-start gap-8 text-left lg:grid-cols-2">
-        <section className="rounded-xl border-2 border-edge bg-panel p-8 sm:p-12">
-          <h2 className="mb-2 font-display text-2xl font-bold">Preencha o formulário</h2>
-          <p className="mb-8 text-sm text-muted-dark">
-            Iremos entrar em contato assim que possível.
-          </p>
-          <form className="flex flex-col gap-4">
-            <Input name="nome" placeholder="Seu nome" autoComplete="name" />
-            <Input
-              name="email"
-              type="email"
-              placeholder="Digite seu e-mail"
-              autoComplete="email"
-            />
-            <Input
-              name="telefone"
-              type="tel"
-              placeholder="Número com DDD"
-              autoComplete="tel"
-            />
-            <Button type="submit" className="mt-2">
-              <RiSendPlaneFill /> Enviar solicitação
-            </Button>
-          </form>
-        </section>
-
-        <section className="rounded-xl border-2 border-edge bg-panel p-8 sm:p-12">
-          <h2 className="mb-2 font-display text-2xl font-bold">Contato via WhatsApp</h2>
-          <p className="mb-8 text-sm text-muted-dark">
-            Entre em contato diretamente conosco via WhatsApp.
-          </p>
-          <a
-            href="https://wa.me/5511996394440"
-            target="_blank"
-            rel="noreferrer"
-            className={cn(buttonVariants({ variant: "accent" }), "w-full")}
-          >
-            <RiSendPlaneFill /> Enviar Mensagem
-          </a>
-          <div className="mt-8 text-sm text-muted-dark">
-            <p className="font-semibold text-muted">Horário de Atendimento:</p>
-            <p>Segunda a sexta das 8:00 às 19:00</p>
-            <p>Sábado e domingo das 10:00 às 16:00</p>
-          </div>
-        </section>
+    <div className="site-container section-space">
+      <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <div><span className="eyebrow">Vamos conversar</span><h1 className="page-title">Uma boa solução começa com uma <span className="text-accent">boa conversa.</span></h1><p className="mt-6 max-w-lg text-lg leading-relaxed text-muted">Você não precisa ter tudo definido. Conte o que seu negócio precisa e vamos entender juntos o próximo passo.</p>
+          <div className="my-10 border-y border-edge py-7"><p className="mb-2 font-medium">Seu contato é direto comigo.</p><p className="text-sm leading-relaxed text-muted">Sou Gustavo Quintans, desenvolvedor por trás da Quintec. Vou conhecer seu contexto para avaliar como posso ajudar.</p></div>
+          <h2 className="flex items-center gap-2 text-lg font-medium"><MessageCircle size={20} className="text-accent" />Prefere ir direto ao WhatsApp?</h2><p className="mb-5 mt-3 text-sm leading-relaxed text-muted">Sem formulário. Comece a conversa da forma que for mais fácil para você.</p><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "outline" }), "secondary-cta")}>Enviar mensagem <ArrowUpRight size={17} /></a>
+          <div className="mt-10 flex gap-3 text-sm text-muted"><Clock3 size={18} className="mt-1 shrink-0" /><div><p className="mb-2 text-foreground">Horário de atendimento</p><p>Segunda a sexta, das 8h às 19h</p><p className="mt-1">Sábado e domingo, das 10h às 16h</p><p className="mt-2 text-xs">Horário de Brasília</p></div></div>
+        </div>
+        <ContactForm initialSolution={initialSolution} />
       </div>
     </div>
   );

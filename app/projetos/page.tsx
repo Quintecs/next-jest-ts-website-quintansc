@@ -1,35 +1,12 @@
 import type { Metadata } from "next";
+import { getProjectCatalog } from "@/lib/projects";
+import ProjectGallery from "@/components/site/project-gallery";
+import ContactCta from "@/components/site/contact-cta";
 
-import { getProject, getProjectCatalog } from "@/lib/projects";
-import ProjectCard from "@/components/site/project-card";
+export const metadata: Metadata = { title: "Projetos", description: "Conheça os projetos de Gustavo Quintans: interfaces, aplicações web e APIs com React, Next.js, Node.js e TypeScript." };
 
-export const metadata: Metadata = {
-  title: "Projetos",
-  description:
-    "Explore a galeria de projetos da Quintec: aplicações front-end e back-end construídas com React, Next.js e Node.js.",
-};
-
-export const revalidate = 86400;
-
-export default async function ProjetosPage() {
-  const projects = await Promise.all(
-    getProjectCatalog().map((project) => getProject(project.name))
-  );
-
+export default function ProjetosPage() {
   return (
-    <div className="w-full max-w-6xl px-6 py-16 text-center">
-      <h1 className="mb-6 font-display text-4xl font-bold">Nossos Projetos</h1>
-      <p className="mx-auto mb-12 max-w-3xl leading-relaxed text-muted">
-        Explore nossa galeria de projetos e mergulhe em uma variedade de
-        trabalhos. Cada empreendimento é cuidadosamente concebido para atender
-        às necessidades específicas de nossos clientes, combinando
-        criatividade, funcionalidade e inovação.
-      </p>
-      <div className="flex flex-wrap justify-center gap-8 text-left">
-        {projects.map((project) =>
-          project ? <ProjectCard key={project.name} project={project} /> : null
-        )}
-      </div>
-    </div>
+    <><section className="site-container section-space"><span className="eyebrow">Portfólio / Da ideia à implementação</span><h1 className="page-title">O trabalho fala.<br /><span className="text-accent">Explore os detalhes.</span></h1><p className="mb-12 mt-6 max-w-2xl text-lg leading-relaxed text-muted">Uma seleção de projetos de portfólio que mostram como construo interfaces e organizo soluções. Conheça a proposta, as tecnologias e o código de cada um.</p><ProjectGallery projects={getProjectCatalog()} /></section><ContactCta /></>
   );
 }

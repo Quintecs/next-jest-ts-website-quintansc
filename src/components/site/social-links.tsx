@@ -18,7 +18,7 @@ const socials = [
 
 export default function SocialLinks({ size = 20 }: { size?: number }) {
   return (
-    <nav className="flex items-center gap-3">
+    <nav aria-label="Redes sociais" className="flex items-center gap-3">
       {socials.map(({ href, label, Icon }) => (
         <a
           key={href}
@@ -27,7 +27,7 @@ export default function SocialLinks({ size = 20 }: { size?: number }) {
           rel="noreferrer"
           aria-label={label}
           data-testid="lateralElements"
-          className="flex size-11 items-center justify-center rounded-lg bg-panel text-primary-light shadow transition-colors hover:bg-primary hover:text-white"
+          className="flex size-11 items-center justify-center rounded-lg border border-edge bg-transparent text-muted transition-colors hover:border-accent/40 hover:bg-panel hover:text-accent"
         >
           <Icon size={size} />
         </a>
