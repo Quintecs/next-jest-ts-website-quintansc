@@ -47,6 +47,62 @@
   .field { @apply min-h-12 w-full rounded-lg border border-edge bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-dark focus-visible:border-accent focus-visible:outline-accent focus-visible:ring-0; }
 }
 
+/* The campaign has its own palette, including the shared header and footer. */
+body:has(.whatsapp-landing) {
+  --color-background: #ffffff;
+  --color-panel: #f3f7ff;
+  --color-edge: #dce4f0;
+  --color-primary: #2456d9;
+  --color-primary-dark: #1943b1;
+  --color-primary-light: #dce8ff;
+  --color-accent: #2456d9;
+  --color-muted: #53627a;
+  --color-muted-dark: #617089;
+  --color-foreground: #15284b;
+  --campaign-yellow: #ffda47;
+  background: #ffffff;
+  color: #15284b;
+}
+
+body:has(.whatsapp-landing) ::selection {
+  background: #ffda47;
+  color: #15284b;
+}
+
+body:has(.whatsapp-landing) :focus-visible {
+  outline-color: #2456d9;
+}
+
+body:has(.whatsapp-landing) .primary-cta {
+  border-color: #2456d9;
+  background: #2456d9;
+  color: #ffffff;
+  box-shadow: 0 6px 18px #2456d91a;
+}
+
+body:has(.whatsapp-landing) .primary-cta:hover {
+  border-color: #1943b1;
+  background: #1943b1;
+  color: #ffffff;
+}
+
+body:has(.whatsapp-landing) .secondary-cta:hover {
+  border-color: #2456d9;
+  background: #edf3ff;
+}
+
+.whatsapp-landing .eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+}
+
+.whatsapp-landing .eyebrow::before {
+  height: 0.25rem;
+  border-radius: 1rem;
+  background: var(--campaign-yellow);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }

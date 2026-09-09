@@ -21,6 +21,27 @@ export default function Header() {
   const pathname = usePathname();
   const isActive = (href: string) => href === "/" ? pathname === "/" : !href.includes("#") && pathname.startsWith(href);
 
+  if (pathname === "/automacao-whatsapp") {
+    return (
+      <header data-testid="headerContainer" className="sticky top-0 z-40 border-b border-edge/70 bg-background/95 backdrop-blur-xl">
+        <div className="site-container flex h-20 items-center justify-between gap-4">
+          <Link href="/" aria-label="Quintec — página inicial" className="flex shrink-0 items-center gap-3">
+            <span className="text-2xl font-semibold tracking-[-0.06em] text-accent">quintec<span className="text-foreground">.</span></span>
+            <span className="hidden rounded-full bg-[#ffda47] px-3 py-1 text-xs font-semibold text-[#15284b] sm:block">para o seu negócio</span>
+          </Link>
+          <nav aria-label="Navegação da página" className="hidden items-center gap-7 lg:flex">
+            <a href="#fluxos" className="text-link text-muted">Na prática</a>
+            <a href="#como-funciona" className="text-link text-muted">Como funciona</a>
+            <a href="#duvidas" className="text-link text-muted">Dúvidas</a>
+          </nav>
+          <a href="#fluxos" className="text-link gap-2 text-accent">
+            Veja na prática <ArrowUpRight size={17} aria-hidden="true" />
+          </a>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <header data-testid="headerContainer" className="sticky top-0 z-40 border-b border-edge/70 bg-background/90 backdrop-blur-xl">
       <div className="site-container flex h-20 items-center justify-between gap-6">
