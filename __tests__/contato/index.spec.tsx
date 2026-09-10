@@ -10,7 +10,7 @@ describe("Página de Contato", () => {
   it("oferece contato direto e aproveita a solução selecionada", async () => {
     render(await ContatoPage({ searchParams: Promise.resolve({ solucao: "Sistema web" }) }));
     expect(screen.getByRole("heading", { level: 1, name: /boa conversa/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Enviar mensagem/i })).toHaveAttribute("href", "https://wa.me/5511933712324");
+    expect(screen.getByRole("link", { name: /Enviar mensagem/i })).toHaveAttribute("href", "https://wa.me/5511989060037");
     expect(screen.getByLabelText(/O que você precisa/i)).toHaveValue("Sistema web")
   });
   it("descarta uma solução não reconhecida na URL", async () => {
@@ -28,7 +28,7 @@ describe("Página de Contato", () => {
     await user.click(screen.getByRole("button", { name: /Continuar no WhatsApp/i }));
     expect(open).toHaveBeenCalledOnce();
     const url = new URL(String(open.mock.calls[0][0]));
-    expect(url.origin + url.pathname).toBe("https://wa.me/5511933712324");
+    expect(url.origin + url.pathname).toBe("https://wa.me/5511989060037");
     expect(url.searchParams.get("text")).toContain("Nome: Maria Silva");
     expect(url.searchParams.get("text")).toContain("Empresa: Maria & Cia");
     expect(url.searchParams.get("text")).toContain("Solução: Sistema web");
