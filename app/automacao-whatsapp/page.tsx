@@ -1,6 +1,5 @@
 import { TrackedAnchor } from "@/components/site/tracked-link";
 import { pageMetadata } from "@/lib/seo";
-import { FaWhatsapp } from "react-icons/fa";
 import { ArrowRight, ArrowUpRight, Check, Clock3, MessageCircle, MessagesSquare, Plus, Repeat2 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import WhatsAppFlowCarousel from "@/components/site/whatsapp-flow-carousel";
@@ -77,17 +76,6 @@ export default function WhatsAppAutomationPage() {
       <section id="duvidas" className="site-container pb-20 md:pb-28"><div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16"><div><p className="eyebrow">04 / Antes de conversar</p><h2 className="section-title">Para você decidir<br />com tranquilidade.</h2></div><div className="border-t border-edge">{questions.map(({ question, answer }) => <details key={question} className="group border-b border-edge"><summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-5 py-5 font-medium [&::-webkit-details-marker]:hidden">{question}<Plus size={20} className="shrink-0 text-accent transition-transform group-open:rotate-45" aria-hidden="true" /></summary><p className="pb-6 pr-6 leading-relaxed text-muted">{answer}</p></details>)}</div></div></section>
 
       <section className="site-container pb-20 md:pb-28"><div className="rounded-3xl border border-[#f0d466] bg-[#fff5c9] px-6 py-12 sm:p-12 lg:p-16"><p className="eyebrow">Vamos olhar para o seu atendimento?</p><h2 className="section-title max-w-3xl">Menos tempo repetindo respostas.<br /><span className="text-accent">Mais atenção para seus clientes.</span></h2><p className="mb-8 mt-6 max-w-xl text-lg leading-relaxed text-muted">Me conte sobre o seu negócio e o que mais atrapalha no WhatsApp hoje. Vamos entender por onde começar.</p><WhatsAppCta location="automation_bottom" className="w-full sm:w-auto">Conversar sobre meu negócio</WhatsAppCta><p className="mt-4 text-sm text-muted">Solução e investimento definidos a partir da sua necessidade.</p></div></section>
-      <TrackedAnchor
-        analyticsEvent={{ name: "contact_click", properties: { location: "automation_floating", channel: "whatsapp" } }}
-        href={AUTOMATION_WHATSAPP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Conversar com Gustavo pelo WhatsApp (abre em nova aba)"
-        className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-[calc(1rem+env(safe-area-inset-right))] z-40 inline-flex min-h-14 min-w-14 items-center justify-center gap-3 rounded-full bg-[#087f5b] p-3 text-white shadow-lg transition-colors hover:bg-[#066649] focus-visible:ring-4 focus-visible:ring-white sm:px-5"
-      >
-        <FaWhatsapp size={28} aria-hidden="true" />
-        <span className="hidden text-sm font-semibold sm:inline">Fale pelo WhatsApp</span>
-      </TrackedAnchor>
     </div>
   );
 }

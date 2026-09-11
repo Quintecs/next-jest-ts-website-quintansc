@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Header from "@/components/site/header";
 import Footer from "@/components/site/footer";
+import WhatsAppFloatingButton from "@/components/site/whatsapp-floating-button";
 import { SITE_DESCRIPTION, SITE_ORIGIN, SITE_TITLE } from "@/lib/seo";
 
 import "./globals.css";
@@ -47,6 +48,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <WhatsAppFloatingButton />
         {process.env.NODE_ENV === "production" ? (
           <>
             <SiteAnalytics />
