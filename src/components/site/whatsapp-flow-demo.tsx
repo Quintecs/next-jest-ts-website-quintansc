@@ -62,7 +62,7 @@ export default function WhatsAppFlowDemo() {
             {example.steps.map((step, index) => <li key={step} className="flex items-center gap-4"><span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-edge font-mono text-sm text-accent">0{index + 1}</span><span>{step}</span></li>)}
           </ol>
           <p className="max-w-lg leading-relaxed text-muted">{example.outcome}</p>
-          <TrackedAnchor href={contactUrl} analyticsEvent={{ name: "contact_click", properties: { location: "automation_example", channel: "whatsapp" } }} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants(), "secondary-cta mt-8 h-auto whitespace-normal py-3")}>Quero um fluxo para meu negócio <ArrowUpRight size={18} aria-hidden="true" /></TrackedAnchor>
+          <TrackedAnchor href={contactUrl} analyticsEvent={{ name: "contact_click", properties: { location: "automation_example", channel: "whatsapp" } }} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants(), "primary-cta mt-8 h-auto min-h-14 whitespace-normal py-3")}>Quero um fluxo para meu negócio <ArrowUpRight size={18} aria-hidden="true" /></TrackedAnchor>
         </div>
         <div className="overflow-hidden rounded-2xl border border-edge bg-white">
           <div className="flex items-center gap-3 border-b border-edge px-5 py-4 sm:px-7">

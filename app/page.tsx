@@ -1,4 +1,5 @@
 import { getUser } from "@/lib/github";
+import { StaticPageStructuredData } from "@/components/site/structured-data";
 import HomeContent from "@/components/site/home-content";
 import { pageMetadata, SITE_DESCRIPTION, SITE_TITLE } from "@/lib/seo";
 
@@ -12,5 +13,5 @@ export const revalidate = 86400;
 export default async function HomePage() {
   const user = await getUser();
 
-  return <HomeContent user={user} />;
+  return <><StaticPageStructuredData path="/" /><HomeContent user={user} /></>;
 }

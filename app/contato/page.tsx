@@ -1,16 +1,14 @@
 import { TrackedAnchor } from "@/components/site/tracked-link";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, seoPages } from "@/lib/seo";
+import { StaticPageStructuredData } from "@/components/site/structured-data";
 import { ArrowUpRight, Clock3, MessageCircle } from "lucide-react";
 import ContactForm from "@/components/site/contact-form";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { solutionOptions, WHATSAPP_URL } from "@/lib/contact";
 
-export const metadata = pageMetadata(
-  "/contato",
-  "Vamos conversar",
-  "Conte seu desafio para Gustavo Quintans. Converse sobre sites, sistemas web e integrações sob medida para seu negócio.",
-);
+const seo = seoPages["/contato"];
+export const metadata = pageMetadata("/contato", seo.title, seo.description);
 
 type Props = { searchParams: Promise<{ solucao?: string | string[] }> };
 
@@ -19,6 +17,7 @@ export default async function ContatoPage({ searchParams }: Props) {
   const initialSolution = solutionOptions.find(option => option === params.solucao) ?? "";
   return (
     <div className="site-container section-space">
+      <StaticPageStructuredData path="/contato" />
       <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <div><span className="eyebrow">Vamos conversar</span><h1 className="page-title">Uma boa solução começa com uma <span className="text-accent">boa conversa.</span></h1><p className="mt-6 max-w-lg text-lg leading-relaxed text-muted">Você não precisa ter tudo definido. Conte o que seu negócio precisa e vamos entender juntos o próximo passo.</p>
           <div className="my-10 border-y border-edge py-7"><p className="mb-2 font-medium">Seu contato é direto comigo.</p><p className="text-sm leading-relaxed text-muted">Sou Gustavo Quintans, desenvolvedor por trás da Quintec. Vou conhecer seu contexto para avaliar como posso ajudar.</p></div>

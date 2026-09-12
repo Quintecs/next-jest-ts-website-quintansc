@@ -1,3 +1,4 @@
+import { saveConsent } from "@/lib/consent";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -14,6 +15,8 @@ vi.mock("@vercel/analytics/next", () => ({ Analytics: () => <div data-testid="an
 const contactEvent = { name: "contact_click", properties: { location: "header", channel: "form" } } as const;
 
 beforeEach(() => {
+  localStorage.clear();
+  saveConsent({ analytics: true, marketing: true });
   vi.stubEnv("NODE_ENV", "production");
   vi.stubEnv("NEXT_PUBLIC_ANALYTICS_PROVIDER", "vercel");
   vi.stubEnv("NEXT_PUBLIC_ANALYTICS_CUSTOM_EVENTS", "true");
@@ -21,6 +24,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  localStorage.clear();
   vi.unstubAllEnvs();
   vi.unstubAllGlobals();
   vi.restoreAllMocks();

@@ -5,9 +5,9 @@ import { JSDOM } from "jsdom";
 // identify as crawlers; they do not originate from a provider's verified IPs.
 const canonicalOrigin = "https://www.quintansc.com.br";
 const base = new URL(process.argv[2] || canonicalOrigin);
-const requiredPaths = ["/", "/sobre", "/projetos", "/contato", "/automacao-whatsapp"];
+const requiredPaths = ["/", "/sobre", "/projetos", "/contato", "/automacao-whatsapp", "/privacidade"];
 const agents = [
-  "Googlebot", "bingbot", "DuckDuckBot", "Applebot", "YandexBot", "Baiduspider",
+  "Googlebot", "AdsBot-Google", "AdsBot-Google-Mobile", "bingbot", "DuckDuckBot", "Applebot", "YandexBot", "Baiduspider",
   "OAI-SearchBot", "ChatGPT-User", "Claude-SearchBot", "Claude-User",
   "PerplexityBot", "Perplexity-User", "facebookexternalhit", "Twitterbot",
   "LinkedInBot", "UnknownCrawler",
@@ -45,6 +45,7 @@ function assertPage(response, document, path) {
   for (const meta of document.querySelectorAll('meta[name="robots"], meta[name="googlebot"], meta[name="bingbot"]')) {
     assert.doesNotMatch(meta.content, /noindex|nofollow|none/i);
   }
+  assert.equal(document.querySelectorAll("main h1").length, 1, "Esperado um único H1 no conteúdo principal");
   assert.ok(document.querySelector("main h1")?.textContent.trim(), "H1 ausente no HTML inicial");
   assert.equal(document.documentElement.lang, "pt-BR");
   assert.equal(document.head.querySelectorAll('link[rel="canonical"]').length, 1);
@@ -55,6 +56,19 @@ function assertPage(response, document, path) {
   assert.equal(new URL(document.head.querySelector('meta[property="og:url"]')?.content).href, canonical);
   assert.equal(document.head.querySelector('meta[property="og:title"]')?.content, document.title);
   assert.equal(document.head.querySelector('meta[name="twitter:title"]')?.content, document.title);
+
+  const entities = [...document.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => {
+    const data = JSON.parse(script.textContent);
+    assert.equal(data["@context"], "https://schema.org");
+    return data["@graph"] || [data];
+  });
+  const page = entities.find(entity => entity["@id"] === `${canonical}#webpage`);
+  assert.ok(page, "Dados estruturados da página ausentes");
+  assert.equal(page.url, canonical);
+  assert.equal(page.description, document.head.querySelector('meta[name="description"]').content);
+  assert.equal(page.isPartOf["@id"], `${canonicalOrigin}/#website`);
+  assert.ok(entities.some(entity => entity["@type"] === "WebSite" && entity.name === "Quintec"));
+  assert.ok(entities.some(entity => entity["@type"] === "Organization" && entity.name === "Quintec"));
 }
 
 await check("robots.txt permite todos os agentes e divulga o sitemap", async () => {
@@ -87,6 +101,7 @@ await check("sitemap XML com URLs canônicas, únicas e todas as páginas princi
 });
 
 const titles = new Set();
+const descriptions = new Set();
 const internalPaths = new Set();
 let stylesheet;
 let script;
@@ -97,12 +112,23 @@ for (const path of paths.length ? paths : requiredPaths) {
     assertPage(response, document, path);
     assert.ok(!titles.has(document.title), `Título repetido: ${document.title}`);
     titles.add(document.title);
+    const description = document.head.querySelector('meta[name="description"]').content;
+    assert.ok(!descriptions.has(description), `Descrição repetida: ${description}`);
+    descriptions.add(description);
     stylesheet ||= document.querySelector('link[rel="stylesheet"]')?.getAttribute("href");
     script ||= document.querySelector("script[src]")?.getAttribute("src");
     for (const link of document.querySelectorAll('a[href^="/"]')) {
       const url = new URL(link.getAttribute("href"), canonicalOrigin);
       if (url.origin === canonicalOrigin) internalPaths.add(url.pathname);
     }
+  });
+}
+
+for (const path of paths.length ? paths : requiredPaths) {
+  await check(`parâmetros de anúncios preservam a canonical: ${path}`, async () => {
+    const campaignPath = `${path}?utm_source=google&utm_medium=cpc&utm_campaign=seo-check&gclid=seo-check`;
+    const { response, body } = await request(campaignPath, "AdsBot-Google");
+    assertPage(response, htmlDocument(body), path);
   });
 }
 

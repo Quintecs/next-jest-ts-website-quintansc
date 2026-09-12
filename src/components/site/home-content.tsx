@@ -23,7 +23,7 @@ export default function HomeContent({ user }: { user: GithubUser | null }) {
         <div className="animate-fade-up">
           <span className="eyebrow">Quintec / Desenvolvimento de soluções digitais</span>
           <h1 className="text-[clamp(2.65rem,5.3vw,4.7rem)] font-semibold leading-[1.06] tracking-[-0.055em]">Seu negócio tem<br className="hidden sm:block" /> um próximo nível.<br /><span className="text-accent">Vamos construir.</span></h1>
-          <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted">Sites, sistemas e integrações que aproximam clientes, simplificam processos e dão espaço para seu negócio crescer.</p>
+          <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted">Desenvolvimento de sites, landing pages, sistemas web e integrações sob medida para aproximar clientes e simplificar os processos do seu negócio.</p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link href="/contato" analyticsEvent={{ name: "contact_click", properties: { location: "home_hero", channel: "form" } }} className={cn(buttonVariants(), "primary-cta")}>Conversar sobre meu projeto <ArrowUpRight size={18} /></Link><Link href="/projetos" className={cn(buttonVariants({ variant: "outline" }), "secondary-cta")}>Explorar projetos <ArrowRight size={17} /></Link></div>
           <div className="mt-8 flex items-center gap-3 text-sm text-muted"><span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-edge bg-panel font-mono text-xs text-foreground">GQ</span><p>Desenvolvimento por <span className="font-medium text-foreground">{user?.name || "Gustavo Quintans"}</span><br /><span className="text-xs">Conversa direta. Soluções sob medida.</span></p></div>
         </div>

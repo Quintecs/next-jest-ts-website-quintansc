@@ -1,6 +1,6 @@
 export const WHATSAPP_URL = "https://wa.me/5511989060037";
 export const AUTOMATION_WHATSAPP_URL = `${WHATSAPP_URL}?text=${encodeURIComponent(
-  "Olá, Gustavo! Vim pela página de automação de WhatsApp da Quintec. Sou empreendedor e quero organizar o atendimento do meu negócio. Podemos conversar?",
+  "Olá, Gustavo! Vim pela página de automação de WhatsApp da Quintec. Quero avaliar meu atendimento e entender qual solução faz sentido para meu negócio. Podemos conversar sobre os fluxos e o investimento?",
 )}`;
 export const solutionOptions = ["Site ou landing page", "Sistema web", "API ou integração", "Ainda preciso de orientação"] as const;
 

@@ -1,14 +1,10 @@
 import type { MetadataRoute } from "next";
 import { getProjectCatalog } from "@/lib/projects";
-import { siteUrl } from "@/lib/seo";
+import { seoPages, siteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
-    "/",
-    "/sobre",
-    "/projetos",
-    "/contato",
-    "/automacao-whatsapp",
+    ...Object.keys(seoPages),
     ...getProjectCatalog().map(({ name }) => `/projetos/${encodeURIComponent(name)}`),
   ];
 

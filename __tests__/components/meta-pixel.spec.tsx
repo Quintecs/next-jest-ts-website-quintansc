@@ -1,3 +1,4 @@
+import { saveConsent } from "@/lib/consent";
 import { StrictMode } from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -17,6 +18,8 @@ const pixelId = "123456789012345";
 const whatsappEvent = { name: "contact_click", properties: { location: "automation_hero", channel: "whatsapp" } } as const;
 
 beforeEach(() => {
+  localStorage.clear();
+  saveConsent({ analytics: true, marketing: true });
   route.pathname = "/";
   vi.stubEnv("NODE_ENV", "production");
   vi.stubEnv("NEXT_PUBLIC_ANALYTICS_PROVIDER", "vercel");
@@ -26,6 +29,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  localStorage.clear();
   vi.unstubAllEnvs();
   vi.unstubAllGlobals();
   vi.restoreAllMocks();
@@ -55,6 +59,7 @@ describe("Inicialização e navegação do Pixel da Meta", () => {
     expect(window.fbq?.queue).toEqual([
       ["set", "autoConfig", false, pixelId],
       ["init", pixelId],
+      ["consent", "grant"],
       ["trackSingle", pixelId, "PageView", { page_path: "/" }],
       ["trackSingle", pixelId, "Contact", { location: "automation_hero", channel: "whatsapp" }],
     ]);

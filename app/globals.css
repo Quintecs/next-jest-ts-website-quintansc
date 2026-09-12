@@ -91,6 +91,10 @@ body:has(.whatsapp-landing) .secondary-cta:hover {
   background: #edf3ff;
 }
 
+.automation-hero {
+  background: radial-gradient(ellipse at 95% 10%, #e9f0ff 0, transparent 55%), #ffffff;
+}
+
 .whatsapp-landing .eyebrow {
   font-family: var(--font-sans);
   font-size: 0.875rem;

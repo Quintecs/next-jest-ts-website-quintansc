@@ -1,3 +1,4 @@
+import { hasConsent } from "./consent";
 import { track } from "@vercel/analytics";
 import type { BeforeSendEvent } from "@vercel/analytics/next";
 import type { solutionOptions } from "./contact";
@@ -24,7 +25,7 @@ export function analyticsEnabled(): boolean {
 export function trackEvent(event: AnalyticsEvent): void {
   if (typeof window === "undefined" || process.env.NODE_ENV !== "production") return;
 
-  if (analyticsEnabled() && process.env.NEXT_PUBLIC_ANALYTICS_CUSTOM_EVENTS !== "false") {
+  if (hasConsent("analytics") && analyticsEnabled() && process.env.NEXT_PUBLIC_ANALYTICS_CUSTOM_EVENTS !== "false") {
     try {
       track(event.name, event.properties);
     } catch {
@@ -35,6 +36,7 @@ export function trackEvent(event: AnalyticsEvent): void {
 }
 
 export function sanitizeAnalyticsEvent(event: BeforeSendEvent): BeforeSendEvent | null {
+  if (!hasConsent("analytics")) return null;
   try {
     const url = new URL(event.url);
     url.search = "";
@@ -43,4 +45,15 @@ export function sanitizeAnalyticsEvent(event: BeforeSendEvent): BeforeSendEvent 
   } catch {
     return null;
   }
+}
+
+// Speed Insights uses a different event shape; keep its extra fields intact.
+export function sanitizePerformanceEvent<T extends { url: string }>(event: T): T | null {
+  if (!hasConsent("analytics")) return null;
+  try {
+    const url = new URL(event.url);
+    url.search = "";
+    url.hash = "";
+    return { ...event, url: url.toString() };
+  } catch { return null; }
 }

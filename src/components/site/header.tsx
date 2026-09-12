@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "@/components/site/tracked-link";
+import Link, { TrackedAnchor } from "@/components/site/tracked-link";
+import { AUTOMATION_WHATSAPP_URL } from "@/lib/contact";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -31,12 +32,13 @@ export default function Header() {
           </Link>
           <nav aria-label="Navegação da página" className="hidden items-center gap-7 lg:flex">
             <a href="#fluxos" className="text-link text-muted">Na prática</a>
+            <a href="#planos" className="text-link text-muted">Planos</a>
             <a href="#como-funciona" className="text-link text-muted">Como funciona</a>
             <a href="#duvidas" className="text-link text-muted">Dúvidas</a>
           </nav>
-          <a href="#fluxos" className="text-link gap-2 text-accent">
-            Veja na prática <ArrowUpRight size={17} aria-hidden="true" />
-          </a>
+          <TrackedAnchor href={AUTOMATION_WHATSAPP_URL} analyticsEvent={{ name: "contact_click", properties: { location: "automation_header", channel: "whatsapp" } }} target="_blank" rel="noopener noreferrer" className="primary-cta inline-flex min-h-11 items-center gap-2 px-3 text-sm sm:px-4">
+            Falar no WhatsApp <ArrowUpRight size={17} className="hidden sm:block" aria-hidden="true" />
+          </TrackedAnchor>
         </div>
       </header>
     );

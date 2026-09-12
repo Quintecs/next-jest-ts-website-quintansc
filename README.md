@@ -69,18 +69,19 @@ visitas, configure `NEXT_PUBLIC_ANALYTICS_CUSTOM_EVENTS=false`. Para desligar
 Web Analytics e seus eventos, use `NEXT_PUBLIC_ANALYTICS_PROVIDER=none`.
 Valores de provedor desconhecidos também desativam a integração da Vercel.
 Desenvolvimento e testes não enviam dados. Builds de produção, incluindo previews,
-enviam dados quando habilitados; configure `none` no ambiente Preview para excluí-los.
+enviam dados quando habilitados e autorizados nas preferências; configure `none` no ambiente Preview para excluí-los.
 
 A Vercel tem franquias de Web Analytics por plano; **eventos personalizados exigem
 Pro ou Enterprise**. Confira os
 [planos e limites](https://vercel.com/docs/analytics/limits-and-pricing) e a
 [disponibilidade dos eventos](https://vercel.com/docs/analytics/custom-events).
 O Speed Insights existente mede desempenho separadamente e não é controlado
-por essas variáveis.
+por essas variáveis, mas depende da autorização de estatísticas.
 
 ### Pixel da Meta para anúncios
 
-O Pixel funciona em paralelo com a Vercel, usando os mesmos pontos de medição.
+O Pixel funciona em paralelo com a Vercel, usando os mesmos pontos de medição,
+somente após consentimento para publicidade.
 Não exige uma biblioteca adicional nem token de acesso. Em `.env.local` para
 builds locais ou nas variáveis de ambiente de produção da hospedagem, configure:
 
@@ -196,6 +197,63 @@ configuração independente e mapeamento dos eventos para a Meta. Para validar a
 recepção real, publique com Web Analytics habilitado e confira o painel depois
 de executar os fluxos. Os testes locais não confirmam entrega ao serviço remoto.
 
+## Privacidade e consentimento
+
+O aviso é uma faixa sem bloqueio de navegação, com **Rejeitar opcionais** e
+**Aceitar todos** com o mesmo destaque. **Personalizar** permite autorizar
+estatísticas e publicidade separadamente; ambas começam desligadas. Não há
+aceite implícito por navegação, fechamento ou uso do formulário.
+
+- A escolha fica em `localStorage`, chave `quintec:privacy:v1`, com versão,
+  categorias, data e expiração. Aceites e recusas duram 180 dias, prazo definido
+  pelo projeto, não um prazo universal exigido por lei. Sem armazenamento
+  disponível, a escolha é mantida na memória durante a visita.
+- A faixa não reaparece entre rotas ou visitas durante esse prazo. O visitante
+  pode reabrir as preferências pelo rodapé ou por `/privacidade`.
+- Vercel Web Analytics e Speed Insights dependem de **Estatísticas e desempenho**.
+  Embora a Vercel informe que não usa cookies de rastreamento no Web Analytics,
+  esta implementação condiciona as duas ferramentas opcionais ao consentimento.
+- O Pixel da Meta depende de **Publicidade** e das variáveis públicas documentadas
+  acima. Corrigida a leitura antiga de `NEXT_META_PIXEL_*`, que não disponibilizava
+  o ID no bundle do navegador. Configure `NEXT_PUBLIC_META_PIXEL_*` na hospedagem.
+- A verificação ocorre tanto no carregamento dos SDKs quanto no envio dos eventos.
+  A revogação bloqueia novos eventos, envia `consent/revoke` ao Pixel, descarta
+  sua fila pendente e remove `_fbp`/`_fbc` acessíveis ao domínio. Os callbacks
+  `beforeSend` da Vercel continuam negando envio mesmo se o script já carregou.
+  Isso não apaga dados anteriormente enviados nem cookies de outros domínios.
+- Alterações em outra aba e expiração são observadas. Dados inválidos ou uma
+  versão desconhecida são tratados como ausência de consentimento.
+- A escolha é um registro local de preferência; não é um histórico de auditoria
+  de consentimento mantido no servidor. Se as finalidades mudarem, atualize a
+  política e a versão do registro para solicitar uma nova escolha.
+
+A página `/privacidade` descreve o contato responsável, formulário/WhatsApp,
+fornecedores, finalidades e como alterar a decisão. Informações operacionais
+sobre conservação e contratos com fornecedores devem refletir a prática do
+responsável pelo site; o banner isolado não comprova conformidade integral.
+
+Não há Google tag, GA4 ou Google Ads tag instalados neste projeto. Caso sejam
+adicionados, integre-os às escolhas existentes usando o Consent Mode: defina
+`ad_storage`, `analytics_storage`, `ad_user_data` e `ad_personalization` antes
+que as tags executem e atualize-os a cada escolha. No modo básico, as tags ficam
+bloqueadas até a autorização. O consentimento do Pixel da Meta é independente,
+sinalizado pela API da Meta; ele não equivale ao Consent Mode do Google.
+
+Referências oficiais consultadas:
+[ANPD — Cookies e proteção de dados pessoais](https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia-orientativo-cookies-e-protecao-de-dados-pessoais.pdf/@@display-file/file),
+[Google — Consent Mode](https://developers.google.com/tag-platform/security/concepts/consent-mode),
+[Vercel — privacidade do Web Analytics](https://vercel.com/docs/analytics/privacy-policy),
+[Vercel — privacidade do Speed Insights](https://vercel.com/docs/speed-insights/privacy-policy).
+
+Os testes em `__tests__/components/cookie-consent.spec.tsx` verificam bloqueio
+inicial, recusa, persistência, consentimento separado, revogação, cookies,
+sincronização entre abas, expiração e indisponibilidade de armazenamento.
+Antes do deploy, confira no navegador a ausência de requisições a
+`connect.facebook.net`, `facebook.com/tr` e `/_vercel/` de medição antes do aceite
+e após a recusa; depois valide as categorias individualmente. Verifique também
+os dois temas (home e automação), teclado e viewport móvel. Os testes unitários
+usam SDKs simulados e não comprovam sozinhos o comportamento do fornecedor remoto.
+
 ## Rastreamento e indexação
 
 O domínio canônico é **https://www.quintansc.com.br**, correspondente ao destino
@@ -205,11 +263,16 @@ do redirecionamento configurado na hospedagem. A origem está centralizada em
 - `/robots.txt`: permite `/` para `User-agent: *`, incluindo páginas, imagens,
   JavaScript e CSS. A regra também cobre novos rastreadores que seguem o padrão,
   sem depender de uma lista de marcas.
-- `/sitemap.xml`: lista as cinco páginas principais e os projetos do catálogo,
+- `/sitemap.xml`: lista as seis páginas principais e os projetos do catálogo,
   com URLs HTTPS canônicas, sem parâmetros, redirecionamentos ou datas inventadas.
-  Ao criar uma página principal, inclua-a em `app/sitemap.ts` e na navegação.
+  Ao criar uma página principal, inclua título e descrição em `seoPages`, em
+  `src/lib/seo.ts`, e adicione um link na navegação. O sitemap usa esse cadastro.
 - Cada página declara título, descrição, canonical e metadados Open Graph/X.
   Parâmetros de campanha e do formulário não mudam a URL canônica.
+- JSON-LD no HTML identifica a Quintec (`Organization`), Gustavo (`Person`),
+  o site (`WebSite`) e cada página. A landing page descreve seu serviço de
+  automação; os projetos são identificados como trabalhos de portfólio.
+  Esses dados descrevem o conteúdo existente e não garantem resultados ricos.
 - O conteúdo principal é renderizado no servidor. `htmlLimitedBots: /.*/`
   mantém os metadados no `<head>` também para bots sem JavaScript. Isso desativa
   o streaming de metadados para todos; as funções atuais de metadados são locais
@@ -243,9 +306,12 @@ yarn seo:check https://www.quintansc.com.br
 ```
 
 A auditoria valida robots, sitemap, todas as páginas nele, links internos,
-canonical, metadados no HTML inicial, CSS/JS/logo, 404 e o redirecionamento
-`/home`. Testa as rotas estática e dinâmica com 16 identificações de agentes,
-incluindo Google, Bing, DuckDuckGo, Apple, Yandex, Baidu, OpenAI, Anthropic,
+canonical, títulos e descrições únicos, um H1 por página, JSON-LD no HTML inicial,
+CSS/JS/logo, 404 e o redirecionamento `/home`. Verifica todas as páginas com
+`utm_source`, `utm_medium`, `utm_campaign` e `gclid`, preservando a canonical sem
+remover os parâmetros do visitante. Testa as rotas estática e dinâmica com
+18 identificações de agentes, incluindo Google e AdsBot (desktop/mobile),
+Bing, DuckDuckGo, Apple, Yandex, Baidu, OpenAI, Anthropic,
 Perplexity, prévias sociais e um agente desconhecido.
 
 São identificadores simulados, não conexões vindas dos IPs reais dessas empresas.
@@ -264,6 +330,32 @@ Não libere acesso privilegiado apenas pelo nome de um user-agent.
    CAPTCHA, login obrigatório, 403 ou 429. Preserve o controle de acesso de
    previews privados.
 
+### Google Search Console e páginas de destino dos anúncios
+
+Prefira a propriedade de domínio `quintansc.com.br`, verificada pelo registro
+DNS fornecido pelo Search Console. Ela abrange HTTP/HTTPS e www/sem www.
+Se optar pela propriedade de prefixo `https://www.quintansc.com.br/` e pela
+verificação por tag HTML, configure `GOOGLE_SITE_VERIFICATION` na hospedagem
+com somente o valor de `content` da tag fornecida pelo Google e faça novo build
+e deploy. A variável é opcional e o código não inventa tokens de verificação.
+
+Envie o sitemap e inspecione as nove URLs atuais: `/`, `/sobre`, `/projetos`,
+`/contato`, `/automacao-whatsapp`, `/privacidade`, `/projetos/MoveIT-NextJS`,
+`/projetos/Clean-API` e `/projetos/crud-nest`. Para cada destino de campanha,
+execute o teste de URL publicada, confira a canonical escolhida pelo Google
+e solicite indexação depois de publicar as alterações. Acompanhe os motivos
+de exclusão no relatório de indexação; repetir solicitações não acelera o processo.
+
+Use a URL HTTPS com www no destino dos anúncios. Os parâmetros de atribuição
+podem ser acrescentados normalmente; não cadastre variantes com UTMs ou gclid
+no sitemap. Teste também o formulário e a abertura do WhatsApp no celular.
+Rastreamento/indexação da busca orgânica e avaliação dos destinos pelo Google
+Ads são processos distintos; esta auditoria não comprova aprovação de anúncios.
+
+Referências: [verificação no Search Console](https://support.google.com/webmasters/answer/9008080),
+[solicitação de novo rastreamento](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl),
+[dados de organizações](https://developers.google.com/search/docs/appearance/structured-data/organization).
+
 Referências oficiais:
 [Google: robots.txt](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec),
 [Google: recursos de IA e indexação](https://developers.google.com/search/docs/appearance/ai-features),
@@ -272,3 +364,43 @@ Referências oficiais:
 [Anthropic: rastreadores](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler),
 [Perplexity: rastreadores](https://docs.perplexity.ai/docs/resources/perplexity-crawlers),
 [Next.js: metadados para bots](https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots).
+
+
+## Oferta da página de automação de WhatsApp
+
+A landing `/automacao-whatsapp` apresenta o contato antes das demonstrações,
+explica os módulos e leva o plano escolhido ao WhatsApp. O carrossel de seis
+etapas continua disponível em um bloco expansível, após os exemplos por segmento.
+
+Os preços abaixo são uma proposta comercial criada para este projeto a pedido
+do responsável, não uma pesquisa de média de mercado ou resultados comprovados:
+
+| Plano | Composição | Implantação a partir de |
+| --- | --- | --- |
+| Simples | Base + 1 fluxo de até 5 etapas + até 10 respostas frequentes | R$ 1.490 |
+| Premium | Base + até 3 fluxos de até 10 etapas + até 20 respostas + coleta de dados | R$ 2.990 |
+| Completo | Premium + cadastro de contatos em 1 planilha ou CRM com API disponível, até 5 campos, em um sentido | R$ 4.990 |
+
+A Base inclui 1 número em plataforma compatível, boas-vindas, horários,
+encaminhamento humano, testes e orientação. Plataforma, mensagens, trabalho
+fora dos limites e manutenção contínua são apresentados separadamente na proposta.
+Não há promessa de prazo universal, aumento percentual de vendas, descontos,
+depoimentos ou indicação de plano “mais vendido” sem comprovação.
+
+Altere os preços e os limites em `src/lib/automation-plans.ts`. O preço inicial
+do hero, o FAQ e as mensagens dos botões de plano usam esse mesmo cadastro.
+Ao adaptar o atendimento no WhatsApp, reconheça os nomes **Simples**, **Premium**
+e **Completo** na mensagem inicial e confirme compatibilidade, prazo e custos
+recorrentes antes da proposta. O clique prepara a mensagem; não efetua contratação.
+
+Os contatos usam o evento existente `contact_click`, respeitando consentimento.
+Os locais `automation_hero`, `automation_header`, `automation_example`,
+`automation_plan_simples`, `automation_plan_premium`, `automation_plan_completo`
+e `automation_bottom` distinguem a origem. Um clique não comprova envio de mensagem,
+lead qualificado ou venda; esses resultados precisam ser conferidos no atendimento.
+A eficácia da página deve ser medida com tráfego real, considerando as recusas
+nas preferências de medição. Não há garantia de aumento de conversão.
+
+Referências: [Google Ads — experiência da página de destino](https://support.google.com/google-ads/answer/14086),
+[Google Ads — otimização da página e chamada à ação](https://support.google.com/google-ads/answer/6238826),
+[WhatsApp — cobrança da plataforma](https://business.whatsapp.com/products/platform-pricing).
